@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Adora_Apparel1.Pages.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="812.611" Width="1052.836">
+    <Grid Style="{StaticResource ContentRoot}">
+        <!--<StackPanel HorizontalAlignment="Left" Height="633" Margin="35,37,0,0" VerticalAlignment="Top" Width="961">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="Images/background.jpg"></ImageBrush>
+            </StackPanel.Background>
+        </StackPanel>-->
+
+        <WrapPanel HorizontalAlignment="Left" Height="144" Margin="73,69,0,0" VerticalAlignment="Top" Width="159" Background="#FF2594E9" PreviewMouseDown="WrapPanel_PreviewMouseDown">
+            <TextBlock TextWrapping="Wrap" Text="Stock Lots Purchasing" Height="62" Width="153" Foreground="White" FontSize="20"/>
+            <Image Height="89" Width="154" Source="Images/Applications/Calculator.png"/>
+        </WrapPanel>
+        <WrapPanel HorizontalAlignment="Left" Height="142" Margin="240,69,0,0" VerticalAlignment="Top" Width="159" Background="#FF00A8EC">
+            <TextBlock TextWrapping="Wrap" Text="Stock Lots Sales" Height="62" Width="153" Foreground="White" FontSize="20"/>
+            <Image Height="88" Width="155" Source="Images/Other/Power - Switch User.png"/>
+        </WrapPanel>
+        <WrapPanel HorizontalAlignment="Left" Height="140" Margin="409,69,0,0" VerticalAlignment="Top" Width="159" Background="#FF1D7144">
+            <TextBlock TextWrapping="Wrap" Text="FOB Purchasing" Height="62" Width="153" Foreground="White" FontSize="20"/>
+            <Image Height="87" Width="155" Source="Images/Office Apps/Excel 2013.png"/>
+        </WrapPanel>
+        <WrapPanel HorizontalAlignment="Left" Height="153" Margin="74,352,0,0" VerticalAlignment="Top" Width="159" Background="#FF7F1A76">
+            <TextBlock TextWrapping="Wrap" Text="FOB Sales" Height="62" Width="153" Foreground="White" FontSize="20"/>
+            <Image Height="88" Width="157" Source="Images/Office Apps/OneNote 2013.png"/>
+        </WrapPanel>
+        <WrapPanel HorizontalAlignment="Left" Height="152" Margin="241,353,0,0" VerticalAlignment="Top" Width="159" Background="#FF009600">
+            <TextBlock TextWrapping="Wrap" Text="FOB Stock In Hand" Height="62" Width="153" Foreground="White" FontSize="20"/>
+            <Image Height="87" Width="155" Source="Images/Applications/Windows 8 Store.png"/>
+        </WrapPanel>
+        <WrapPanel HorizontalAlignment="Left" Height="149" Margin="410,355,0,0" VerticalAlignment="Top" Width="159" Background="#FF2A5796">
+            <TextBlock TextWrapping="Wrap" Text="Fixed Overheads" Height="62" Width="153" Foreground="White" FontSize="20"/>
+            <Image Height="87" Width="157" Source="Images/Office Apps/Word 2013.png"/>
+        </WrapPanel>
+        <WrapPanel HorizontalAlignment="Left" Height="122" Margin="75,218,0,0" VerticalAlignment="Top" Width="492" Background="#FF7013A6">
+            <TextBlock TextWrapping="Wrap" Text="Analytics" Height="62" Width="153" Foreground="White" FontSize="20"/>
+            <Image Height="88" Width="154" Source="Images/Office Apps/reflective/InfoPath_mirror.png"/>
+        </WrapPanel>
+        <WrapPanel HorizontalAlignment="Left" Height="240" Margin="707,71,0,0" VerticalAlignment="Top" Width="253" Background="#FFF30505">
+            <Label x:Name="Day" Content="" Height="50" Width="254" Foreground="#FFFEFEFE" FontSize="36"/>
+            <Label x:Name="date" Content="" Height="82" Width="254" Foreground="#FFFEFEFE" FontSize="36"/>
+            <Label x:Name="year_month" Content="" Height="47" Width="254" Foreground="#FFFEFEFE" FontSize="22"/>
+            <Label x:Name="time" Content="" Height="53" Width="254" Foreground="#FFFEFEFE" FontSize="22"/>
+        </WrapPanel>
+        <WrapPanel HorizontalAlignment="Left" Height="221" Margin="707,322,0,0" VerticalAlignment="Top" Width="253" Background="#FFF30505"/>
+
+    </Grid>
+</UserControl>
