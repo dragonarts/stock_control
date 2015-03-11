@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd4b716772f64f41ad1d23fc645f1a0c" Name="Diagram1">
+        <EntityTypeShape EntityType="mydbModel.fixed_over_heads" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydbModel.fob_purchasing" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydbModel.fob_sales" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydbModel.fob_stock_in_hand" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydbModel.fob_stock_orders" Width="1.5" PointX="6" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydbModel.shippment_title" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydbModel.stock" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydbModel.stock_monitor" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydbModel.stock_purchasing" Width="1.5" PointX="3" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydbModel.stock_sales" Width="1.5" PointX="3" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydbModel.user" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="mydbModel.fk_Fixed_Over_Heads_user1" ManuallyRouted="false" />
+        <AssociationConnector Association="mydbModel.fk_FOB_Purchasing_Shippment_title1" ManuallyRouted="false" />
+        <AssociationConnector Association="mydbModel.fk_FOB_Sales_Shippment_title1" ManuallyRouted="false" />
+        <AssociationConnector Association="mydbModel.fk_FOB_Stock_in_hand_Shippment_title1" ManuallyRouted="false" />
+        <AssociationConnector Association="mydbModel.fk_FOB_Stock_Orders_Shippment_title1" ManuallyRouted="false" />
+        <AssociationConnector Association="mydbModel.fk_FOB_Stock_Orders_user1" ManuallyRouted="false" />
+        <AssociationConnector Association="mydbModel.fk_Stock_Monitor_Shippment_title1" ManuallyRouted="false" />
+        <AssociationConnector Association="mydbModel.fk_Stock_purchasing_Shippment_title" ManuallyRouted="false" />
+        <AssociationConnector Association="mydbModel.fk_Stock_Sales_Shippment_title1" ManuallyRouted="false" />
+        <AssociationConnector Association="mydbModel.fk_Stock_Shippment_title1" ManuallyRouted="false" />
+        <AssociationConnector Association="mydbModel.fk_Stock_Monitor_user1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

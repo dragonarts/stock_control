@@ -1,0 +1,860 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="mydbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="fixed_over_heads">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="enteredBy" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date_From" Type="date" />
+          <Property Name="Date_To" Type="date" />
+          <Property Name="Type_Of_Cost" Type="varchar" MaxLength="45" />
+          <Property Name="amount" Type="double" />
+          <Property Name="enteredBy" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fob_purchasing">
+          <Key>
+            <PropertyRef Name="idFOB_Purchasing" />
+            <PropertyRef Name="Shipment_Code" />
+          </Key>
+          <Property Name="idFOB_Purchasing" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="price_per_yard" Type="double" />
+          <Property Name="yardage" Type="double" />
+          <Property Name="transport_cost" Type="double" />
+          <Property Name="cost" Type="double" />
+          <Property Name="cost_per_yard" Type="double" />
+          <Property Name="Shipment_Code" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fob_sales">
+          <Key>
+            <PropertyRef Name="idFOB_Sales" />
+            <PropertyRef Name="Shippment_code" />
+          </Key>
+          <Property Name="idFOB_Sales" Type="int" Nullable="false" />
+          <Property Name="NoOfPeices" Type="double" />
+          <Property Name="PricePerPeice" Type="double" />
+          <Property Name="SellingFrequency" Type="int" />
+          <Property Name="TotalPeicesSold" Type="double" />
+          <Property Name="TotalRemaining" Type="double" />
+          <Property Name="TotalTurnOvers" Type="double" />
+          <Property Name="Shippment_code" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fob_stock_in_hand">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Shippment_code" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="amount" Type="double" Nullable="false" />
+          <Property Name="price_per_peice" Type="double" />
+          <Property Name="Shippment_code" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fob_stock_orders">
+          <Key>
+            <PropertyRef Name="idFOB_Stock" />
+            <PropertyRef Name="user_username" />
+            <PropertyRef Name="Shippment_code" />
+          </Key>
+          <Property Name="idFOB_Stock" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Factory_Name" Type="varchar" MaxLength="45" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Item" Type="varchar" MaxLength="100" />
+          <Property Name="NoOfPeices" Type="double" />
+          <Property Name="CostPerPeice" Type="double" />
+          <Property Name="user_username" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="materialAmount" Type="double" />
+          <Property Name="Shippment_code" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="shippment_title">
+          <Key>
+            <PropertyRef Name="Shipment_Code" />
+          </Key>
+          <Property Name="Shipment_Code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Shippment_title" Type="varchar" MaxLength="45" />
+          <Property Name="isFOB" Type="bool" />
+        </EntityType>
+        <EntityType Name="stock">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Shippment_code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="stockInHand" Type="double" />
+          <Property Name="price_per_peice" Type="double" />
+        </EntityType>
+        <EntityType Name="stock_monitor">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Shipment_Code" />
+            <PropertyRef Name="responsibleUser" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="amountBefore" Type="int" />
+          <Property Name="amountNow" Type="int" />
+          <Property Name="dateModifiedd" Type="datetime" Precision="0" />
+          <Property Name="userModified" Type="varchar" MaxLength="60" />
+          <Property Name="Shipment_Code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="responsibleUser" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="reason" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="stock_purchasing">
+          <Key>
+            <PropertyRef Name="idStock_purchasing" />
+            <PropertyRef Name="Shippment_code" />
+          </Key>
+          <Property Name="idStock_purchasing" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Shippment_code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="NoOfPeices" Type="int" />
+          <Property Name="PricePerPiece" Type="double" />
+          <Property Name="Transport_Cost" Type="double" />
+          <Property Name="Supplier_Commision" Type="double" />
+          <Property Name="Miscellanouse" Type="varchar" MaxLength="45" />
+          <Property Name="Total_Shippment_cost" Type="double" />
+          <Property Name="ActualCostPerPiece" Type="double" />
+        </EntityType>
+        <EntityType Name="stock_sales">
+          <Key>
+            <PropertyRef Name="idStock_Sales" />
+            <PropertyRef Name="Shippment_code" />
+          </Key>
+          <Property Name="idStock_Sales" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Shippment_code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="NoOfPeices" Type="int" />
+          <Property Name="PricePerPeice" Type="double" />
+          <Property Name="Selling_Frequency" Type="int" />
+          <Property Name="Total_peices_sold" Type="int" />
+          <Property Name="Total_Remaining" Type="int" />
+          <Property Name="Total_Turnover" Type="double" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="100" />
+          <Property Name="lastName" Type="varchar" MaxLength="100" />
+          <Property Name="password" Type="varchar" MaxLength="100" />
+          <Property Name="securityQuestion" Type="varchar" MaxLength="100" />
+          <Property Name="Answer" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="fk_Fixed_Over_Heads_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="fixed_over_heads" Type="Self.fixed_over_heads" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="fixed_over_heads">
+              <PropertyRef Name="enteredBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_FOB_Purchasing_Shippment_title1">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="fob_purchasing" Type="Self.fob_purchasing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="fob_purchasing">
+              <PropertyRef Name="Shipment_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_FOB_Sales_Shippment_title1">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="fob_sales" Type="Self.fob_sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="fob_sales">
+              <PropertyRef Name="Shippment_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_FOB_Stock_in_hand_Shippment_title1">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="fob_stock_in_hand" Type="Self.fob_stock_in_hand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="fob_stock_in_hand">
+              <PropertyRef Name="Shippment_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_FOB_Stock_Orders_Shippment_title1">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="fob_stock_orders" Type="Self.fob_stock_orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="fob_stock_orders">
+              <PropertyRef Name="Shippment_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_FOB_Stock_Orders_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="fob_stock_orders" Type="Self.fob_stock_orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="fob_stock_orders">
+              <PropertyRef Name="user_username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Stock_Monitor_Shippment_title1">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="stock_monitor" Type="Self.stock_monitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="stock_monitor">
+              <PropertyRef Name="Shipment_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Stock_Monitor_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="stock_monitor" Type="Self.stock_monitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="stock_monitor">
+              <PropertyRef Name="responsibleUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Stock_purchasing_Shippment_title">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="stock_purchasing" Type="Self.stock_purchasing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="stock_purchasing">
+              <PropertyRef Name="Shippment_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Stock_Sales_Shippment_title1">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="stock_sales" Type="Self.stock_sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="stock_sales">
+              <PropertyRef Name="Shippment_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Stock_Shippment_title1">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="stock" Type="Self.stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="stock">
+              <PropertyRef Name="Shippment_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mydbModelStoreContainer">
+          <EntitySet Name="fixed_over_heads" EntityType="Self.fixed_over_heads" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="fob_purchasing" EntityType="Self.fob_purchasing" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="fob_sales" EntityType="Self.fob_sales" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="fob_stock_in_hand" EntityType="Self.fob_stock_in_hand" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="fob_stock_orders" EntityType="Self.fob_stock_orders" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="shippment_title" EntityType="Self.shippment_title" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="stock" EntityType="Self.stock" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="stock_monitor" EntityType="Self.stock_monitor" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="stock_purchasing" EntityType="Self.stock_purchasing" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="stock_sales" EntityType="Self.stock_sales" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="mydb" store:Type="Tables" />
+          <AssociationSet Name="fk_Fixed_Over_Heads_user1" Association="Self.fk_Fixed_Over_Heads_user1">
+            <End Role="user" EntitySet="user" />
+            <End Role="fixed_over_heads" EntitySet="fixed_over_heads" />
+          </AssociationSet>
+          <AssociationSet Name="fk_FOB_Purchasing_Shippment_title1" Association="Self.fk_FOB_Purchasing_Shippment_title1">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="fob_purchasing" EntitySet="fob_purchasing" />
+          </AssociationSet>
+          <AssociationSet Name="fk_FOB_Sales_Shippment_title1" Association="Self.fk_FOB_Sales_Shippment_title1">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="fob_sales" EntitySet="fob_sales" />
+          </AssociationSet>
+          <AssociationSet Name="fk_FOB_Stock_in_hand_Shippment_title1" Association="Self.fk_FOB_Stock_in_hand_Shippment_title1">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="fob_stock_in_hand" EntitySet="fob_stock_in_hand" />
+          </AssociationSet>
+          <AssociationSet Name="fk_FOB_Stock_Orders_Shippment_title1" Association="Self.fk_FOB_Stock_Orders_Shippment_title1">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="fob_stock_orders" EntitySet="fob_stock_orders" />
+          </AssociationSet>
+          <AssociationSet Name="fk_FOB_Stock_Orders_user1" Association="Self.fk_FOB_Stock_Orders_user1">
+            <End Role="user" EntitySet="user" />
+            <End Role="fob_stock_orders" EntitySet="fob_stock_orders" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Stock_Monitor_Shippment_title1" Association="Self.fk_Stock_Monitor_Shippment_title1">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="stock_monitor" EntitySet="stock_monitor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Stock_Monitor_user1" Association="Self.fk_Stock_Monitor_user1">
+            <End Role="user" EntitySet="user" />
+            <End Role="stock_monitor" EntitySet="stock_monitor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Stock_purchasing_Shippment_title" Association="Self.fk_Stock_purchasing_Shippment_title">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="stock_purchasing" EntitySet="stock_purchasing" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Stock_Sales_Shippment_title1" Association="Self.fk_Stock_Sales_Shippment_title1">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="stock_sales" EntitySet="stock_sales" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Stock_Shippment_title1" Association="Self.fk_Stock_Shippment_title1">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="stock" EntitySet="stock" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mydbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="fixed_over_heads">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="enteredBy" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date_From" Type="DateTime" />
+          <Property Name="Date_To" Type="DateTime" />
+          <Property Name="Type_Of_Cost" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="Double" />
+          <Property Name="enteredBy" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.fk_Fixed_Over_Heads_user1" FromRole="fixed_over_heads" ToRole="user" />
+        </EntityType>
+        <EntityType Name="fob_purchasing">
+          <Key>
+            <PropertyRef Name="idFOB_Purchasing" />
+            <PropertyRef Name="Shipment_Code" />
+          </Key>
+          <Property Name="idFOB_Purchasing" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" />
+          <Property Name="price_per_yard" Type="Double" />
+          <Property Name="yardage" Type="Double" />
+          <Property Name="transport_cost" Type="Double" />
+          <Property Name="cost" Type="Double" />
+          <Property Name="cost_per_yard" Type="Double" />
+          <Property Name="Shipment_Code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="shippment_title" Relationship="Self.fk_FOB_Purchasing_Shippment_title1" FromRole="fob_purchasing" ToRole="shippment_title" />
+        </EntityType>
+        <EntityType Name="fob_sales">
+          <Key>
+            <PropertyRef Name="idFOB_Sales" />
+            <PropertyRef Name="Shippment_code" />
+          </Key>
+          <Property Name="idFOB_Sales" Type="Int32" Nullable="false" />
+          <Property Name="NoOfPeices" Type="Double" />
+          <Property Name="PricePerPeice" Type="Double" />
+          <Property Name="SellingFrequency" Type="Int32" />
+          <Property Name="TotalPeicesSold" Type="Double" />
+          <Property Name="TotalRemaining" Type="Double" />
+          <Property Name="TotalTurnOvers" Type="Double" />
+          <Property Name="Shippment_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="shippment_title" Relationship="Self.fk_FOB_Sales_Shippment_title1" FromRole="fob_sales" ToRole="shippment_title" />
+        </EntityType>
+        <EntityType Name="fob_stock_in_hand">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Shippment_code" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="amount" Type="Double" Nullable="false" />
+          <Property Name="price_per_peice" Type="Double" />
+          <Property Name="Shippment_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="shippment_title" Relationship="Self.fk_FOB_Stock_in_hand_Shippment_title1" FromRole="fob_stock_in_hand" ToRole="shippment_title" />
+        </EntityType>
+        <EntityType Name="fob_stock_orders">
+          <Key>
+            <PropertyRef Name="idFOB_Stock" />
+            <PropertyRef Name="user_username" />
+            <PropertyRef Name="Shippment_code" />
+          </Key>
+          <Property Name="idFOB_Stock" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Factory_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" />
+          <Property Name="Item" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfPeices" Type="Double" />
+          <Property Name="CostPerPeice" Type="Double" />
+          <Property Name="user_username" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="materialAmount" Type="Double" />
+          <Property Name="Shippment_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="shippment_title" Relationship="Self.fk_FOB_Stock_Orders_Shippment_title1" FromRole="fob_stock_orders" ToRole="shippment_title" />
+          <NavigationProperty Name="user" Relationship="Self.fk_FOB_Stock_Orders_user1" FromRole="fob_stock_orders" ToRole="user" />
+        </EntityType>
+        <EntityType Name="shippment_title">
+          <Key>
+            <PropertyRef Name="Shipment_Code" />
+          </Key>
+          <Property Name="Shipment_Code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Shippment_title1" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="isFOB" Type="Boolean" />
+          <NavigationProperty Name="fob_purchasing" Relationship="Self.fk_FOB_Purchasing_Shippment_title1" FromRole="shippment_title" ToRole="fob_purchasing" />
+          <NavigationProperty Name="fob_sales" Relationship="Self.fk_FOB_Sales_Shippment_title1" FromRole="shippment_title" ToRole="fob_sales" />
+          <NavigationProperty Name="fob_stock_in_hand" Relationship="Self.fk_FOB_Stock_in_hand_Shippment_title1" FromRole="shippment_title" ToRole="fob_stock_in_hand" />
+          <NavigationProperty Name="fob_stock_orders" Relationship="Self.fk_FOB_Stock_Orders_Shippment_title1" FromRole="shippment_title" ToRole="fob_stock_orders" />
+          <NavigationProperty Name="stock_monitor" Relationship="Self.fk_Stock_Monitor_Shippment_title1" FromRole="shippment_title" ToRole="stock_monitor" />
+          <NavigationProperty Name="stock_purchasing" Relationship="Self.fk_Stock_purchasing_Shippment_title" FromRole="shippment_title" ToRole="stock_purchasing" />
+          <NavigationProperty Name="stock_sales" Relationship="Self.fk_Stock_Sales_Shippment_title1" FromRole="shippment_title" ToRole="stock_sales" />
+          <NavigationProperty Name="stocks" Relationship="Self.fk_Stock_Shippment_title1" FromRole="shippment_title" ToRole="stock" />
+        </EntityType>
+        <EntityType Name="stock">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Shippment_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="stockInHand" Type="Double" />
+          <Property Name="price_per_peice" Type="Double" />
+          <NavigationProperty Name="shippment_title" Relationship="Self.fk_Stock_Shippment_title1" FromRole="stock" ToRole="shippment_title" />
+        </EntityType>
+        <EntityType Name="stock_monitor">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Shipment_Code" />
+            <PropertyRef Name="responsibleUser" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="amountBefore" Type="Int32" />
+          <Property Name="amountNow" Type="Int32" />
+          <Property Name="dateModifiedd" Type="DateTime" />
+          <Property Name="userModified" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Shipment_Code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="responsibleUser" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="reason" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="shippment_title" Relationship="Self.fk_Stock_Monitor_Shippment_title1" FromRole="stock_monitor" ToRole="shippment_title" />
+          <NavigationProperty Name="user" Relationship="Self.fk_Stock_Monitor_user1" FromRole="stock_monitor" ToRole="user" />
+        </EntityType>
+        <EntityType Name="stock_purchasing">
+          <Key>
+            <PropertyRef Name="idStock_purchasing" />
+            <PropertyRef Name="Shippment_code" />
+          </Key>
+          <Property Name="idStock_purchasing" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Shippment_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoOfPeices" Type="Int32" />
+          <Property Name="PricePerPiece" Type="Double" />
+          <Property Name="Transport_Cost" Type="Double" />
+          <Property Name="Supplier_Commision" Type="Double" />
+          <Property Name="Miscellanouse" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Shippment_cost" Type="Double" />
+          <Property Name="ActualCostPerPiece" Type="Double" />
+          <NavigationProperty Name="shippment_title" Relationship="Self.fk_Stock_purchasing_Shippment_title" FromRole="stock_purchasing" ToRole="shippment_title" />
+        </EntityType>
+        <EntityType Name="stock_sales">
+          <Key>
+            <PropertyRef Name="idStock_Sales" />
+            <PropertyRef Name="Shippment_code" />
+          </Key>
+          <Property Name="idStock_Sales" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Shippment_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoOfPeices" Type="Int32" />
+          <Property Name="PricePerPeice" Type="Double" />
+          <Property Name="Selling_Frequency" Type="Int32" />
+          <Property Name="Total_peices_sold" Type="Int32" />
+          <Property Name="Total_Remaining" Type="Int32" />
+          <Property Name="Total_Turnover" Type="Double" />
+          <NavigationProperty Name="shippment_title" Relationship="Self.fk_Stock_Sales_Shippment_title1" FromRole="stock_sales" ToRole="shippment_title" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="securityQuestion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Answer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="fixed_over_heads" Relationship="Self.fk_Fixed_Over_Heads_user1" FromRole="user" ToRole="fixed_over_heads" />
+          <NavigationProperty Name="fob_stock_orders" Relationship="Self.fk_FOB_Stock_Orders_user1" FromRole="user" ToRole="fob_stock_orders" />
+          <NavigationProperty Name="stock_monitor" Relationship="Self.fk_Stock_Monitor_user1" FromRole="user" ToRole="stock_monitor" />
+        </EntityType>
+        <Association Name="fk_Fixed_Over_Heads_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="fixed_over_heads" Type="Self.fixed_over_heads" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="fixed_over_heads">
+              <PropertyRef Name="enteredBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_FOB_Purchasing_Shippment_title1">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="fob_purchasing" Type="Self.fob_purchasing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="fob_purchasing">
+              <PropertyRef Name="Shipment_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_FOB_Sales_Shippment_title1">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="fob_sales" Type="Self.fob_sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="fob_sales">
+              <PropertyRef Name="Shippment_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_FOB_Stock_in_hand_Shippment_title1">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="fob_stock_in_hand" Type="Self.fob_stock_in_hand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="fob_stock_in_hand">
+              <PropertyRef Name="Shippment_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_FOB_Stock_Orders_Shippment_title1">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="fob_stock_orders" Type="Self.fob_stock_orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="fob_stock_orders">
+              <PropertyRef Name="Shippment_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_FOB_Stock_Orders_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="fob_stock_orders" Type="Self.fob_stock_orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="fob_stock_orders">
+              <PropertyRef Name="user_username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Stock_Monitor_Shippment_title1">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="stock_monitor" Type="Self.stock_monitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="stock_monitor">
+              <PropertyRef Name="Shipment_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Stock_purchasing_Shippment_title">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="stock_purchasing" Type="Self.stock_purchasing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="stock_purchasing">
+              <PropertyRef Name="Shippment_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Stock_Sales_Shippment_title1">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="stock_sales" Type="Self.stock_sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="stock_sales">
+              <PropertyRef Name="Shippment_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Stock_Shippment_title1">
+          <End Role="shippment_title" Type="Self.shippment_title" Multiplicity="1" />
+          <End Role="stock" Type="Self.stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shippment_title">
+              <PropertyRef Name="Shipment_Code" />
+            </Principal>
+            <Dependent Role="stock">
+              <PropertyRef Name="Shippment_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Stock_Monitor_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="stock_monitor" Type="Self.stock_monitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="stock_monitor">
+              <PropertyRef Name="responsibleUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="adoraDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="fixed_over_heads" EntityType="Self.fixed_over_heads" />
+          <EntitySet Name="fob_purchasing" EntityType="Self.fob_purchasing" />
+          <EntitySet Name="fob_sales" EntityType="Self.fob_sales" />
+          <EntitySet Name="fob_stock_in_hand" EntityType="Self.fob_stock_in_hand" />
+          <EntitySet Name="fob_stock_orders" EntityType="Self.fob_stock_orders" />
+          <EntitySet Name="shippment_title" EntityType="Self.shippment_title" />
+          <EntitySet Name="stocks" EntityType="Self.stock" />
+          <EntitySet Name="stock_monitor" EntityType="Self.stock_monitor" />
+          <EntitySet Name="stock_purchasing" EntityType="Self.stock_purchasing" />
+          <EntitySet Name="stock_sales" EntityType="Self.stock_sales" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="fk_Fixed_Over_Heads_user1" Association="Self.fk_Fixed_Over_Heads_user1">
+            <End Role="user" EntitySet="users" />
+            <End Role="fixed_over_heads" EntitySet="fixed_over_heads" />
+          </AssociationSet>
+          <AssociationSet Name="fk_FOB_Purchasing_Shippment_title1" Association="Self.fk_FOB_Purchasing_Shippment_title1">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="fob_purchasing" EntitySet="fob_purchasing" />
+          </AssociationSet>
+          <AssociationSet Name="fk_FOB_Sales_Shippment_title1" Association="Self.fk_FOB_Sales_Shippment_title1">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="fob_sales" EntitySet="fob_sales" />
+          </AssociationSet>
+          <AssociationSet Name="fk_FOB_Stock_in_hand_Shippment_title1" Association="Self.fk_FOB_Stock_in_hand_Shippment_title1">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="fob_stock_in_hand" EntitySet="fob_stock_in_hand" />
+          </AssociationSet>
+          <AssociationSet Name="fk_FOB_Stock_Orders_Shippment_title1" Association="Self.fk_FOB_Stock_Orders_Shippment_title1">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="fob_stock_orders" EntitySet="fob_stock_orders" />
+          </AssociationSet>
+          <AssociationSet Name="fk_FOB_Stock_Orders_user1" Association="Self.fk_FOB_Stock_Orders_user1">
+            <End Role="user" EntitySet="users" />
+            <End Role="fob_stock_orders" EntitySet="fob_stock_orders" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Stock_Monitor_Shippment_title1" Association="Self.fk_Stock_Monitor_Shippment_title1">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="stock_monitor" EntitySet="stock_monitor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Stock_purchasing_Shippment_title" Association="Self.fk_Stock_purchasing_Shippment_title">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="stock_purchasing" EntitySet="stock_purchasing" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Stock_Sales_Shippment_title1" Association="Self.fk_Stock_Sales_Shippment_title1">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="stock_sales" EntitySet="stock_sales" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Stock_Shippment_title1" Association="Self.fk_Stock_Shippment_title1">
+            <End Role="shippment_title" EntitySet="shippment_title" />
+            <End Role="stock" EntitySet="stocks" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Stock_Monitor_user1" Association="Self.fk_Stock_Monitor_user1">
+            <End Role="user" EntitySet="users" />
+            <End Role="stock_monitor" EntitySet="stock_monitor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mydbModelStoreContainer" CdmEntityContainer="adoraDB">
+          <EntitySetMapping Name="fixed_over_heads">
+            <EntityTypeMapping TypeName="mydbModel.fixed_over_heads">
+              <MappingFragment StoreEntitySet="fixed_over_heads">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Date_From" ColumnName="Date_From" />
+                <ScalarProperty Name="Date_To" ColumnName="Date_To" />
+                <ScalarProperty Name="Type_Of_Cost" ColumnName="Type_Of_Cost" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="enteredBy" ColumnName="enteredBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fob_purchasing">
+            <EntityTypeMapping TypeName="mydbModel.fob_purchasing">
+              <MappingFragment StoreEntitySet="fob_purchasing">
+                <ScalarProperty Name="idFOB_Purchasing" ColumnName="idFOB_Purchasing" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="price_per_yard" ColumnName="price_per_yard" />
+                <ScalarProperty Name="yardage" ColumnName="yardage" />
+                <ScalarProperty Name="transport_cost" ColumnName="transport_cost" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="cost_per_yard" ColumnName="cost_per_yard" />
+                <ScalarProperty Name="Shipment_Code" ColumnName="Shipment_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fob_sales">
+            <EntityTypeMapping TypeName="mydbModel.fob_sales">
+              <MappingFragment StoreEntitySet="fob_sales">
+                <ScalarProperty Name="idFOB_Sales" ColumnName="idFOB_Sales" />
+                <ScalarProperty Name="NoOfPeices" ColumnName="NoOfPeices" />
+                <ScalarProperty Name="PricePerPeice" ColumnName="PricePerPeice" />
+                <ScalarProperty Name="SellingFrequency" ColumnName="SellingFrequency" />
+                <ScalarProperty Name="TotalPeicesSold" ColumnName="TotalPeicesSold" />
+                <ScalarProperty Name="TotalRemaining" ColumnName="TotalRemaining" />
+                <ScalarProperty Name="TotalTurnOvers" ColumnName="TotalTurnOvers" />
+                <ScalarProperty Name="Shippment_code" ColumnName="Shippment_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fob_stock_in_hand">
+            <EntityTypeMapping TypeName="mydbModel.fob_stock_in_hand">
+              <MappingFragment StoreEntitySet="fob_stock_in_hand">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="price_per_peice" ColumnName="price_per_peice" />
+                <ScalarProperty Name="Shippment_code" ColumnName="Shippment_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fob_stock_orders">
+            <EntityTypeMapping TypeName="mydbModel.fob_stock_orders">
+              <MappingFragment StoreEntitySet="fob_stock_orders">
+                <ScalarProperty Name="idFOB_Stock" ColumnName="idFOB_Stock" />
+                <ScalarProperty Name="Factory_Name" ColumnName="Factory_Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="NoOfPeices" ColumnName="NoOfPeices" />
+                <ScalarProperty Name="CostPerPeice" ColumnName="CostPerPeice" />
+                <ScalarProperty Name="user_username" ColumnName="user_username" />
+                <ScalarProperty Name="materialAmount" ColumnName="materialAmount" />
+                <ScalarProperty Name="Shippment_code" ColumnName="Shippment_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shippment_title">
+            <EntityTypeMapping TypeName="mydbModel.shippment_title">
+              <MappingFragment StoreEntitySet="shippment_title">
+                <ScalarProperty Name="Shipment_Code" ColumnName="Shipment_Code" />
+                <ScalarProperty Name="Shippment_title1" ColumnName="Shippment_title" />
+                <ScalarProperty Name="isFOB" ColumnName="isFOB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stocks">
+            <EntityTypeMapping TypeName="mydbModel.stock">
+              <MappingFragment StoreEntitySet="stock">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Shippment_code" ColumnName="Shippment_code" />
+                <ScalarProperty Name="stockInHand" ColumnName="stockInHand" />
+                <ScalarProperty Name="price_per_peice" ColumnName="price_per_peice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stock_monitor">
+            <EntityTypeMapping TypeName="mydbModel.stock_monitor">
+              <MappingFragment StoreEntitySet="stock_monitor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="amountBefore" ColumnName="amountBefore" />
+                <ScalarProperty Name="amountNow" ColumnName="amountNow" />
+                <ScalarProperty Name="dateModifiedd" ColumnName="dateModifiedd" />
+                <ScalarProperty Name="userModified" ColumnName="userModified" />
+                <ScalarProperty Name="Shipment_Code" ColumnName="Shipment_Code" />
+                <ScalarProperty Name="responsibleUser" ColumnName="responsibleUser" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stock_purchasing">
+            <EntityTypeMapping TypeName="mydbModel.stock_purchasing">
+              <MappingFragment StoreEntitySet="stock_purchasing">
+                <ScalarProperty Name="idStock_purchasing" ColumnName="idStock_purchasing" />
+                <ScalarProperty Name="Shippment_code" ColumnName="Shippment_code" />
+                <ScalarProperty Name="NoOfPeices" ColumnName="NoOfPeices" />
+                <ScalarProperty Name="PricePerPiece" ColumnName="PricePerPiece" />
+                <ScalarProperty Name="Transport_Cost" ColumnName="Transport_Cost" />
+                <ScalarProperty Name="Supplier_Commision" ColumnName="Supplier_Commision" />
+                <ScalarProperty Name="Miscellanouse" ColumnName="Miscellanouse" />
+                <ScalarProperty Name="Total_Shippment_cost" ColumnName="Total_Shippment_cost" />
+                <ScalarProperty Name="ActualCostPerPiece" ColumnName="ActualCostPerPiece" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stock_sales">
+            <EntityTypeMapping TypeName="mydbModel.stock_sales">
+              <MappingFragment StoreEntitySet="stock_sales">
+                <ScalarProperty Name="idStock_Sales" ColumnName="idStock_Sales" />
+                <ScalarProperty Name="Shippment_code" ColumnName="Shippment_code" />
+                <ScalarProperty Name="NoOfPeices" ColumnName="NoOfPeices" />
+                <ScalarProperty Name="PricePerPeice" ColumnName="PricePerPeice" />
+                <ScalarProperty Name="Selling_Frequency" ColumnName="Selling_Frequency" />
+                <ScalarProperty Name="Total_peices_sold" ColumnName="Total_peices_sold" />
+                <ScalarProperty Name="Total_Remaining" ColumnName="Total_Remaining" />
+                <ScalarProperty Name="Total_Turnover" ColumnName="Total_Turnover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="mydbModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="securityQuestion" ColumnName="securityQuestion" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

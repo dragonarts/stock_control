@@ -4,6 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adora_Apparel1", "Adora_Apparel1\Adora_Apparel1.csproj", "{DB2B348D-6354-48E1-A348-AD39D62678C7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3CD43EA3-C798-4A5D-9DE4-AAE55E57D693} = {3CD43EA3-C798-4A5D-9DE4-AAE55E57D693}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModel", "DataModel\DataModel.csproj", "{39F3EF7F-B75B-4269-9DF9-03DBC2713904}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adora_Apparel_Dataservice", "Adora_Apparel_Dataservice\Adora_Apparel_Dataservice.csproj", "{3CD43EA3-C798-4A5D-9DE4-AAE55E57D693}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,14 @@ Global
 		{DB2B348D-6354-48E1-A348-AD39D62678C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB2B348D-6354-48E1-A348-AD39D62678C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB2B348D-6354-48E1-A348-AD39D62678C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39F3EF7F-B75B-4269-9DF9-03DBC2713904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39F3EF7F-B75B-4269-9DF9-03DBC2713904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39F3EF7F-B75B-4269-9DF9-03DBC2713904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39F3EF7F-B75B-4269-9DF9-03DBC2713904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CD43EA3-C798-4A5D-9DE4-AAE55E57D693}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CD43EA3-C798-4A5D-9DE4-AAE55E57D693}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CD43EA3-C798-4A5D-9DE4-AAE55E57D693}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CD43EA3-C798-4A5D-9DE4-AAE55E57D693}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
