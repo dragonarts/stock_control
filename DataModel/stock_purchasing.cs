@@ -20,11 +20,11 @@ namespace DataModel
         public Nullable<double> PricePerPiece { get; set; }
         public Nullable<double> Transport_Cost { get; set; }
         public Nullable<double> Supplier_Commision { get; set; }
-        public string Miscellanouse { get; set; }
+        public Nullable<double> Miscellanouse { get; set; }
         public Nullable<double> Total_Shippment_cost { get; set; }
         public Nullable<double> ActualCostPerPiece { get; set; }
-
-        public int status { get; set; }
+        public Nullable<int> status { get; set; }
+        public Nullable<System.DateTime> shipped_date { get; set; }
     
         public virtual shippment_title shippment_title { get; set; }
     }

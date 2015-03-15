@@ -9,7 +9,7 @@
   <xs:complexType name="stock_purchasing">
     <xs:sequence>
       <xs:element minOccurs="0" name="ActualCostPerPiece" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="Miscellanouse" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Miscellanouse" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="NoOfPeices" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PricePerPiece" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="Shippment_code" nillable="true" type="xs:string" />
@@ -17,8 +17,9 @@
       <xs:element minOccurs="0" name="Total_Shippment_cost" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="Transport_Cost" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="idStock_purchasing" type="xs:int" />
+      <xs:element minOccurs="0" name="shipped_date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="shippment_title" nillable="true" type="tns:shippment_title" />
-      <xs:element minOccurs="0" name="status" type="xs:int" />
+      <xs:element minOccurs="0" name="status" nillable="true" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="stock_purchasing" nillable="true" type="tns:stock_purchasing" />

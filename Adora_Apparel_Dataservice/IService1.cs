@@ -18,7 +18,7 @@ namespace Adora_Apparel_Dataservice
         List<stock_purchasing> getstockPurchasing();
 
         [OperationContract]
-        bool addStockPurchase(string ship_code,int peices,double peice_price,double transport_cost,double supplier_commision,string miscellenaouse,double total_ship_cost,double actual_cost);
+        bool addStockPurchase(string ship_code,Nullable<int> peices,Nullable<double> peice_price,Nullable<double> transport_cost,Nullable<double> supplier_commision,Nullable<double> miscellenaouse,Nullable<double> total_ship_cost,Nullable<double> actual_cost,int status,Nullable<System.DateTime> shipped);
 
         [OperationContract]
         bool addUser(string username,string firstname,string lastname,string password,string security,string answer);
@@ -27,11 +27,16 @@ namespace Adora_Apparel_Dataservice
         bool login(string username,string password);
 
         [OperationContract]
-        bool updateStockPurchase(string ship_code, int peices, double peice_price, double transport_cost, double supplier_commision, string miscellenaouse, double total_ship_cost, double actual_cost,int shipID);
+        bool updateStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision,Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost, int shipID, Nullable<System.DateTime> shipped);
 
         [OperationContract]
         bool deleteStockPurchase(int ship_code);
 
+        [OperationContract]
+        bool addNewShipment(string shippment_code, string shipment_title, Nullable<bool> status);
+
+        [OperationContract]
+        IEnumerable<string> getshippmentTitle();
         // TODO: Add your service operations here
     }
 

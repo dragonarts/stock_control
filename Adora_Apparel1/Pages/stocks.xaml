@@ -15,6 +15,7 @@
                 <mui:Link DisplayName="Purchasing Summary" Source="" />
                 <mui:Link DisplayName="Sales Comparison" Source="" />
                 <mui:Link DisplayName="Purchasing Comparison" Source="" />
+                
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

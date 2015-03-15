@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:7097/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataModel" />
+  <xs:import schemaLocation="http://localhost:7097/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="getstockPurchasing">
     <xs:complexType>
       <xs:sequence />
@@ -17,13 +18,15 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ship_code" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="peices" type="xs:int" />
-        <xs:element minOccurs="0" name="peice_price" type="xs:double" />
-        <xs:element minOccurs="0" name="transport_cost" type="xs:double" />
-        <xs:element minOccurs="0" name="supplier_commision" type="xs:double" />
-        <xs:element minOccurs="0" name="miscellenaouse" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="total_ship_cost" type="xs:double" />
-        <xs:element minOccurs="0" name="actual_cost" type="xs:double" />
+        <xs:element minOccurs="0" name="peices" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="peice_price" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="transport_cost" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="supplier_commision" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="miscellenaouse" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="total_ship_cost" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="actual_cost" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="status" type="xs:int" />
+        <xs:element minOccurs="0" name="shipped" nillable="true" type="xs:dateTime" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -72,14 +75,15 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ship_code" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="peices" type="xs:int" />
-        <xs:element minOccurs="0" name="peice_price" type="xs:double" />
-        <xs:element minOccurs="0" name="transport_cost" type="xs:double" />
-        <xs:element minOccurs="0" name="supplier_commision" type="xs:double" />
-        <xs:element minOccurs="0" name="miscellenaouse" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="total_ship_cost" type="xs:double" />
-        <xs:element minOccurs="0" name="actual_cost" type="xs:double" />
+        <xs:element minOccurs="0" name="peices" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="peice_price" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="transport_cost" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="supplier_commision" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="miscellenaouse" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="total_ship_cost" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="actual_cost" nillable="true" type="xs:double" />
         <xs:element minOccurs="0" name="shipID" type="xs:int" />
+        <xs:element minOccurs="0" name="shipped" nillable="true" type="xs:dateTime" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -101,6 +105,34 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="deleteStockPurchaseResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addNewShipment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="shippment_code" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="shipment_title" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="status" nillable="true" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addNewShipmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="addNewShipmentResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getshippmentTitle">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getshippmentTitleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getshippmentTitleResult" nillable="true" type="q2:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

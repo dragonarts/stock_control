@@ -26,7 +26,7 @@ namespace Adora_Apparel1.ServiceReference1 {
         private System.Nullable<double> ActualCostPerPieceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MiscellanouseField;
+        private System.Nullable<double> MiscellanouseField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> NoOfPeicesField;
@@ -50,10 +50,13 @@ namespace Adora_Apparel1.ServiceReference1 {
         private int idStock_purchasingField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> shipped_dateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Adora_Apparel1.ServiceReference1.shippment_title shippment_titleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int statusField;
+        private System.Nullable<int> statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -79,12 +82,12 @@ namespace Adora_Apparel1.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Miscellanouse {
+        public System.Nullable<double> Miscellanouse {
             get {
                 return this.MiscellanouseField;
             }
             set {
-                if ((object.ReferenceEquals(this.MiscellanouseField, value) != true)) {
+                if ((this.MiscellanouseField.Equals(value) != true)) {
                     this.MiscellanouseField = value;
                     this.RaisePropertyChanged("Miscellanouse");
                 }
@@ -183,6 +186,19 @@ namespace Adora_Apparel1.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> shipped_date {
+            get {
+                return this.shipped_dateField;
+            }
+            set {
+                if ((this.shipped_dateField.Equals(value) != true)) {
+                    this.shipped_dateField = value;
+                    this.RaisePropertyChanged("shipped_date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public Adora_Apparel1.ServiceReference1.shippment_title shippment_title {
             get {
                 return this.shippment_titleField;
@@ -196,7 +212,7 @@ namespace Adora_Apparel1.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int status {
+        public System.Nullable<int> status {
             get {
                 return this.statusField;
             }
@@ -1891,50 +1907,50 @@ namespace Adora_Apparel1.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getstockPurchasing", ReplyAction="http://tempuri.org/IService1/getstockPurchasingResponse")]
         Adora_Apparel1.ServiceReference1.stock_purchasing[] getstockPurchasing();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/getstockPurchasing", ReplyAction="http://tempuri.org/IService1/getstockPurchasingResponse")]
-        System.IAsyncResult BegingetstockPurchasing(System.AsyncCallback callback, object asyncState);
-        
-        Adora_Apparel1.ServiceReference1.stock_purchasing[] EndgetstockPurchasing(System.IAsyncResult result);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getstockPurchasing", ReplyAction="http://tempuri.org/IService1/getstockPurchasingResponse")]
+        System.Threading.Tasks.Task<Adora_Apparel1.ServiceReference1.stock_purchasing[]> getstockPurchasingAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addStockPurchase", ReplyAction="http://tempuri.org/IService1/addStockPurchaseResponse")]
-        bool addStockPurchase(string ship_code, int peices, double peice_price, double transport_cost, double supplier_commision, string miscellenaouse, double total_ship_cost, double actual_cost);
+        bool addStockPurchase(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int status, System.Nullable<System.DateTime> shipped);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/addStockPurchase", ReplyAction="http://tempuri.org/IService1/addStockPurchaseResponse")]
-        System.IAsyncResult BeginaddStockPurchase(string ship_code, int peices, double peice_price, double transport_cost, double supplier_commision, string miscellenaouse, double total_ship_cost, double actual_cost, System.AsyncCallback callback, object asyncState);
-        
-        bool EndaddStockPurchase(System.IAsyncResult result);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addStockPurchase", ReplyAction="http://tempuri.org/IService1/addStockPurchaseResponse")]
+        System.Threading.Tasks.Task<bool> addStockPurchaseAsync(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int status, System.Nullable<System.DateTime> shipped);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addUser", ReplyAction="http://tempuri.org/IService1/addUserResponse")]
         bool addUser(string username, string firstname, string lastname, string password, string security, string answer);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/addUser", ReplyAction="http://tempuri.org/IService1/addUserResponse")]
-        System.IAsyncResult BeginaddUser(string username, string firstname, string lastname, string password, string security, string answer, System.AsyncCallback callback, object asyncState);
-        
-        bool EndaddUser(System.IAsyncResult result);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addUser", ReplyAction="http://tempuri.org/IService1/addUserResponse")]
+        System.Threading.Tasks.Task<bool> addUserAsync(string username, string firstname, string lastname, string password, string security, string answer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/login", ReplyAction="http://tempuri.org/IService1/loginResponse")]
         bool login(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/login", ReplyAction="http://tempuri.org/IService1/loginResponse")]
-        System.IAsyncResult Beginlogin(string username, string password, System.AsyncCallback callback, object asyncState);
-        
-        bool Endlogin(System.IAsyncResult result);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/login", ReplyAction="http://tempuri.org/IService1/loginResponse")]
+        System.Threading.Tasks.Task<bool> loginAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateStockPurchase", ReplyAction="http://tempuri.org/IService1/updateStockPurchaseResponse")]
-        bool updateStockPurchase(string ship_code, int peices, double peice_price, double transport_cost, double supplier_commision, string miscellenaouse, double total_ship_cost, double actual_cost, int shipID);
+        bool updateStockPurchase(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int shipID, System.Nullable<System.DateTime> shipped);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/updateStockPurchase", ReplyAction="http://tempuri.org/IService1/updateStockPurchaseResponse")]
-        System.IAsyncResult BeginupdateStockPurchase(string ship_code, int peices, double peice_price, double transport_cost, double supplier_commision, string miscellenaouse, double total_ship_cost, double actual_cost, int shipID, System.AsyncCallback callback, object asyncState);
-        
-        bool EndupdateStockPurchase(System.IAsyncResult result);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateStockPurchase", ReplyAction="http://tempuri.org/IService1/updateStockPurchaseResponse")]
+        System.Threading.Tasks.Task<bool> updateStockPurchaseAsync(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int shipID, System.Nullable<System.DateTime> shipped);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteStockPurchase", ReplyAction="http://tempuri.org/IService1/deleteStockPurchaseResponse")]
         bool deleteStockPurchase(int ship_code);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/deleteStockPurchase", ReplyAction="http://tempuri.org/IService1/deleteStockPurchaseResponse")]
-        System.IAsyncResult BegindeleteStockPurchase(int ship_code, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteStockPurchase", ReplyAction="http://tempuri.org/IService1/deleteStockPurchaseResponse")]
+        System.Threading.Tasks.Task<bool> deleteStockPurchaseAsync(int ship_code);
         
-        bool EnddeleteStockPurchase(System.IAsyncResult result);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addNewShipment", ReplyAction="http://tempuri.org/IService1/addNewShipmentResponse")]
+        bool addNewShipment(string shippment_code, string shipment_title, System.Nullable<bool> status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addNewShipment", ReplyAction="http://tempuri.org/IService1/addNewShipmentResponse")]
+        System.Threading.Tasks.Task<bool> addNewShipmentAsync(string shippment_code, string shipment_title, System.Nullable<bool> status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getshippmentTitle", ReplyAction="http://tempuri.org/IService1/getshippmentTitleResponse")]
+        string[] getshippmentTitle();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getshippmentTitle", ReplyAction="http://tempuri.org/IService1/getshippmentTitleResponse")]
+        System.Threading.Tasks.Task<string[]> getshippmentTitleAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1943,157 +1959,7 @@ namespace Adora_Apparel1.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class getstockPurchasingCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public getstockPurchasingCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public Adora_Apparel1.ServiceReference1.stock_purchasing[] Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((Adora_Apparel1.ServiceReference1.stock_purchasing[])(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class addStockPurchaseCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public addStockPurchaseCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public bool Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class addUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public addUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public bool Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class loginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public loginCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public bool Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class updateStockPurchaseCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public updateStockPurchaseCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public bool Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class deleteStockPurchaseCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public deleteStockPurchaseCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public bool Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class Service1Client : System.ServiceModel.ClientBase<Adora_Apparel1.ServiceReference1.IService1>, Adora_Apparel1.ServiceReference1.IService1 {
-        
-        private BeginOperationDelegate onBegingetstockPurchasingDelegate;
-        
-        private EndOperationDelegate onEndgetstockPurchasingDelegate;
-        
-        private System.Threading.SendOrPostCallback ongetstockPurchasingCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginaddStockPurchaseDelegate;
-        
-        private EndOperationDelegate onEndaddStockPurchaseDelegate;
-        
-        private System.Threading.SendOrPostCallback onaddStockPurchaseCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginaddUserDelegate;
-        
-        private EndOperationDelegate onEndaddUserDelegate;
-        
-        private System.Threading.SendOrPostCallback onaddUserCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginloginDelegate;
-        
-        private EndOperationDelegate onEndloginDelegate;
-        
-        private System.Threading.SendOrPostCallback onloginCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginupdateStockPurchaseDelegate;
-        
-        private EndOperationDelegate onEndupdateStockPurchaseDelegate;
-        
-        private System.Threading.SendOrPostCallback onupdateStockPurchaseCompletedDelegate;
-        
-        private BeginOperationDelegate onBegindeleteStockPurchaseDelegate;
-        
-        private EndOperationDelegate onEnddeleteStockPurchaseDelegate;
-        
-        private System.Threading.SendOrPostCallback ondeleteStockPurchaseCompletedDelegate;
         
         public Service1Client() {
         }
@@ -2114,356 +1980,68 @@ namespace Adora_Apparel1.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public event System.EventHandler<getstockPurchasingCompletedEventArgs> getstockPurchasingCompleted;
-        
-        public event System.EventHandler<addStockPurchaseCompletedEventArgs> addStockPurchaseCompleted;
-        
-        public event System.EventHandler<addUserCompletedEventArgs> addUserCompleted;
-        
-        public event System.EventHandler<loginCompletedEventArgs> loginCompleted;
-        
-        public event System.EventHandler<updateStockPurchaseCompletedEventArgs> updateStockPurchaseCompleted;
-        
-        public event System.EventHandler<deleteStockPurchaseCompletedEventArgs> deleteStockPurchaseCompleted;
-        
         public Adora_Apparel1.ServiceReference1.stock_purchasing[] getstockPurchasing() {
             return base.Channel.getstockPurchasing();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BegingetstockPurchasing(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BegingetstockPurchasing(callback, asyncState);
+        public System.Threading.Tasks.Task<Adora_Apparel1.ServiceReference1.stock_purchasing[]> getstockPurchasingAsync() {
+            return base.Channel.getstockPurchasingAsync();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public Adora_Apparel1.ServiceReference1.stock_purchasing[] EndgetstockPurchasing(System.IAsyncResult result) {
-            return base.Channel.EndgetstockPurchasing(result);
+        public bool addStockPurchase(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int status, System.Nullable<System.DateTime> shipped) {
+            return base.Channel.addStockPurchase(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, status, shipped);
         }
         
-        private System.IAsyncResult OnBegingetstockPurchasing(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BegingetstockPurchasing(callback, asyncState);
-        }
-        
-        private object[] OnEndgetstockPurchasing(System.IAsyncResult result) {
-            Adora_Apparel1.ServiceReference1.stock_purchasing[] retVal = this.EndgetstockPurchasing(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OngetstockPurchasingCompleted(object state) {
-            if ((this.getstockPurchasingCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.getstockPurchasingCompleted(this, new getstockPurchasingCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void getstockPurchasingAsync() {
-            this.getstockPurchasingAsync(null);
-        }
-        
-        public void getstockPurchasingAsync(object userState) {
-            if ((this.onBegingetstockPurchasingDelegate == null)) {
-                this.onBegingetstockPurchasingDelegate = new BeginOperationDelegate(this.OnBegingetstockPurchasing);
-            }
-            if ((this.onEndgetstockPurchasingDelegate == null)) {
-                this.onEndgetstockPurchasingDelegate = new EndOperationDelegate(this.OnEndgetstockPurchasing);
-            }
-            if ((this.ongetstockPurchasingCompletedDelegate == null)) {
-                this.ongetstockPurchasingCompletedDelegate = new System.Threading.SendOrPostCallback(this.OngetstockPurchasingCompleted);
-            }
-            base.InvokeAsync(this.onBegingetstockPurchasingDelegate, null, this.onEndgetstockPurchasingDelegate, this.ongetstockPurchasingCompletedDelegate, userState);
-        }
-        
-        public bool addStockPurchase(string ship_code, int peices, double peice_price, double transport_cost, double supplier_commision, string miscellenaouse, double total_ship_cost, double actual_cost) {
-            return base.Channel.addStockPurchase(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginaddStockPurchase(string ship_code, int peices, double peice_price, double transport_cost, double supplier_commision, string miscellenaouse, double total_ship_cost, double actual_cost, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginaddStockPurchase(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public bool EndaddStockPurchase(System.IAsyncResult result) {
-            return base.Channel.EndaddStockPurchase(result);
-        }
-        
-        private System.IAsyncResult OnBeginaddStockPurchase(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string ship_code = ((string)(inValues[0]));
-            int peices = ((int)(inValues[1]));
-            double peice_price = ((double)(inValues[2]));
-            double transport_cost = ((double)(inValues[3]));
-            double supplier_commision = ((double)(inValues[4]));
-            string miscellenaouse = ((string)(inValues[5]));
-            double total_ship_cost = ((double)(inValues[6]));
-            double actual_cost = ((double)(inValues[7]));
-            return this.BeginaddStockPurchase(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, callback, asyncState);
-        }
-        
-        private object[] OnEndaddStockPurchase(System.IAsyncResult result) {
-            bool retVal = this.EndaddStockPurchase(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnaddStockPurchaseCompleted(object state) {
-            if ((this.addStockPurchaseCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.addStockPurchaseCompleted(this, new addStockPurchaseCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void addStockPurchaseAsync(string ship_code, int peices, double peice_price, double transport_cost, double supplier_commision, string miscellenaouse, double total_ship_cost, double actual_cost) {
-            this.addStockPurchaseAsync(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, null);
-        }
-        
-        public void addStockPurchaseAsync(string ship_code, int peices, double peice_price, double transport_cost, double supplier_commision, string miscellenaouse, double total_ship_cost, double actual_cost, object userState) {
-            if ((this.onBeginaddStockPurchaseDelegate == null)) {
-                this.onBeginaddStockPurchaseDelegate = new BeginOperationDelegate(this.OnBeginaddStockPurchase);
-            }
-            if ((this.onEndaddStockPurchaseDelegate == null)) {
-                this.onEndaddStockPurchaseDelegate = new EndOperationDelegate(this.OnEndaddStockPurchase);
-            }
-            if ((this.onaddStockPurchaseCompletedDelegate == null)) {
-                this.onaddStockPurchaseCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnaddStockPurchaseCompleted);
-            }
-            base.InvokeAsync(this.onBeginaddStockPurchaseDelegate, new object[] {
-                        ship_code,
-                        peices,
-                        peice_price,
-                        transport_cost,
-                        supplier_commision,
-                        miscellenaouse,
-                        total_ship_cost,
-                        actual_cost}, this.onEndaddStockPurchaseDelegate, this.onaddStockPurchaseCompletedDelegate, userState);
+        public System.Threading.Tasks.Task<bool> addStockPurchaseAsync(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int status, System.Nullable<System.DateTime> shipped) {
+            return base.Channel.addStockPurchaseAsync(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, status, shipped);
         }
         
         public bool addUser(string username, string firstname, string lastname, string password, string security, string answer) {
             return base.Channel.addUser(username, firstname, lastname, password, security, answer);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginaddUser(string username, string firstname, string lastname, string password, string security, string answer, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginaddUser(username, firstname, lastname, password, security, answer, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public bool EndaddUser(System.IAsyncResult result) {
-            return base.Channel.EndaddUser(result);
-        }
-        
-        private System.IAsyncResult OnBeginaddUser(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string username = ((string)(inValues[0]));
-            string firstname = ((string)(inValues[1]));
-            string lastname = ((string)(inValues[2]));
-            string password = ((string)(inValues[3]));
-            string security = ((string)(inValues[4]));
-            string answer = ((string)(inValues[5]));
-            return this.BeginaddUser(username, firstname, lastname, password, security, answer, callback, asyncState);
-        }
-        
-        private object[] OnEndaddUser(System.IAsyncResult result) {
-            bool retVal = this.EndaddUser(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnaddUserCompleted(object state) {
-            if ((this.addUserCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.addUserCompleted(this, new addUserCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void addUserAsync(string username, string firstname, string lastname, string password, string security, string answer) {
-            this.addUserAsync(username, firstname, lastname, password, security, answer, null);
-        }
-        
-        public void addUserAsync(string username, string firstname, string lastname, string password, string security, string answer, object userState) {
-            if ((this.onBeginaddUserDelegate == null)) {
-                this.onBeginaddUserDelegate = new BeginOperationDelegate(this.OnBeginaddUser);
-            }
-            if ((this.onEndaddUserDelegate == null)) {
-                this.onEndaddUserDelegate = new EndOperationDelegate(this.OnEndaddUser);
-            }
-            if ((this.onaddUserCompletedDelegate == null)) {
-                this.onaddUserCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnaddUserCompleted);
-            }
-            base.InvokeAsync(this.onBeginaddUserDelegate, new object[] {
-                        username,
-                        firstname,
-                        lastname,
-                        password,
-                        security,
-                        answer}, this.onEndaddUserDelegate, this.onaddUserCompletedDelegate, userState);
+        public System.Threading.Tasks.Task<bool> addUserAsync(string username, string firstname, string lastname, string password, string security, string answer) {
+            return base.Channel.addUserAsync(username, firstname, lastname, password, security, answer);
         }
         
         public bool login(string username, string password) {
             return base.Channel.login(username, password);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult Beginlogin(string username, string password, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.Beginlogin(username, password, callback, asyncState);
+        public System.Threading.Tasks.Task<bool> loginAsync(string username, string password) {
+            return base.Channel.loginAsync(username, password);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public bool Endlogin(System.IAsyncResult result) {
-            return base.Channel.Endlogin(result);
+        public bool updateStockPurchase(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int shipID, System.Nullable<System.DateTime> shipped) {
+            return base.Channel.updateStockPurchase(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, shipID, shipped);
         }
         
-        private System.IAsyncResult OnBeginlogin(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string username = ((string)(inValues[0]));
-            string password = ((string)(inValues[1]));
-            return this.Beginlogin(username, password, callback, asyncState);
-        }
-        
-        private object[] OnEndlogin(System.IAsyncResult result) {
-            bool retVal = this.Endlogin(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnloginCompleted(object state) {
-            if ((this.loginCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.loginCompleted(this, new loginCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void loginAsync(string username, string password) {
-            this.loginAsync(username, password, null);
-        }
-        
-        public void loginAsync(string username, string password, object userState) {
-            if ((this.onBeginloginDelegate == null)) {
-                this.onBeginloginDelegate = new BeginOperationDelegate(this.OnBeginlogin);
-            }
-            if ((this.onEndloginDelegate == null)) {
-                this.onEndloginDelegate = new EndOperationDelegate(this.OnEndlogin);
-            }
-            if ((this.onloginCompletedDelegate == null)) {
-                this.onloginCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnloginCompleted);
-            }
-            base.InvokeAsync(this.onBeginloginDelegate, new object[] {
-                        username,
-                        password}, this.onEndloginDelegate, this.onloginCompletedDelegate, userState);
-        }
-        
-        public bool updateStockPurchase(string ship_code, int peices, double peice_price, double transport_cost, double supplier_commision, string miscellenaouse, double total_ship_cost, double actual_cost, int shipID) {
-            return base.Channel.updateStockPurchase(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, shipID);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginupdateStockPurchase(string ship_code, int peices, double peice_price, double transport_cost, double supplier_commision, string miscellenaouse, double total_ship_cost, double actual_cost, int shipID, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginupdateStockPurchase(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, shipID, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public bool EndupdateStockPurchase(System.IAsyncResult result) {
-            return base.Channel.EndupdateStockPurchase(result);
-        }
-        
-        private System.IAsyncResult OnBeginupdateStockPurchase(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string ship_code = ((string)(inValues[0]));
-            int peices = ((int)(inValues[1]));
-            double peice_price = ((double)(inValues[2]));
-            double transport_cost = ((double)(inValues[3]));
-            double supplier_commision = ((double)(inValues[4]));
-            string miscellenaouse = ((string)(inValues[5]));
-            double total_ship_cost = ((double)(inValues[6]));
-            double actual_cost = ((double)(inValues[7]));
-            int shipID = ((int)(inValues[8]));
-            return this.BeginupdateStockPurchase(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, shipID, callback, asyncState);
-        }
-        
-        private object[] OnEndupdateStockPurchase(System.IAsyncResult result) {
-            bool retVal = this.EndupdateStockPurchase(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnupdateStockPurchaseCompleted(object state) {
-            if ((this.updateStockPurchaseCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.updateStockPurchaseCompleted(this, new updateStockPurchaseCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void updateStockPurchaseAsync(string ship_code, int peices, double peice_price, double transport_cost, double supplier_commision, string miscellenaouse, double total_ship_cost, double actual_cost, int shipID) {
-            this.updateStockPurchaseAsync(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, shipID, null);
-        }
-        
-        public void updateStockPurchaseAsync(string ship_code, int peices, double peice_price, double transport_cost, double supplier_commision, string miscellenaouse, double total_ship_cost, double actual_cost, int shipID, object userState) {
-            if ((this.onBeginupdateStockPurchaseDelegate == null)) {
-                this.onBeginupdateStockPurchaseDelegate = new BeginOperationDelegate(this.OnBeginupdateStockPurchase);
-            }
-            if ((this.onEndupdateStockPurchaseDelegate == null)) {
-                this.onEndupdateStockPurchaseDelegate = new EndOperationDelegate(this.OnEndupdateStockPurchase);
-            }
-            if ((this.onupdateStockPurchaseCompletedDelegate == null)) {
-                this.onupdateStockPurchaseCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnupdateStockPurchaseCompleted);
-            }
-            base.InvokeAsync(this.onBeginupdateStockPurchaseDelegate, new object[] {
-                        ship_code,
-                        peices,
-                        peice_price,
-                        transport_cost,
-                        supplier_commision,
-                        miscellenaouse,
-                        total_ship_cost,
-                        actual_cost,
-                        shipID}, this.onEndupdateStockPurchaseDelegate, this.onupdateStockPurchaseCompletedDelegate, userState);
+        public System.Threading.Tasks.Task<bool> updateStockPurchaseAsync(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int shipID, System.Nullable<System.DateTime> shipped) {
+            return base.Channel.updateStockPurchaseAsync(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, shipID, shipped);
         }
         
         public bool deleteStockPurchase(int ship_code) {
             return base.Channel.deleteStockPurchase(ship_code);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BegindeleteStockPurchase(int ship_code, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BegindeleteStockPurchase(ship_code, callback, asyncState);
+        public System.Threading.Tasks.Task<bool> deleteStockPurchaseAsync(int ship_code) {
+            return base.Channel.deleteStockPurchaseAsync(ship_code);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public bool EnddeleteStockPurchase(System.IAsyncResult result) {
-            return base.Channel.EnddeleteStockPurchase(result);
+        public bool addNewShipment(string shippment_code, string shipment_title, System.Nullable<bool> status) {
+            return base.Channel.addNewShipment(shippment_code, shipment_title, status);
         }
         
-        private System.IAsyncResult OnBegindeleteStockPurchase(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            int ship_code = ((int)(inValues[0]));
-            return this.BegindeleteStockPurchase(ship_code, callback, asyncState);
+        public System.Threading.Tasks.Task<bool> addNewShipmentAsync(string shippment_code, string shipment_title, System.Nullable<bool> status) {
+            return base.Channel.addNewShipmentAsync(shippment_code, shipment_title, status);
         }
         
-        private object[] OnEnddeleteStockPurchase(System.IAsyncResult result) {
-            bool retVal = this.EnddeleteStockPurchase(result);
-            return new object[] {
-                    retVal};
+        public string[] getshippmentTitle() {
+            return base.Channel.getshippmentTitle();
         }
         
-        private void OndeleteStockPurchaseCompleted(object state) {
-            if ((this.deleteStockPurchaseCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.deleteStockPurchaseCompleted(this, new deleteStockPurchaseCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void deleteStockPurchaseAsync(int ship_code) {
-            this.deleteStockPurchaseAsync(ship_code, null);
-        }
-        
-        public void deleteStockPurchaseAsync(int ship_code, object userState) {
-            if ((this.onBegindeleteStockPurchaseDelegate == null)) {
-                this.onBegindeleteStockPurchaseDelegate = new BeginOperationDelegate(this.OnBegindeleteStockPurchase);
-            }
-            if ((this.onEnddeleteStockPurchaseDelegate == null)) {
-                this.onEnddeleteStockPurchaseDelegate = new EndOperationDelegate(this.OnEnddeleteStockPurchase);
-            }
-            if ((this.ondeleteStockPurchaseCompletedDelegate == null)) {
-                this.ondeleteStockPurchaseCompletedDelegate = new System.Threading.SendOrPostCallback(this.OndeleteStockPurchaseCompleted);
-            }
-            base.InvokeAsync(this.onBegindeleteStockPurchaseDelegate, new object[] {
-                        ship_code}, this.onEnddeleteStockPurchaseDelegate, this.ondeleteStockPurchaseCompletedDelegate, userState);
+        public System.Threading.Tasks.Task<string[]> getshippmentTitleAsync() {
+            return base.Channel.getshippmentTitleAsync();
         }
     }
 }

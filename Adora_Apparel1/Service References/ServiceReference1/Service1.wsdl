@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:7097/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:7097/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:7097/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataModel" />
+      <xsd:import schemaLocation="http://localhost:7097/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_getstockPurchasing_InputMessage">
@@ -43,6 +44,18 @@
   <wsdl:message name="IService1_deleteStockPurchase_OutputMessage">
     <wsdl:part name="parameters" element="tns:deleteStockPurchaseResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_addNewShipment_InputMessage">
+    <wsdl:part name="parameters" element="tns:addNewShipment" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addNewShipment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addNewShipmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getshippmentTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:getshippmentTitle" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getshippmentTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getshippmentTitleResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="getstockPurchasing">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getstockPurchasing" message="tns:IService1_getstockPurchasing_InputMessage" />
@@ -67,6 +80,14 @@
     <wsdl:operation name="deleteStockPurchase">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/deleteStockPurchase" message="tns:IService1_deleteStockPurchase_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/deleteStockPurchaseResponse" message="tns:IService1_deleteStockPurchase_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addNewShipment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/addNewShipment" message="tns:IService1_addNewShipment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/addNewShipmentResponse" message="tns:IService1_addNewShipment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getshippmentTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getshippmentTitle" message="tns:IService1_getshippmentTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getshippmentTitleResponse" message="tns:IService1_getshippmentTitle_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -118,6 +139,24 @@
     </wsdl:operation>
     <wsdl:operation name="deleteStockPurchase">
       <soap:operation soapAction="http://tempuri.org/IService1/deleteStockPurchase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addNewShipment">
+      <soap:operation soapAction="http://tempuri.org/IService1/addNewShipment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getshippmentTitle">
+      <soap:operation soapAction="http://tempuri.org/IService1/getshippmentTitle" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

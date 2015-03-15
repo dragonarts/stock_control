@@ -13,7 +13,7 @@
         <EntityTypeShape EntityType="mydbModel.shippment_title" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.stock" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.stock_monitor" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="mydbModel.stock_purchasing" Width="1.5" PointX="3" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydbModel.stock_purchasing" Width="2" PointX="3" PointY="26.25" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.stock_sales" Width="1.5" PointX="3" PointY="30" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.user" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
         <AssociationConnector Association="mydbModel.fk_Fixed_Over_Heads_user1" ManuallyRouted="false" />
