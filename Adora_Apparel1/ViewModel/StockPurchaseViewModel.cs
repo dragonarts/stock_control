@@ -28,14 +28,14 @@ namespace Adora_Apparel1.ViewModel
             }
         }
 
-        private IEnumerable<stock_purchasing> stock_purchase;
-        public IEnumerable<stock_purchasing> Stock_purchase
+        private ObservableCollection<stock_purchasing> stock_purchase;
+        public ObservableCollection<stock_purchasing> Stock_purchase
         {
 
             get
             {
                 Service1Client st = new Service1Client();
-                stock_purchase = st.getstockPurchasing();
+                stock_purchase = new ObservableCollection<stock_purchasing>(st.getstockPurchasing());
                 st.Close();
                 return stock_purchase;
                 
@@ -43,14 +43,14 @@ namespace Adora_Apparel1.ViewModel
             
         }
         //private ObservableCollection<>
-        private IEnumerable<string> ship_code_list;
+        private ObservableCollection<string> ship_code_list;
 
-        public IEnumerable<string> Ship_code_list
+        public ObservableCollection<string> Ship_code_list
         {
             get
             {
                 Service1Client client = new Service1Client();
-                IEnumerable<string> result = client.getshippmentTitle();
+                ObservableCollection<string> result = new ObservableCollection<string>(client.getshippmentTitle());
                 client.Close();
                 return result;
             }
@@ -189,11 +189,14 @@ namespace Adora_Apparel1.ViewModel
             Nullable<double> total_shippment_cost = (peices * price_per_peice) + transport_cost + supplier_comission + miscellenouse;
             Nullable<double> actual_cost = total_shippment_cost / peices;
             var success = await dataClient.addStockPurchaseAsync(ship_code,peices,price_per_peice,transport_cost,supplier_comission,miscellenouse,total_shippment_cost,actual_cost,1,shipped_date);
-            dataClient.Close();
             if (success)
             {
 
-                MessageBox.Show("Data Inserted Successfully!");
+                MessageBox.Show("Data Inserted Successfully!"+shipped_date);
+                var content = dataClient.getstockPurchasing().ToArray();
+                stock_purchase.Clear();
+                Array.ForEach(content,stock_purchase.Add);
+                dataClient.Close();
             }
             else {
 

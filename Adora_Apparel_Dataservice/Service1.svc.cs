@@ -20,16 +20,19 @@ namespace Adora_Apparel_Dataservice
         {
 
             adoraDB context = new adoraDB();
+            context.Configuration.ProxyCreationEnabled = false;
             var load = from g in context.stock_purchasing select g;
-            context.SaveChanges();
+            //context.SaveChanges();
+
             return load.ToList();
         }
         public IEnumerable<string> getshippmentTitle()
         {
 
             adoraDB context = new adoraDB();
+
             var data = from g in context.shippment_title select g.Shipment_Code;
-            context.SaveChanges();
+           // context.SaveChanges();
             return data.ToList();
         }
         public bool addStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision, Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost,int status ,Nullable<System.DateTime> shipped)
