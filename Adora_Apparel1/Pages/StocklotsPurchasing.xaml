@@ -29,13 +29,13 @@
             <DataGrid ItemsSource="{Binding Path=Stock_purchase}" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,0,-5,0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
-                    <DataGridTextColumn Header="Shippment Title" Binding="{Binding ShipmentTitle}"/>
+                    <DataGridTextColumn Header="Shippment Title" Binding="{Binding Shippment_code}"/>
                     <DataGridTextColumn Header="NoOfPeices" Binding="{Binding NoOfPeices}"/>
-                    <DataGridTextColumn Header="Transport Cost" Binding="{Binding Transport}"/>
-                    <DataGridTextColumn Header="Supplier Commision" Binding="{Binding Supplier}"/>
-                    <DataGridTextColumn Header="Miscellaneous" Binding="{Binding Miscellaneous}"/>
-                    <DataGridTextColumn Header="Total Cost" Binding="{Binding TotalShippmentCost}"/>
-                    <DataGridTextColumn Header="Actual Cost" Binding="{Binding CostPerPiece}"/>
+                    <DataGridTextColumn Header="Transport Cost" Binding="{Binding Transport_Cost}"/>
+                    <DataGridTextColumn Header="Supplier Commision" Binding="{Binding Supplier_Commision}"/>
+                    <DataGridTextColumn Header="Miscellaneous" Binding="{Binding Miscellanouse}"/>
+                    <DataGridTextColumn Header="Total Cost" Binding="{Binding Total_Shippment_cost}"/>
+                    <DataGridTextColumn Header="Actual Cost" Binding="{Binding ActualCostPerPiece}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
