@@ -58,6 +58,9 @@ namespace Adora_Apparel1.ServiceReference1 {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> statusField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string sub_cat_nameField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -220,6 +223,19 @@ namespace Adora_Apparel1.ServiceReference1 {
                 if ((this.statusField.Equals(value) != true)) {
                     this.statusField = value;
                     this.RaisePropertyChanged("status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string sub_cat_name {
+            get {
+                return this.sub_cat_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.sub_cat_nameField, value) != true)) {
+                    this.sub_cat_nameField = value;
+                    this.RaisePropertyChanged("sub_cat_name");
                 }
             }
         }
@@ -1911,10 +1927,10 @@ namespace Adora_Apparel1.ServiceReference1 {
         System.Threading.Tasks.Task<Adora_Apparel1.ServiceReference1.stock_purchasing[]> getstockPurchasingAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addStockPurchase", ReplyAction="http://tempuri.org/IService1/addStockPurchaseResponse")]
-        bool addStockPurchase(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int status, System.Nullable<System.DateTime> shipped);
+        bool addStockPurchase(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int status, System.Nullable<System.DateTime> shipped, string sub_cat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addStockPurchase", ReplyAction="http://tempuri.org/IService1/addStockPurchaseResponse")]
-        System.Threading.Tasks.Task<bool> addStockPurchaseAsync(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int status, System.Nullable<System.DateTime> shipped);
+        System.Threading.Tasks.Task<bool> addStockPurchaseAsync(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int status, System.Nullable<System.DateTime> shipped, string sub_cat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addUser", ReplyAction="http://tempuri.org/IService1/addUserResponse")]
         bool addUser(string username, string firstname, string lastname, string password, string security, string answer);
@@ -1929,10 +1945,10 @@ namespace Adora_Apparel1.ServiceReference1 {
         System.Threading.Tasks.Task<bool> loginAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateStockPurchase", ReplyAction="http://tempuri.org/IService1/updateStockPurchaseResponse")]
-        bool updateStockPurchase(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int shipID, System.Nullable<System.DateTime> shipped);
+        bool updateStockPurchase(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int shipID, System.Nullable<System.DateTime> shipped, string sub_cat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateStockPurchase", ReplyAction="http://tempuri.org/IService1/updateStockPurchaseResponse")]
-        System.Threading.Tasks.Task<bool> updateStockPurchaseAsync(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int shipID, System.Nullable<System.DateTime> shipped);
+        System.Threading.Tasks.Task<bool> updateStockPurchaseAsync(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int shipID, System.Nullable<System.DateTime> shipped, string sub_cat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteStockPurchase", ReplyAction="http://tempuri.org/IService1/deleteStockPurchaseResponse")]
         bool deleteStockPurchase(int ship_code);
@@ -1988,12 +2004,12 @@ namespace Adora_Apparel1.ServiceReference1 {
             return base.Channel.getstockPurchasingAsync();
         }
         
-        public bool addStockPurchase(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int status, System.Nullable<System.DateTime> shipped) {
-            return base.Channel.addStockPurchase(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, status, shipped);
+        public bool addStockPurchase(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int status, System.Nullable<System.DateTime> shipped, string sub_cat) {
+            return base.Channel.addStockPurchase(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, status, shipped, sub_cat);
         }
         
-        public System.Threading.Tasks.Task<bool> addStockPurchaseAsync(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int status, System.Nullable<System.DateTime> shipped) {
-            return base.Channel.addStockPurchaseAsync(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, status, shipped);
+        public System.Threading.Tasks.Task<bool> addStockPurchaseAsync(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int status, System.Nullable<System.DateTime> shipped, string sub_cat) {
+            return base.Channel.addStockPurchaseAsync(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, status, shipped, sub_cat);
         }
         
         public bool addUser(string username, string firstname, string lastname, string password, string security, string answer) {
@@ -2012,12 +2028,12 @@ namespace Adora_Apparel1.ServiceReference1 {
             return base.Channel.loginAsync(username, password);
         }
         
-        public bool updateStockPurchase(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int shipID, System.Nullable<System.DateTime> shipped) {
-            return base.Channel.updateStockPurchase(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, shipID, shipped);
+        public bool updateStockPurchase(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int shipID, System.Nullable<System.DateTime> shipped, string sub_cat) {
+            return base.Channel.updateStockPurchase(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, shipID, shipped, sub_cat);
         }
         
-        public System.Threading.Tasks.Task<bool> updateStockPurchaseAsync(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int shipID, System.Nullable<System.DateTime> shipped) {
-            return base.Channel.updateStockPurchaseAsync(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, shipID, shipped);
+        public System.Threading.Tasks.Task<bool> updateStockPurchaseAsync(string ship_code, System.Nullable<int> peices, System.Nullable<double> peice_price, System.Nullable<double> transport_cost, System.Nullable<double> supplier_commision, System.Nullable<double> miscellenaouse, System.Nullable<double> total_ship_cost, System.Nullable<double> actual_cost, int shipID, System.Nullable<System.DateTime> shipped, string sub_cat) {
+            return base.Channel.updateStockPurchaseAsync(ship_code, peices, peice_price, transport_cost, supplier_commision, miscellenaouse, total_ship_cost, actual_cost, shipID, shipped, sub_cat);
         }
         
         public bool deleteStockPurchase(int ship_code) {

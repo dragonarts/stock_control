@@ -77,6 +77,9 @@
     <Compile Include="Pages\stocks.xaml.cs">
       <DependentUpon>stocks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UpdateStockPurchase.xaml.cs">
+      <DependentUpon>UpdateStockPurchase.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,6 +87,7 @@
     </Compile>
     <Compile Include="ViewModel\AddShippmentTitle.cs" />
     <Compile Include="ViewModel\StockPurchaseViewModel.cs" />
+    <Compile Include="ViewModel\UpdateStockPurchaseViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -130,6 +134,10 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Page Include="Pages\stocks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UpdateStockPurchase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

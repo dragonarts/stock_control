@@ -18,7 +18,7 @@ namespace Adora_Apparel_Dataservice
         List<stock_purchasing> getstockPurchasing();
 
         [OperationContract]
-        bool addStockPurchase(string ship_code,Nullable<int> peices,Nullable<double> peice_price,Nullable<double> transport_cost,Nullable<double> supplier_commision,Nullable<double> miscellenaouse,Nullable<double> total_ship_cost,Nullable<double> actual_cost,int status,Nullable<System.DateTime> shipped);
+        bool addStockPurchase(string ship_code,Nullable<int> peices,Nullable<double> peice_price,Nullable<double> transport_cost,Nullable<double> supplier_commision,Nullable<double> miscellenaouse,Nullable<double> total_ship_cost,Nullable<double> actual_cost,int status,Nullable<System.DateTime> shipped,string sub_cat);
 
         [OperationContract]
         bool addUser(string username,string firstname,string lastname,string password,string security,string answer);
@@ -27,7 +27,7 @@ namespace Adora_Apparel_Dataservice
         bool login(string username,string password);
 
         [OperationContract]
-        bool updateStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision,Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost, int shipID, Nullable<System.DateTime> shipped);
+        bool updateStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision,Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost, int shipID, Nullable<System.DateTime> shipped,string sub_cat);
 
         [OperationContract]
         bool deleteStockPurchase(int ship_code);

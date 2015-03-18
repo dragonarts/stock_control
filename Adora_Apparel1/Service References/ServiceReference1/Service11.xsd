@@ -27,6 +27,7 @@
         <xs:element minOccurs="0" name="actual_cost" nillable="true" type="xs:double" />
         <xs:element minOccurs="0" name="status" type="xs:int" />
         <xs:element minOccurs="0" name="shipped" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="sub_cat" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -84,6 +85,7 @@
         <xs:element minOccurs="0" name="actual_cost" nillable="true" type="xs:double" />
         <xs:element minOccurs="0" name="shipID" type="xs:int" />
         <xs:element minOccurs="0" name="shipped" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="sub_cat" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

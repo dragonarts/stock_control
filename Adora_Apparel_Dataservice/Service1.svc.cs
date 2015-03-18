@@ -21,7 +21,7 @@ namespace Adora_Apparel_Dataservice
 
             adoraDB context = new adoraDB();
             context.Configuration.ProxyCreationEnabled = false;
-            var load = from g in context.stock_purchasing select g;
+            var load = from g in context.stock_purchasing where(g.status==1) select g;
             //context.SaveChanges();
 
             return load.ToList();
@@ -35,7 +35,7 @@ namespace Adora_Apparel_Dataservice
            // context.SaveChanges();
             return data.ToList();
         }
-        public bool addStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision, Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost,int status ,Nullable<System.DateTime> shipped)
+        public bool addStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision, Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost,int status ,Nullable<System.DateTime> shipped,string sub_cat)
         {
             bool newStockAdded=false;
             adoraDB context = new adoraDB();
@@ -50,7 +50,8 @@ namespace Adora_Apparel_Dataservice
                     Total_Shippment_cost = total_ship_cost,
                     ActualCostPerPiece = actual_cost,
                     status=status,
-                    shipped_date=shipped
+                    shipped_date=shipped,
+                    sub_cat_name=sub_cat
                 };
                 context.stock_purchasing.Add(stock);
                 context.SaveChanges();
@@ -112,7 +113,7 @@ namespace Adora_Apparel_Dataservice
             return false;
         }
 
-        public bool updateStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision, Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost, int shipID, Nullable<System.DateTime> shipped)
+        public bool updateStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision, Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost, int shipID, Nullable<System.DateTime> shipped,string sub_cat)
         {
             adoraDB context = new adoraDB();
             bool status=false;
@@ -130,6 +131,7 @@ namespace Adora_Apparel_Dataservice
                 stock.shipped_date = shipped;
                 context.SaveChanges();
                 status = true;
+                stock.sub_cat_name = sub_cat;
             };
             return status;
         }

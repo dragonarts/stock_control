@@ -1,4 +1,5 @@
 ﻿
+using Adora_Apparel1.Pages;
 using Adora_Apparel1.ServiceReference1;
 using FirstFloor.ModernUI.Presentation;
 using System;
@@ -6,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +20,16 @@ namespace Adora_Apparel1.ViewModel
     {
         
         private stock_purchasing purchase;
+        private stock_purchasing selectedRow;
+
+       /* public stock_purchasing SelectedRow
+        {
+            get { return selectedRow; }
+            set { selectedRow = value; RaisePropertyChanged("SelectedRow"); }
+        }*/
         private ICommand command;
+
+        
         private Service1Client dataClient = new Service1Client();
         public ICommand Command
         {
@@ -29,20 +40,22 @@ namespace Adora_Apparel1.ViewModel
         }
 
         private ObservableCollection<stock_purchasing> stock_purchase;
-        public ObservableCollection<stock_purchasing> Stock_purchase
+        public  ObservableCollection<stock_purchasing> Stock_purchase
         {
 
             get
             {
+
                 Service1Client st = new Service1Client();
-                stock_purchase = new ObservableCollection<stock_purchasing>(st.getstockPurchasing());
+                stock_purchase = new ObservableCollection<stock_purchasing>(st.getstockPurchasingAsync().GetAwaiter().GetResult());
                 st.Close();
                 return stock_purchase;
                 
             }
             
+            
         }
-        //private ObservableCollection<>
+
         private ObservableCollection<string> ship_code_list;
 
         public ObservableCollection<string> Ship_code_list
@@ -50,10 +63,17 @@ namespace Adora_Apparel1.ViewModel
             get
             {
                 Service1Client client = new Service1Client();
-                ObservableCollection<string> result = new ObservableCollection<string>(client.getshippmentTitle());
+                ship_code_list = new ObservableCollection<string>(client.getshippmentTitleAsync().GetAwaiter().GetResult());
                 client.Close();
-                return result;
+                return ship_code_list;
             }
+            set
+            {
+
+                ship_code_list = value;
+                RaisePropertyChanged("Ship_code_list");
+            }
+            
         }
 
         private string ship_code;
@@ -74,20 +94,27 @@ namespace Adora_Apparel1.ViewModel
         }
 
         private Nullable<int> peices;
-
         public Nullable<int> Peices
         {
             get
             {
-                return peices;
+                 return peices;
             }
             set
             {
+               /* int checking;
+                bool check = int.TryParse(value.ToString(), out checking);
+                if (!(check && checking > 0))
+                {
+                        throw new ArgumentException("Please Enter Valid Peices");
+
+                }*/
                 peices = value;
                 RaisePropertyChanged("Peices");
+                
             } 
         }
-
+       
         private Nullable<double> price_per_peice;
 
         public Nullable<double> Price_per_peice
@@ -177,26 +204,39 @@ namespace Adora_Apparel1.ViewModel
         }
         public StockPurchaseViewModel() {
 
-            if(purchase==null)
-                this.purchase = new stock_purchasing();
            // RefreshEvents();
             command = new RelayCommand(addStock);
         }
 
+        private string sub_cat_name;
 
+        public string Sub_cat_name
+        {
+            get { return sub_cat_name; }
+            set { sub_cat_name = value; }
+        }
         private async void addStock(object obj) {
 
-            Nullable<double> total_shippment_cost = (peices * price_per_peice) + transport_cost + supplier_comission + miscellenouse;
+            //selectedRow = new stock_purchasing();
+            Nullable<double> total_shippment_cost = (peices * price_per_peice) + transport_cost +supplier_comission + miscellenouse;
             Nullable<double> actual_cost = total_shippment_cost / peices;
-            var success = await dataClient.addStockPurchaseAsync(ship_code,peices,price_per_peice,transport_cost,supplier_comission,miscellenouse,total_shippment_cost,actual_cost,1,shipped_date);
+            var success = await dataClient.addStockPurchaseAsync(ship_code,peices,price_per_peice,transport_cost,supplier_comission,miscellenouse,total_shippment_cost,actual_cost,1,shipped_date,sub_cat_name);
+           // var success = await dataClient.addStockPurchaseAsync(SelectedRow.Shippment_code,SelectedRow.NoOfPeices,SelectedRow.PricePerPiece,SelectedRow.Transport_Cost,SelectedRow.Supplier_Commision,SelectedRow.Miscellanouse, total_shippment_cost, actual_cost, 1,SelectedRow.shipped_date);
             if (success)
             {
 
-                MessageBox.Show("Data Inserted Successfully!"+shipped_date);
+                MessageBox.Show("Data Inserted Successfully!");
                 var content = dataClient.getstockPurchasing().ToArray();
                 stock_purchase.Clear();
                 Array.ForEach(content,stock_purchase.Add);
-                dataClient.Close();
+                //dataClient.Close();
+                Ship_code = "";
+                Peices = null;
+                Price_per_peice = null;
+                Transport_cost = null;
+                Supplier_comission = null;
+                Miscellenouse = null;
+                Shipped_date = null;
             }
             else {
 
@@ -205,6 +245,13 @@ namespace Adora_Apparel1.ViewModel
 
         }
 
-        
+        public void ReloadShipmentTitle(string val)
+        {
+
+            this.Ship_code_list.Add(val);
+                
+        }
+
+       
     }
 }
