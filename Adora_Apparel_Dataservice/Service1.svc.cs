@@ -164,7 +164,7 @@ namespace Adora_Apparel_Dataservice
                 NoOfPeices = NoOfPeices,
                 CostPerPeice = CostPerPeice,
                 Image=Image,
-                user_username = "shakthi",
+                user_username = "asantha",
                 materialAmount = materialAmount,
                 Shippment_code = Shipment_code,
 
@@ -178,8 +178,69 @@ namespace Adora_Apparel_Dataservice
             throw new NotImplementedException();
         }
 
+      /*  public bool deleteStockOrders(string Shipment_code)
+        {
+            adoraDB context = new adoraDB();
+            bool status = false;
+
+            fob_stock_orders stock = context.fob_stock_orders.First(i => idFOB_Stock = Shipment_code);
+            {
+
+                stock.status = 0;
+                context.SaveChanges();
+                status = true;
+            }
+            return status;
+        
+        }*/
+
+       /* public bool UpdateStockOrder(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code)
+        {
+            adoraDB context = new adoraDB();
+            bool status = false;
+
+            fob_stock_orders stock = context.fob_stock_orders.First(i => i.idFOB_Stock == Shipment_code);
+            {
+                stock.Factory_Name = Factoy_Name;
+                stock.Description = Description;
+                stock.Date = Date;
+                stock.Item = Item;
+                stock.NoOfPeices = NoOfPeices;
+                stock.CostPerPeice = CostPerPeice;
+                stock.Image = Image;
+                stock.materialAmount = materialAmount;
+                stock.Shippment_code = Shipment_code;
+            
+            
+            }
+            return status;
+
+        }*/
         //------------------------ Stock In Hand ----------ends----------------------
 
+        //------------------------ fixoverHead-----------starts---------------------
+
+        public bool addFixOverHead(Nullable<System.DateTime> Date_From, Nullable<System.DateTime> Date_To, string Type_Of_Cost, Nullable<double> amount)
+        {
+            adoraDB context = new adoraDB();
+            bool newDataAdded = false;
+            fixed_over_heads data= new fixed_over_heads
+            {
+                Date_From=Date_From,
+                Date_To=Date_To,
+                Type_Of_Cost=Type_Of_Cost,
+                amount=amount,
+                enteredBy="asantha"
+                
+            
+            };
+            context.SaveChanges();
+            newDataAdded = true;
+            return newDataAdded;
+        
+        }
+
+        //------------------------ fixoverHead-----------ends-----------------------
 
 
     }

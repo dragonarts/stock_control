@@ -89,6 +89,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddShippmentTitle.cs" />
+    <Compile Include="ViewModel\fixedOverHeadViewModel.cs" />
     <Compile Include="ViewModel\FOBstockViewModel.cs" />
     <Compile Include="ViewModel\StockPurchaseViewModel.cs" />
     <Page Include="MainWindow.xaml">

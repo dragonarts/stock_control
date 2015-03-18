@@ -39,8 +39,14 @@ namespace Adora_Apparel_Dataservice
         IEnumerable<string> getshippmentTitle();
         // TODO: Add your service operations here
 
+
+        //--------------------------fob stock in hand strats----------------------------------
+        [OperationContract]
+        bool addStockOrders(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code);
+
        // [OperationContract]
-        //bool addStockOrders(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code);
+        //bool deleteStockOrders(string Shipment_code);
+        //--------------------------fob stock In hand ends------------------------------------
     }
 
 

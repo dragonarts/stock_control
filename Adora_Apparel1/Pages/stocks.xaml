@@ -16,7 +16,7 @@
                 <mui:Link DisplayName="Purchasing Summary" Source="" />
                 <mui:Link DisplayName="Sales Comparison" Source="" />
                 <mui:Link DisplayName="Purchasing Comparison" Source="" />
-                <mui:Link DisplayName="Fix OverHead" Source="/Pages/fixOverHead.xaml" />
+                <mui:Link DisplayName="Fixed OverHead" Source="/Pages/fixOverHead.xaml" />
                 
             </mui:ModernTab.Links>
         </mui:ModernTab>

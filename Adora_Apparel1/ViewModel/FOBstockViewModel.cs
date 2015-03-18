@@ -50,9 +50,9 @@ namespace Adora_Apparel1.ViewModel
             set { Description = value; RaisePropertyChanged("Description"); }
         }
 
-        private System.DateTime Date;
+        private Nullable<System.DateTime> Date;
 
-        public System.DateTime Date1
+        public Nullable<System.DateTime> Date1
         {
             get { return Date; }
             set { Date = value; RaisePropertyChanged("Date"); }
