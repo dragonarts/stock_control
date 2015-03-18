@@ -1,9 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfstring">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DataModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DataModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfstock_purchasing">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="stock_purchasing" nillable="true" type="tns:stock_purchasing" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+  <xs:element name="ArrayOfstock_purchasing" nillable="true" type="tns:ArrayOfstock_purchasing" />
+  <xs:complexType name="stock_purchasing">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActualCostPerPiece" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Miscellanouse" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="NoOfPeices" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PricePerPiece" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Shippment_code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier_Commision" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Total_Shippment_cost" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Transport_Cost" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="idStock_purchasing" type="xs:int" />
+      <xs:element minOccurs="0" name="shipped_date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="shippment_title" nillable="true" type="tns:shippment_title" />
+      <xs:element minOccurs="0" name="status" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="stock_purchasing" nillable="true" type="tns:stock_purchasing" />
+  <xs:complexType name="shippment_title">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Shipment_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Shippment_title1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fob_purchasing" nillable="true" type="tns:ArrayOffob_purchasing" />
+      <xs:element minOccurs="0" name="fob_sales" nillable="true" type="tns:ArrayOffob_sales" />
+      <xs:element minOccurs="0" name="fob_stock_in_hand" nillable="true" type="tns:ArrayOffob_stock_in_hand" />
+      <xs:element minOccurs="0" name="fob_stock_orders" nillable="true" type="tns:ArrayOffob_stock_orders" />
+      <xs:element minOccurs="0" name="isFOB" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="stock_monitor" nillable="true" type="tns:ArrayOfstock_monitor" />
+      <xs:element minOccurs="0" name="stock_purchasing" nillable="true" type="tns:ArrayOfstock_purchasing" />
+      <xs:element minOccurs="0" name="stock_sales" nillable="true" type="tns:ArrayOfstock_sales" />
+      <xs:element minOccurs="0" name="stocks" nillable="true" type="tns:ArrayOfstock" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="shippment_title" nillable="true" type="tns:shippment_title" />
+  <xs:complexType name="ArrayOffob_purchasing">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="fob_purchasing" nillable="true" type="tns:fob_purchasing" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOffob_purchasing" nillable="true" type="tns:ArrayOffob_purchasing" />
+  <xs:complexType name="fob_purchasing">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Shipment_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cost" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="cost_per_yard" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="idFOB_Purchasing" type="xs:int" />
+      <xs:element minOccurs="0" name="price_per_yard" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="shippment_title" nillable="true" type="tns:shippment_title" />
+      <xs:element minOccurs="0" name="transport_cost" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="yardage" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="fob_purchasing" nillable="true" type="tns:fob_purchasing" />
+  <xs:complexType name="ArrayOffob_sales">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="fob_sales" nillable="true" type="tns:fob_sales" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOffob_sales" nillable="true" type="tns:ArrayOffob_sales" />
+  <xs:complexType name="fob_sales">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NoOfPeices" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="PricePerPeice" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="SellingFrequency" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Shippment_code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalPeicesSold" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalRemaining" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalTurnOvers" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="idFOB_Sales" type="xs:int" />
+      <xs:element minOccurs="0" name="shippment_title" nillable="true" type="tns:shippment_title" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="fob_sales" nillable="true" type="tns:fob_sales" />
+  <xs:complexType name="ArrayOffob_stock_in_hand">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="fob_stock_in_hand" nillable="true" type="tns:fob_stock_in_hand" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOffob_stock_in_hand" nillable="true" type="tns:ArrayOffob_stock_in_hand" />
+  <xs:complexType name="fob_stock_in_hand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Shippment_code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="amount" type="xs:double" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="price_per_peice" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="shippment_title" nillable="true" type="tns:shippment_title" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="fob_stock_in_hand" nillable="true" type="tns:fob_stock_in_hand" />
+  <xs:complexType name="ArrayOffob_stock_orders">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="fob_stock_orders" nillable="true" type="tns:fob_stock_orders" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOffob_stock_orders" nillable="true" type="tns:ArrayOffob_stock_orders" />
+  <xs:complexType name="fob_stock_orders">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CostPerPeice" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Factory_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Item" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NoOfPeices" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Shippment_code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idFOB_Stock" type="xs:int" />
+      <xs:element minOccurs="0" name="materialAmount" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="shippment_title" nillable="true" type="tns:shippment_title" />
+      <xs:element minOccurs="0" name="user" nillable="true" type="tns:user" />
+      <xs:element minOccurs="0" name="user_username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="fob_stock_orders" nillable="true" type="tns:fob_stock_orders" />
+  <xs:complexType name="user">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Answer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fixed_over_heads" nillable="true" type="tns:ArrayOffixed_over_heads" />
+      <xs:element minOccurs="0" name="fob_stock_orders" nillable="true" type="tns:ArrayOffob_stock_orders" />
+      <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="securityQuestion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="stock_monitor" nillable="true" type="tns:ArrayOfstock_monitor" />
+      <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="user" nillable="true" type="tns:user" />
+  <xs:complexType name="ArrayOffixed_over_heads">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="fixed_over_heads" nillable="true" type="tns:fixed_over_heads" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOffixed_over_heads" nillable="true" type="tns:ArrayOffixed_over_heads" />
+  <xs:complexType name="fixed_over_heads">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date_From" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Date_To" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Type_Of_Cost" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="amount" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="enteredBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="user" nillable="true" type="tns:user" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="fixed_over_heads" nillable="true" type="tns:fixed_over_heads" />
+  <xs:complexType name="ArrayOfstock_monitor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="stock_monitor" nillable="true" type="tns:stock_monitor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfstock_monitor" nillable="true" type="tns:ArrayOfstock_monitor" />
+  <xs:complexType name="stock_monitor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Shipment_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="amountBefore" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="amountNow" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="dateModifiedd" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="reason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="responsibleUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="shippment_title" nillable="true" type="tns:shippment_title" />
+      <xs:element minOccurs="0" name="user" nillable="true" type="tns:user" />
+      <xs:element minOccurs="0" name="userModified" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="stock_monitor" nillable="true" type="tns:stock_monitor" />
+  <xs:complexType name="ArrayOfstock_sales">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="stock_sales" nillable="true" type="tns:stock_sales" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfstock_sales" nillable="true" type="tns:ArrayOfstock_sales" />
+  <xs:complexType name="stock_sales">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NoOfPeices" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PricePerPeice" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Selling_Frequency" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Shippment_code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Total_Remaining" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Total_Turnover" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Total_peices_sold" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="idStock_Sales" type="xs:int" />
+      <xs:element minOccurs="0" name="shippment_title" nillable="true" type="tns:shippment_title" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="stock_sales" nillable="true" type="tns:stock_sales" />
+  <xs:complexType name="ArrayOfstock">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="stock" nillable="true" type="tns:stock" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfstock" nillable="true" type="tns:ArrayOfstock" />
+  <xs:complexType name="stock">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Shippment_code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="price_per_peice" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="shippment_title" nillable="true" type="tns:shippment_title" />
+      <xs:element minOccurs="0" name="stockInHand" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="stock" nillable="true" type="tns:stock" />
 </xs:schema>

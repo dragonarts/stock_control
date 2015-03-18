@@ -74,6 +74,12 @@
     <Compile Include="Pages\AddNewShippment.Designer.cs">
       <DependentUpon>AddNewShippment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\fixOverHead.xaml.cs">
+      <DependentUpon>fixOverHead.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\fobStockInhand.xaml.cs">
+      <DependentUpon>fobStockInhand.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\stocks.xaml.cs">
       <DependentUpon>stocks.xaml</DependentUpon>
     </Compile>
@@ -86,6 +92,8 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddShippmentTitle.cs" />
+    <Compile Include="ViewModel\fixedOverHeadViewModel.cs" />
+    <Compile Include="ViewModel\FOBstockViewModel.cs" />
     <Compile Include="ViewModel\StockPurchaseViewModel.cs" />
     <Compile Include="ViewModel\UpdateStockPurchaseViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -96,6 +104,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\fixOverHead.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\fobStockInhand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\StocklotsPurchasing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -2344,12 +2360,12 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Pages\AddNewShippment.resx">
       <DependentUpon>AddNewShippment.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
