@@ -147,5 +147,40 @@ namespace Adora_Apparel_Dataservice
             }
             return status;
         }
+
+        //------------------------ Stock In Hand ----------starts----------------------
+
+        public bool addStockOrders(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code)
+        {
+            bool newStockAdded = false;
+            adoraDB context = new adoraDB();
+
+            fob_stock_orders stock = new fob_stock_orders
+            {
+                Factory_Name = Factoy_Name,
+                Description = Description,
+                Date = Date,
+                Item = Item,
+                NoOfPeices = NoOfPeices,
+                CostPerPeice = CostPerPeice,
+                Image=Image,
+                user_username = "shakthi",
+                materialAmount = materialAmount,
+                Shippment_code = Shipment_code,
+
+
+            };
+
+            context.fob_stock_orders.Add(stock);
+            context.SaveChanges();
+            newStockAdded = true;
+            return newStockAdded;
+            throw new NotImplementedException();
+        }
+
+        //------------------------ Stock In Hand ----------ends----------------------
+
+
+
     }
 }

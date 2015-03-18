@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Adora_Apparel1.Pages.fixOverHead"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="524.67" d:DesignWidth="1046.531">
+    <Grid Style="{StaticResource ContentRoot}">
+        <Label Content="Date From" HorizontalAlignment="Left" Margin="39,24,0,0" VerticalAlignment="Top" Height="27" Width="59"/>
+        <DatePicker HorizontalAlignment="Left" Margin="159,19,0,0" VerticalAlignment="Top" Width="151"/>
+        <Label Content="Date To" HorizontalAlignment="Left" Margin="39,88,0,0" VerticalAlignment="Top" Height="27" Width="59"/>
+        <DatePicker HorizontalAlignment="Left" Margin="159,78,0,0" VerticalAlignment="Top" Width="151"/>
+        <Label Content="Type of Cost" HorizontalAlignment="Left" Margin="542,24,0,0" VerticalAlignment="Top" Height="27" Width="93"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="694,24,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label Content="Amount" HorizontalAlignment="Left" Margin="542,83,0,0" VerticalAlignment="Top" Height="27" Width="93"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="694,78,0,0" VerticalAlignment="Top" Width="140"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="80,157,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="409,157,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="748,157,0,0" VerticalAlignment="Top" Width="75"/>
+        <Separator HorizontalAlignment="Left" Height="100" Margin="39,157,0,0" VerticalAlignment="Top" Width="795"/>
+        <DataGrid HorizontalAlignment="Left" Margin="207,223,0,0" VerticalAlignment="Top" Height="231" Width="460">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date From" />
+                <DataGridTextColumn Header="Date To" />
+                <DataGridTextColumn Header="Type of Cost" />
+                <DataGridTextColumn Header="Amount" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

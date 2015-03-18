@@ -38,6 +38,9 @@ namespace Adora_Apparel_Dataservice
         [OperationContract]
         IEnumerable<string> getshippmentTitle();
         // TODO: Add your service operations here
+
+       // [OperationContract]
+        //bool addStockOrders(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code);
     }
 
 
