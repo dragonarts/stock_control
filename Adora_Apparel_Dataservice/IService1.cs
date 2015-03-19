@@ -47,6 +47,21 @@ namespace Adora_Apparel_Dataservice
        // [OperationContract]
         //bool deleteStockOrders(string Shipment_code);
         //--------------------------fob stock In hand ends------------------------------------
+
+        [OperationContract]
+        bool addFOBPurchasing(Nullable<System.DateTime> Purchased_Date, Nullable<double> Price_per_yard, Nullable<double> Yardage, Nullable<double> Transport_cost, string Shipment_Code);
+
+
+        [OperationContract]
+        bool updateFOBPurchasing(Nullable<System.DateTime> Purchased_Date, Nullable<double> Price_per_yard, Nullable<double> Yardage, Nullable<double> Transport_cost, string Shipment_Code);
+
+        [OperationContract]
+
+        bool deleteFOBPurchase(string Shipment_Code);
+
+        [OperationContract]
+
+        List<fob_purchasing> getfabricFOBPurchasing();
     }
 
 

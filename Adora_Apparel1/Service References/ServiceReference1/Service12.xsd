@@ -27,6 +27,7 @@
         <xs:element minOccurs="0" name="actual_cost" nillable="true" type="xs:double" />
         <xs:element minOccurs="0" name="status" type="xs:int" />
         <xs:element minOccurs="0" name="shipped" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="sub_cat" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -84,6 +85,7 @@
         <xs:element minOccurs="0" name="actual_cost" nillable="true" type="xs:double" />
         <xs:element minOccurs="0" name="shipID" type="xs:int" />
         <xs:element minOccurs="0" name="shipped" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="sub_cat" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -133,6 +135,90 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getshippmentTitleResult" nillable="true" type="q2:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addStockOrders">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Factoy_Name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Item" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NoOfPeices" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="CostPerPeice" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="materialAmount" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="Shipment_code" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addStockOrdersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="addStockOrdersResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addFOBPurchasing">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Purchased_Date" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Price_per_yard" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="Yardage" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="Transport_cost" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="Shipment_Code" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addFOBPurchasingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="addFOBPurchasingResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateFOBPurchasing">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Purchased_Date" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Price_per_yard" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="Yardage" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="Transport_cost" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="Shipment_Code" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateFOBPurchasingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="updateFOBPurchasingResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteFOBPurchase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Shipment_Code" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteFOBPurchaseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="deleteFOBPurchaseResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getfabricFOBPurchasing">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getfabricFOBPurchasingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DataModel" minOccurs="0" name="getfabricFOBPurchasingResult" nillable="true" type="q3:ArrayOffob_purchasing" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

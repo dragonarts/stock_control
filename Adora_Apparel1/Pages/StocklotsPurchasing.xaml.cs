@@ -36,7 +36,7 @@ namespace Adora_Apparel1.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddNewShippment form = new AddNewShippment(view);
+            AddNewShippment form = new AddNewShippment();
            // WindowInteropHelper wih = new WindowInteropHelper(this);
             //wih.Owner = form.Handle;
             form.Show();
