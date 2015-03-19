@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Adora_Apparel1.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,16 @@ namespace Adora_Apparel1.Pages
     /// </summary>
     public partial class fixOverHead : UserControl
     {
+        private FOBstockViewModel view = new FOBstockViewModel();
         public fixOverHead()
         {
             InitializeComponent();
+            this.Loaded += (s, e) => { this.DataContext = this.view; };
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

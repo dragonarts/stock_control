@@ -1346,22 +1346,22 @@ namespace Adora_Apparel1.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> CostField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> NoOfPeicesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<double> PricePerPeiceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Selling_FrequencyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Shippment_codeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Total_RemainingField;
+        private string Sub_Cat_NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> Total_TurnoverField;
+        private System.Nullable<int> Total_RemainingField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> Total_peices_soldField;
@@ -1379,6 +1379,19 @@ namespace Adora_Apparel1.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> Cost {
+            get {
+                return this.CostField;
+            }
+            set {
+                if ((this.CostField.Equals(value) != true)) {
+                    this.CostField = value;
+                    this.RaisePropertyChanged("Cost");
+                }
             }
         }
         
@@ -1409,19 +1422,6 @@ namespace Adora_Apparel1.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Selling_Frequency {
-            get {
-                return this.Selling_FrequencyField;
-            }
-            set {
-                if ((this.Selling_FrequencyField.Equals(value) != true)) {
-                    this.Selling_FrequencyField = value;
-                    this.RaisePropertyChanged("Selling_Frequency");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Shippment_code {
             get {
                 return this.Shippment_codeField;
@@ -1435,6 +1435,19 @@ namespace Adora_Apparel1.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Sub_Cat_Name {
+            get {
+                return this.Sub_Cat_NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Sub_Cat_NameField, value) != true)) {
+                    this.Sub_Cat_NameField = value;
+                    this.RaisePropertyChanged("Sub_Cat_Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<int> Total_Remaining {
             get {
                 return this.Total_RemainingField;
@@ -1443,19 +1456,6 @@ namespace Adora_Apparel1.ServiceReference1 {
                 if ((this.Total_RemainingField.Equals(value) != true)) {
                     this.Total_RemainingField = value;
                     this.RaisePropertyChanged("Total_Remaining");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> Total_Turnover {
-            get {
-                return this.Total_TurnoverField;
-            }
-            set {
-                if ((this.Total_TurnoverField.Equals(value) != true)) {
-                    this.Total_TurnoverField = value;
-                    this.RaisePropertyChanged("Total_Turnover");
                 }
             }
         }
@@ -1989,6 +1989,42 @@ namespace Adora_Apparel1.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addStockOrders", ReplyAction="http://tempuri.org/IService1/addStockOrdersResponse")]
         System.Threading.Tasks.Task<bool> addStockOrdersAsync(string Factoy_Name, string Description, System.Nullable<System.DateTime> Date, string Item, System.Nullable<double> NoOfPeices, System.Nullable<double> CostPerPeice, string Image, System.Nullable<double> materialAmount, string Shipment_code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addFixOverHead", ReplyAction="http://tempuri.org/IService1/addFixOverHeadResponse")]
+        bool addFixOverHead(System.Nullable<System.DateTime> Date_From, System.Nullable<System.DateTime> Date_To, string Type_Of_Cost, System.Nullable<double> amount);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addFixOverHead", ReplyAction="http://tempuri.org/IService1/addFixOverHeadResponse")]
+        System.Threading.Tasks.Task<bool> addFixOverHeadAsync(System.Nullable<System.DateTime> Date_From, System.Nullable<System.DateTime> Date_To, string Type_Of_Cost, System.Nullable<double> amount);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getStockOrders", ReplyAction="http://tempuri.org/IService1/getStockOrdersResponse")]
+        Adora_Apparel1.ServiceReference1.fob_stock_orders[] getStockOrders();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getStockOrders", ReplyAction="http://tempuri.org/IService1/getStockOrdersResponse")]
+        System.Threading.Tasks.Task<Adora_Apparel1.ServiceReference1.fob_stock_orders[]> getStockOrdersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addFOBPurchasing", ReplyAction="http://tempuri.org/IService1/addFOBPurchasingResponse")]
+        bool addFOBPurchasing(System.Nullable<System.DateTime> Purchased_Date, System.Nullable<double> Price_per_yard, System.Nullable<double> Yardage, System.Nullable<double> Transport_cost, string Shipment_Code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addFOBPurchasing", ReplyAction="http://tempuri.org/IService1/addFOBPurchasingResponse")]
+        System.Threading.Tasks.Task<bool> addFOBPurchasingAsync(System.Nullable<System.DateTime> Purchased_Date, System.Nullable<double> Price_per_yard, System.Nullable<double> Yardage, System.Nullable<double> Transport_cost, string Shipment_Code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateFOBPurchasing", ReplyAction="http://tempuri.org/IService1/updateFOBPurchasingResponse")]
+        bool updateFOBPurchasing(System.Nullable<System.DateTime> Purchased_Date, System.Nullable<double> Price_per_yard, System.Nullable<double> Yardage, System.Nullable<double> Transport_cost, string Shipment_Code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/updateFOBPurchasing", ReplyAction="http://tempuri.org/IService1/updateFOBPurchasingResponse")]
+        System.Threading.Tasks.Task<bool> updateFOBPurchasingAsync(System.Nullable<System.DateTime> Purchased_Date, System.Nullable<double> Price_per_yard, System.Nullable<double> Yardage, System.Nullable<double> Transport_cost, string Shipment_Code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteFOBPurchase", ReplyAction="http://tempuri.org/IService1/deleteFOBPurchaseResponse")]
+        bool deleteFOBPurchase(string Shipment_Code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteFOBPurchase", ReplyAction="http://tempuri.org/IService1/deleteFOBPurchaseResponse")]
+        System.Threading.Tasks.Task<bool> deleteFOBPurchaseAsync(string Shipment_Code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getfabricFOBPurchasing", ReplyAction="http://tempuri.org/IService1/getfabricFOBPurchasingResponse")]
+        Adora_Apparel1.ServiceReference1.fob_purchasing[] getfabricFOBPurchasing();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getfabricFOBPurchasing", ReplyAction="http://tempuri.org/IService1/getfabricFOBPurchasingResponse")]
+        System.Threading.Tasks.Task<Adora_Apparel1.ServiceReference1.fob_purchasing[]> getfabricFOBPurchasingAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2088,6 +2124,54 @@ namespace Adora_Apparel1.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> addStockOrdersAsync(string Factoy_Name, string Description, System.Nullable<System.DateTime> Date, string Item, System.Nullable<double> NoOfPeices, System.Nullable<double> CostPerPeice, string Image, System.Nullable<double> materialAmount, string Shipment_code) {
             return base.Channel.addStockOrdersAsync(Factoy_Name, Description, Date, Item, NoOfPeices, CostPerPeice, Image, materialAmount, Shipment_code);
+        }
+        
+        public bool addFixOverHead(System.Nullable<System.DateTime> Date_From, System.Nullable<System.DateTime> Date_To, string Type_Of_Cost, System.Nullable<double> amount) {
+            return base.Channel.addFixOverHead(Date_From, Date_To, Type_Of_Cost, amount);
+        }
+        
+        public System.Threading.Tasks.Task<bool> addFixOverHeadAsync(System.Nullable<System.DateTime> Date_From, System.Nullable<System.DateTime> Date_To, string Type_Of_Cost, System.Nullable<double> amount) {
+            return base.Channel.addFixOverHeadAsync(Date_From, Date_To, Type_Of_Cost, amount);
+        }
+        
+        public Adora_Apparel1.ServiceReference1.fob_stock_orders[] getStockOrders() {
+            return base.Channel.getStockOrders();
+        }
+        
+        public System.Threading.Tasks.Task<Adora_Apparel1.ServiceReference1.fob_stock_orders[]> getStockOrdersAsync() {
+            return base.Channel.getStockOrdersAsync();
+        }
+        
+        public bool addFOBPurchasing(System.Nullable<System.DateTime> Purchased_Date, System.Nullable<double> Price_per_yard, System.Nullable<double> Yardage, System.Nullable<double> Transport_cost, string Shipment_Code) {
+            return base.Channel.addFOBPurchasing(Purchased_Date, Price_per_yard, Yardage, Transport_cost, Shipment_Code);
+        }
+        
+        public System.Threading.Tasks.Task<bool> addFOBPurchasingAsync(System.Nullable<System.DateTime> Purchased_Date, System.Nullable<double> Price_per_yard, System.Nullable<double> Yardage, System.Nullable<double> Transport_cost, string Shipment_Code) {
+            return base.Channel.addFOBPurchasingAsync(Purchased_Date, Price_per_yard, Yardage, Transport_cost, Shipment_Code);
+        }
+        
+        public bool updateFOBPurchasing(System.Nullable<System.DateTime> Purchased_Date, System.Nullable<double> Price_per_yard, System.Nullable<double> Yardage, System.Nullable<double> Transport_cost, string Shipment_Code) {
+            return base.Channel.updateFOBPurchasing(Purchased_Date, Price_per_yard, Yardage, Transport_cost, Shipment_Code);
+        }
+        
+        public System.Threading.Tasks.Task<bool> updateFOBPurchasingAsync(System.Nullable<System.DateTime> Purchased_Date, System.Nullable<double> Price_per_yard, System.Nullable<double> Yardage, System.Nullable<double> Transport_cost, string Shipment_Code) {
+            return base.Channel.updateFOBPurchasingAsync(Purchased_Date, Price_per_yard, Yardage, Transport_cost, Shipment_Code);
+        }
+        
+        public bool deleteFOBPurchase(string Shipment_Code) {
+            return base.Channel.deleteFOBPurchase(Shipment_Code);
+        }
+        
+        public System.Threading.Tasks.Task<bool> deleteFOBPurchaseAsync(string Shipment_Code) {
+            return base.Channel.deleteFOBPurchaseAsync(Shipment_Code);
+        }
+        
+        public Adora_Apparel1.ServiceReference1.fob_purchasing[] getfabricFOBPurchasing() {
+            return base.Channel.getfabricFOBPurchasing();
+        }
+        
+        public System.Threading.Tasks.Task<Adora_Apparel1.ServiceReference1.fob_purchasing[]> getfabricFOBPurchasingAsync() {
+            return base.Channel.getfabricFOBPurchasingAsync();
         }
     }
 }

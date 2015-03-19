@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Adora_Apparel1.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,26 @@ namespace Adora_Apparel1.Pages
     /// </summary>
     public partial class fobStockInhand : UserControl
     {
+        private FOBstockViewModel view = new FOBstockViewModel();
         public fobStockInhand()
         {
+
             InitializeComponent();
+            this.Loaded += (s, e) => { this.DataContext = this.view; };
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnNew_Click(object sender, RoutedEventArgs e)
+        {
+            AddNewShippment form = new AddNewShippment();
+            form.ShowDialog();
+            view = new FOBstockViewModel();
+           // this.ship_title.Items.Refresh();
+
         }
     }
 }

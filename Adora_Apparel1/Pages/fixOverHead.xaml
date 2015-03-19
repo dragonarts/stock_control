@@ -8,15 +8,15 @@
              d:DesignHeight="524.67" d:DesignWidth="1046.531">
     <Grid Style="{StaticResource ContentRoot}">
         <Label Content="Date From" HorizontalAlignment="Left" Margin="39,24,0,0" VerticalAlignment="Top" Height="27" Width="59"/>
-        <DatePicker HorizontalAlignment="Left" Margin="159,19,0,0" VerticalAlignment="Top" Width="151"/>
+        <DatePicker HorizontalAlignment="Left" Margin="159,19,0,0" VerticalAlignment="Top" Width="151" SelectedDate="{Binding Path=Date_From1}"/>
         <Label Content="Date To" HorizontalAlignment="Left" Margin="39,88,0,0" VerticalAlignment="Top" Height="27" Width="59"/>
-        <DatePicker HorizontalAlignment="Left" Margin="159,78,0,0" VerticalAlignment="Top" Width="151"/>
+        <DatePicker HorizontalAlignment="Left" Margin="159,78,0,0" VerticalAlignment="Top" Width="151" SelectedDate="{Binding Path=Date_To1}"/>
         <Label Content="Type of Cost" HorizontalAlignment="Left" Margin="542,24,0,0" VerticalAlignment="Top" Height="27" Width="93"/>
         <Label Content="Amount" HorizontalAlignment="Left" Margin="542,83,0,0" VerticalAlignment="Top" Height="27" Width="93"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="80,157,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Save" Command="{Binding Path=command}" HorizontalAlignment="Left" Margin="80,157,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button Content="Update" HorizontalAlignment="Left" Margin="409,157,0,0" VerticalAlignment="Top" Width="90"/>
         <Button Content="Delete" HorizontalAlignment="Left" Margin="748,157,0,0" VerticalAlignment="Top" Width="75"/>
-        <Separator HorizontalAlignment="Left" Height="100" Margin="39,157,0,0" VerticalAlignment="Top" Width="795"/>
+        <Separator HorizontalAlignment="Left" Height="100" Margin="39,167,0,0" VerticalAlignment="Top" Width="795"/>
         <DataGrid HorizontalAlignment="Left" Margin="207,223,0,0" VerticalAlignment="Top" Height="235" Width="460">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date From" />
@@ -25,7 +25,7 @@
                 <DataGridTextColumn Header="Amount" />
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox x:Name="txtTypeOfCost" HorizontalAlignment="Left" Height="23" Margin="679,24,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168"/>
-        <TextBox x:Name="txtAmount" HorizontalAlignment="Left" Height="23" Margin="679,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168"/>
+        <TextBox x:Name="txtTypeOfCost" HorizontalAlignment="Left" Height="23" Margin="679,24,0,0" TextWrapping="Wrap" Text="{Binding Path=Type_Of_Cost1}" VerticalAlignment="Top" Width="168"/>
+        <TextBox x:Name="txtAmount" HorizontalAlignment="Left" Height="23" Margin="679,78,0,0" TextWrapping="Wrap" Text="{Binding Path=Amount}" VerticalAlignment="Top" Width="168"/>
     </Grid>
 </UserControl>

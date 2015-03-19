@@ -4,42 +4,52 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
-             mc:Ignorable="d" 
-             d:DesignHeight="801.905" d:DesignWidth="1025.55">
-    <Grid Style="{StaticResource ContentRoot}">
-        <Label Content="Factory Name" HorizontalAlignment="Left" Margin="37,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="89"/>
-        <Label Content="Item" HorizontalAlignment="Left" Margin="37,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="89"/>
-        <Label Content="Shipment Code" HorizontalAlignment="Left" Margin="37,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="89"/>
-        <Label Content="Description" HorizontalAlignment="Left" Margin="37,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="89"/>
-        <Label Content="No of Pieces" HorizontalAlignment="Left" Margin="419,13,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="108"/>
-        <Label Content="Cost per Piece" HorizontalAlignment="Left" Margin="419,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="108"/>
-        <Label Content="Material Amount" HorizontalAlignment="Left" Margin="419,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="108"/>
-        <Label Content="Date" HorizontalAlignment="Left" Margin="37,229,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="89"/>
-        <DatePicker HorizontalAlignment="Left" Margin="153,229,0,0" VerticalAlignment="Top" Width="190"/>
-        <Label Content="Image" HorizontalAlignment="Left" Margin="419,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="108"/>
-        <Image HorizontalAlignment="Left" Height="146" Margin="547,147,0,0" VerticalAlignment="Top" Width="190"/>
-        <Button x:Name="btnBrows" Content="Browse" HorizontalAlignment="Left" Margin="419,198,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="794,13,0,0" VerticalAlignment="Top" Width="94"/>
-        <Button x:Name="BtnUpdate" Content="Update" HorizontalAlignment="Left" Margin="794,117,0,0" VerticalAlignment="Top" Width="94"/>
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="794,229,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.471,3.212"/>
-        <Separator HorizontalAlignment="Left" Height="100" Margin="37,229,0,0" VerticalAlignment="Top" Width="857"/>
-        <DataGrid HorizontalAlignment="Left" Margin="72,298,0,0" VerticalAlignment="Top" Height="315" Width="756">
+             mc:Ignorable="d" d:DesignWidth="1025.55" Height="555.636">
+    <Grid Style="{StaticResource ContentRoot}" Margin="16,16,8,16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="439*"/>
+            <ColumnDefinition Width="522*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Factory Name" HorizontalAlignment="Left" Margin="3.746,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="89" Grid.Column="1"/>
+        <Label Content="Item" HorizontalAlignment="Left" Margin="3.746,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="89" Grid.Column="1"/>
+        <Label Content="Shipment Code" HorizontalAlignment="Left" Margin="3.746,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="89" Grid.Column="1"/>
+        <Label Content="Description" HorizontalAlignment="Left" Margin="3.746,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="89" Grid.Column="1"/>
+        <Label Content="No of Pieces" HorizontalAlignment="Left" Margin="385.746,13,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="108" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Label Content="Cost per Piece" HorizontalAlignment="Left" Margin="385.746,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="108" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Label Content="Material Amount" HorizontalAlignment="Left" Margin="385.746,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="108" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Label Content="Date" HorizontalAlignment="Left" Margin="3.746,229,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="89" Grid.Column="1"/>
+        <DatePicker HorizontalAlignment="Left" Margin="119.746,229,0,0" VerticalAlignment="Top" Width="190" SelectedDate="{Binding Path=Date1}" Grid.Column="1"/>
+        <Label Content="Image" HorizontalAlignment="Left" Margin="385.746,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.241,1.425" Height="23" Width="108" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Image HorizontalAlignment="Left" Height="109" Margin="75,147,0,0" VerticalAlignment="Top" Width="158" Grid.Column="2"/>
+        <Button x:Name="btnBrows" Content="Browse" HorizontalAlignment="Left" Margin="385.746,198,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="322,13,0,0" VerticalAlignment="Top" Width="94" Command="{Binding Command}" Click="btnSave_Click" Grid.Column="2"/>
+        <Button x:Name="BtnUpdate" Command="{Binding Path=Update1}" Content="Update" HorizontalAlignment="Left" Margin="322,79,0,0" VerticalAlignment="Top" Width="94" Grid.Column="2"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="322,143,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.471,3.212" Grid.Column="2"/>
+        <Separator HorizontalAlignment="Left" Height="38" Margin="4,265,0,0" VerticalAlignment="Top" Width="857" Grid.ColumnSpan="2" Grid.Column="1"/>
+
+        <TextBox x:Name="txtFactName" HorizontalAlignment="Left" Height="23" Margin="119.746,11,0,0" TextWrapping="Wrap" Text="{Binding Path=Factory_Name1}" VerticalAlignment="Top" Width="190" Grid.Column="1"/>
+        <TextBox x:Name="txtItem" HorizontalAlignment="Left" Height="23" Margin="119.746,55,0,0" TextWrapping="Wrap" Text="{Binding Path=Item1}" VerticalAlignment="Top" Width="190" Grid.Column="1"/>
+        <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Height="76" Margin="119.746,143,0,0" TextWrapping="Wrap" Text="{Binding Path=Description1}" VerticalAlignment="Top" Width="190" Grid.Column="1"/>
+        <TextBox x:Name="txtNoOfPieces" HorizontalAlignment="Left" Height="23" Margin="75,10,0,0" TextWrapping="Wrap" Text="{Binding Path=NoOfPeices1}" VerticalAlignment="Top" Width="190" Grid.Column="2"/>
+        <TextBox x:Name="txtCostPerPiece" HorizontalAlignment="Left" Height="23" Margin="75,55,0,0" TextWrapping="Wrap" Text="{Binding Path=CostPerPeice1}" VerticalAlignment="Top" Width="190" Grid.Column="2"/>
+        <TextBox x:Name="txtMatAmnt" HorizontalAlignment="Left" Height="23" Margin="75,96,0,0" TextWrapping="Wrap" Text="{Binding Path=MaterialAmount}" VerticalAlignment="Top" Width="190" Grid.Column="2"/>
+        <ComboBox HorizontalAlignment="Left" SelectedItem="{Binding Path=Ship_code1}" ItemsSource="{Binding Path=Ship_code_list}" Margin="119.746,96,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Button x:Name="btnNew" Content="New" HorizontalAlignment="Left" Margin="246.746,95,0,0" VerticalAlignment="Top" Width="63" Height="24" Click="btnNew_Click" Grid.Column="1" />
+        <Button x:Name="btnRefresh" Command="{Binding Path=Refresh1}" Content="Refresh" HorizontalAlignment="Left" Margin="322,207,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.471,3.212" Grid.Column="2"/>
+        <DataGrid Grid.Column="1" HorizontalAlignment="Left" Margin="169,348,0,0" VerticalAlignment="Top"/>
+        <DataGrid Grid.Column="1" Margin="27,318,0,0" VerticalAlignment="Top" Height="139" Grid.ColumnSpan="2" ItemsSource="{Binding Stock_orders}" HorizontalAlignment="Left" Width="800" SelectedItem="{Binding SelectedRow}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Factory Name" />
-                <DataGridTextColumn Header="Item" />
-                <DataGridTextColumn Header="Shipment Code" />
-                <DataGridTextColumn Header="Date" />
-                <DataGridTextColumn Header="No Of Pieces" />
-                <DataGridTextColumn Header="Cost per Pieces" />
-                <DataGridTextColumn Header="Material Amount" />
+                <DataGridTextColumn Header="ID" Binding="{Binding idFOB_Stock}"/>
+                <DataGridTextColumn Header="Factory Name" Binding="{Binding Factory_Name}" />
+                <DataGridTextColumn Header="Item" Binding="{Binding Item}" />
+                <DataGridTextColumn Header="Shipment Code" Binding="{Binding Shippment_code}" />
+                <DataGridTextColumn Header="Date" Binding="{Binding Date}" />
+                <DataGridTextColumn Header="No Of Pieces" Binding="{Binding NoOfPeices}" />
+                <DataGridTextColumn Header="Cost per Pieces" Binding="{Binding CostPerPeice}" />
+                <DataGridTextColumn Header="Material Amount" Binding="{Binding materialAmount}" />
             </DataGrid.Columns>
+
         </DataGrid>
-        <TextBox x:Name="txtFactNam" HorizontalAlignment="Left" Height="23" Margin="153,11,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="txtItem" HorizontalAlignment="Left" Height="23" Margin="153,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="txtShipCode" HorizontalAlignment="Left" Height="23" Margin="153,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Height="76" Margin="153,134,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="txtNoOfPieces" HorizontalAlignment="Left" Height="23" Margin="547,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="txtCostPerPiece" HorizontalAlignment="Left" Height="23" Margin="547,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="txtMatAmnt" HorizontalAlignment="Left" Height="23" Margin="547,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
     </Grid>
 </UserControl>

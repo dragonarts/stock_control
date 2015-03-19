@@ -43,10 +43,32 @@ namespace Adora_Apparel_Dataservice
         //--------------------------fob stock in hand strats----------------------------------
         [OperationContract]
         bool addStockOrders(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code);
+        //[OperationContract]
+        //bool addStockOrders(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code);
 
+        [OperationContract]
+        bool addFixOverHead(Nullable<System.DateTime> Date_From, Nullable<System.DateTime> Date_To, string Type_Of_Cost, Nullable<double> amount);
        // [OperationContract]
         //bool deleteStockOrders(string Shipment_code);
         //--------------------------fob stock In hand ends------------------------------------
+        [OperationContract]
+        List<DataModel.fob_stock_orders> getStockOrders();
+        [OperationContract]
+        bool addFOBPurchasing(Nullable<System.DateTime> Purchased_Date, Nullable<double> Price_per_yard, Nullable<double> Yardage, Nullable<double> Transport_cost, string Shipment_Code);
+
+
+        [OperationContract]
+        bool updateFOBPurchasing(Nullable<System.DateTime> Purchased_Date, Nullable<double> Price_per_yard, Nullable<double> Yardage, Nullable<double> Transport_cost, string Shipment_Code);
+
+        [OperationContract]
+
+        bool deleteFOBPurchase(string Shipment_Code);
+
+        [OperationContract]
+
+        List<fob_purchasing> getfabricFOBPurchasing();
+
+       
     }
 
 

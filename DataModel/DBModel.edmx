@@ -71,6 +71,7 @@
           <Property Name="user_username" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="materialAmount" Type="double" />
           <Property Name="Shippment_code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="shippment_title">
           <Key>
@@ -131,10 +132,10 @@
           <Property Name="Shippment_code" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="NoOfPeices" Type="int" />
           <Property Name="PricePerPeice" Type="double" />
-          <Property Name="Selling_Frequency" Type="int" />
           <Property Name="Total_peices_sold" Type="int" />
           <Property Name="Total_Remaining" Type="int" />
-          <Property Name="Total_Turnover" Type="double" />
+          <Property Name="Cost" Type="double" />
+          <Property Name="Sub_Cat_Name" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -412,6 +413,7 @@
           <Property Name="Shippment_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="shippment_title" Relationship="Self.fk_FOB_Stock_Orders_Shippment_title1" FromRole="fob_stock_orders" ToRole="shippment_title" />
           <NavigationProperty Name="user" Relationship="Self.fk_FOB_Stock_Orders_user1" FromRole="fob_stock_orders" ToRole="user" />
+          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="shippment_title">
           <Key>
@@ -484,11 +486,11 @@
           <Property Name="Shippment_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NoOfPeices" Type="Int32" />
           <Property Name="PricePerPeice" Type="Double" />
-          <Property Name="Selling_Frequency" Type="Int32" />
           <Property Name="Total_peices_sold" Type="Int32" />
           <Property Name="Total_Remaining" Type="Int32" />
-          <Property Name="Total_Turnover" Type="Double" />
           <NavigationProperty Name="shippment_title" Relationship="Self.fk_Stock_Sales_Shippment_title1" FromRole="stock_sales" ToRole="shippment_title" />
+          <Property Name="Cost" Type="Double" />
+          <Property Name="Sub_Cat_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -752,6 +754,7 @@
           <EntitySetMapping Name="fob_stock_orders">
             <EntityTypeMapping TypeName="mydbModel.fob_stock_orders">
               <MappingFragment StoreEntitySet="fob_stock_orders">
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="idFOB_Stock" ColumnName="idFOB_Stock" />
                 <ScalarProperty Name="Factory_Name" ColumnName="Factory_Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -819,14 +822,14 @@
           <EntitySetMapping Name="stock_sales">
             <EntityTypeMapping TypeName="mydbModel.stock_sales">
               <MappingFragment StoreEntitySet="stock_sales">
+                <ScalarProperty Name="Sub_Cat_Name" ColumnName="Sub_Cat_Name" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="idStock_Sales" ColumnName="idStock_Sales" />
                 <ScalarProperty Name="Shippment_code" ColumnName="Shippment_code" />
                 <ScalarProperty Name="NoOfPeices" ColumnName="NoOfPeices" />
                 <ScalarProperty Name="PricePerPeice" ColumnName="PricePerPeice" />
-                <ScalarProperty Name="Selling_Frequency" ColumnName="Selling_Frequency" />
                 <ScalarProperty Name="Total_peices_sold" ColumnName="Total_peices_sold" />
                 <ScalarProperty Name="Total_Remaining" ColumnName="Total_Remaining" />
-                <ScalarProperty Name="Total_Turnover" ColumnName="Total_Turnover" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

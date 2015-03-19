@@ -8,9 +8,9 @@
         <EntityTypeShape EntityType="mydbModel.fixed_over_heads" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.fob_purchasing" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.fob_sales" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="mydbModel.fob_stock_in_hand" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="mydbModel.fob_stock_orders" Width="1.5" PointX="6" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="mydbModel.shippment_title" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydbModel.fob_stock_in_hand" Width="1.5" PointX="3.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydbModel.fob_stock_orders" Width="1.5" PointX="7.125" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mydbModel.shippment_title" Width="1.5" PointX="0.5" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.stock" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.stock_monitor" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.stock_purchasing" Width="2" PointX="3" PointY="26.25" IsExpanded="true" />

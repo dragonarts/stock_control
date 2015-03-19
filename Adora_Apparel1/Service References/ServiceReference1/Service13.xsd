@@ -181,12 +181,12 @@
   <xs:element name="ArrayOfstock_sales" nillable="true" type="tns:ArrayOfstock_sales" />
   <xs:complexType name="stock_sales">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Cost" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="NoOfPeices" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PricePerPeice" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="Selling_Frequency" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Shippment_code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sub_Cat_Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Total_Remaining" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Total_Turnover" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="Total_peices_sold" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="idStock_Sales" type="xs:int" />
       <xs:element minOccurs="0" name="shippment_title" nillable="true" type="tns:shippment_title" />

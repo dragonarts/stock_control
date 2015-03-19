@@ -133,12 +133,38 @@ namespace Adora_Apparel1.Pages
             {
 
                 NavigationCommands.GoToPage.Execute("/Pages/stocks.xaml",this);
+               // NavigationCommands.GoToPage.Execute("/Pages/FOB_PURCHASING/SelectType.xaml",this);
                 
             }
             catch (Exception ex) {
 
                 MessageBox.Show(ex.ToString());
             }
+
         }
+        private void FOBPurchasing_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+
+               // NavigationCommands.GoToPage.Execute("/Pages/stocks.xaml", this);
+                NavigationCommands.GoToPage.Execute("/Pages/FOB_PURCHASING/SelectType.xaml",this);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
+
+        //link fob purchase to home-------------
+
+     
+        
+
+        //--------end link------------------------
     }
 }

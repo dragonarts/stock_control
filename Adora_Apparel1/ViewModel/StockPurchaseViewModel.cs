@@ -93,7 +93,7 @@ namespace Adora_Apparel1.ViewModel
             }
         }
 
-        private Nullable<int> peices;
+        private Nullable<int> peices=null;
         public Nullable<int> Peices
         {
             get
@@ -267,7 +267,11 @@ namespace Adora_Apparel1.ViewModel
             { 
                 
                 case "Peices":
-                    if(!(Peices>0 && int.TryParse(Peices.ToString(),out check)))
+                    if(Peices<=0)
+                        validationMessage = "Please enter valid Peices";
+                    break;
+                case "Price_per_peice":
+                    if(Price_per_peice<=0)
                         validationMessage = "Please enter valid Peices";
                     break;
             }

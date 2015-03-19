@@ -24,17 +24,19 @@ namespace Adora_Apparel1.Pages
     public partial class BasicPage1 
     {
         private StockPurchaseViewModel view = new StockPurchaseViewModel();
+        
         public BasicPage1()
         {
             InitializeComponent();
             //System.Windows.MessageBox.Show(view.Stock_purchase.ToString());
             //load_shippment_title();
             this.Loaded += (s, e) => { this.DataContext = this.view; };
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddNewShippment form = new AddNewShippment(view);
+            AddNewShippment form = new AddNewShippment();
            // WindowInteropHelper wih = new WindowInteropHelper(this);
             //wih.Owner = form.Handle;
             form.Show();

@@ -18,10 +18,10 @@ namespace DataModel
         public string Shippment_code { get; set; }
         public Nullable<int> NoOfPeices { get; set; }
         public Nullable<double> PricePerPeice { get; set; }
-        public Nullable<int> Selling_Frequency { get; set; }
         public Nullable<int> Total_peices_sold { get; set; }
         public Nullable<int> Total_Remaining { get; set; }
-        public Nullable<double> Total_Turnover { get; set; }
+        public Nullable<double> Cost { get; set; }
+        public string Sub_Cat_Name { get; set; }
     
         public virtual shippment_title shippment_title { get; set; }
     }

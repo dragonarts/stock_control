@@ -26,6 +26,13 @@ namespace Adora_Apparel_Dataservice
 
             return load.ToList();
         }
+        public List<DataModel.fob_stock_orders> getStockOrders()
+        {
+            adoraDB context = new adoraDB();
+            context.Configuration.ProxyCreationEnabled = false;
+            var load = from g in context.fob_stock_orders select g;
+            return load.ToList();
+        }
         public IEnumerable<string> getshippmentTitle()
         {
 
@@ -196,12 +203,12 @@ namespace Adora_Apparel_Dataservice
         
         }*/
 
-       /* public bool UpdateStockOrder(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code)
+        public bool UpdateStockOrder(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code,int shipID)
         {
             adoraDB context = new adoraDB();
             bool status = false;
 
-            fob_stock_orders stock = context.fob_stock_orders.First(i => i.idFOB_Stock == Shipment_code);
+            fob_stock_orders stock = context.fob_stock_orders.First(i => i.idFOB_Stock == shipID);
             {
                 stock.Factory_Name = Factoy_Name;
                 stock.Description = Description;
@@ -217,7 +224,7 @@ namespace Adora_Apparel_Dataservice
             }
             return status;
 
-        }*/
+        }
         //------------------------ Stock In Hand ----------ends----------------------
 
         //------------------------ fixoverHead-----------starts---------------------
@@ -244,6 +251,103 @@ namespace Adora_Apparel_Dataservice
 
         //------------------------ fixoverHead-----------ends-----------------------
 
+        public bool addFOBPurchasing(Nullable<System.DateTime> Purchased_Date, Nullable<double> Price_per_yard, Nullable<double> Yardage, Nullable<double> Transport_cost, string Shipment_Code)
+        {
+            bool newFOBPurchaseAdd = false;
+            try
+            {
+                adoraDB context = new adoraDB();
 
+                fob_purchasing fob = new fob_purchasing
+                {
+                    Date = Purchased_Date,
+                    price_per_yard = Price_per_yard,
+                    yardage = Yardage,
+                    transport_cost = Transport_cost,
+                    cost = (Price_per_yard * Yardage) + Transport_cost,
+                    cost_per_yard = ((Price_per_yard * Yardage) + Transport_cost) / Yardage,
+                    Shipment_Code = Shipment_Code
+                };
+                context.fob_purchasing.Add(fob);
+                context.SaveChanges();
+                newFOBPurchaseAdd = true;
+            }
+            catch (Exception d)
+            {
+                Exception ff = d.InnerException;
+            }
+
+
+            return newFOBPurchaseAdd;
+
+        }
+
+
+        public bool updateFOBPurchasing(Nullable<System.DateTime> Purchased_Date, Nullable<double> Price_per_yard, Nullable<double> Yardage, Nullable<double> Transport_cost, string Shipment_Code)
+        {
+            bool newFOBPurchaseAdd = false;
+            try
+            {
+                adoraDB context = new adoraDB();
+
+                fob_purchasing fob = context.fob_purchasing.First(f => f.Shipment_Code == Shipment_Code);
+
+                fob.Date = Purchased_Date;
+                fob.price_per_yard = Price_per_yard;
+                fob.yardage = Yardage;
+                fob.transport_cost = Transport_cost;
+                fob.cost = (Price_per_yard * Yardage) + Transport_cost;
+                fob.cost_per_yard = ((Price_per_yard * Yardage) + Transport_cost) / Yardage;
+
+                context.SaveChanges();
+                newFOBPurchaseAdd = true;
+            }
+            catch (Exception d)
+            {
+                Exception ff = d.InnerException;
+            }
+
+
+            return newFOBPurchaseAdd;
+
+        }
+
+
+
+
+
+        public bool deleteFOBPurchase(string shipment_Code)
+        {
+            bool status = false;
+            try
+            {
+                adoraDB context = new adoraDB();
+
+                fob_purchasing fob = context.fob_purchasing.First(a => a.Shipment_Code == shipment_Code);
+                context.fob_purchasing.Remove(fob);
+                context.SaveChanges();
+                status = true;
+            }
+            catch (Exception d)
+            {
+
+            }
+            return status;
+        }
+
+
+
+        public List<DataModel.fob_purchasing> getfabricFOBPurchasing()
+        {
+
+            adoraDB context = new adoraDB();
+            context.Configuration.ProxyCreationEnabled = false;
+            var load = from g in context.fob_purchasing select g;
+            //context.SaveChanges();
+
+            return load.ToList();
+        }
+
+       
     }
 }
