@@ -5,12 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" Height="495.215" Width="1073.577">
+    
     <Grid Style="{StaticResource ContentRoot}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox HorizontalAlignment="Left" Text="{Binding Path=Peices,UpdateSourceTrigger=PropertyChanged,ValidatesOnExceptions=True}" Height="23" Margin="142,309,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Path=Peices,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,NotifyOnValidationError=True}" Height="23" Margin="142,309,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
         <Label Content="NoOfPeices" HorizontalAlignment="Left" Margin="25,311,0,0" Grid.RowSpan="2" VerticalAlignment="Top" RenderTransformOrigin="-0.002,-0.74" Height="19" Width="74"/>
         <Label Content="Shippment  Title" HorizontalAlignment="Left" Margin="18,259,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
         <ComboBox x:Name="ship_title" HorizontalAlignment="Left" SelectedItem="{Binding Path=Ship_code}" ItemsSource="{Binding Path=Ship_code_list}" Margin="141,253,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="167"/>

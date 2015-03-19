@@ -16,17 +16,17 @@ using System.Windows.Input;
 
 namespace Adora_Apparel1.ViewModel
 {
-    public class StockPurchaseViewModel:INotifyPropertyChanged
+    public class StockPurchaseViewModel:INotifyPropertyChanged,IDataErrorInfo
     {
         
         private stock_purchasing purchase;
         private stock_purchasing selectedRow;
 
-       /* public stock_purchasing SelectedRow
+        public stock_purchasing SelectedRow
         {
             get { return selectedRow; }
             set { selectedRow = value; RaisePropertyChanged("SelectedRow"); }
-        }*/
+        }
         private ICommand command;
 
         
@@ -102,13 +102,8 @@ namespace Adora_Apparel1.ViewModel
             }
             set
             {
-               /* int checking;
-                bool check = int.TryParse(value.ToString(), out checking);
-                if (!(check && checking > 0))
-                {
-                        throw new ArgumentException("Please Enter Valid Peices");
-
-                }*/
+                //int checking;
+                //bool check = int.TryParse(value.ToString(), out checking);
                 peices = value;
                 RaisePropertyChanged("Peices");
                 
@@ -252,6 +247,31 @@ namespace Adora_Apparel1.ViewModel
                 
         }
 
-       
+
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get { return Validate(columnName); }
+        }
+
+        int check;
+        private string Validate(string columnName)
+        {
+            string validationMessage = string.Empty;
+            switch (columnName)
+            { 
+                
+                case "Peices":
+                    if(!(Peices>0 && int.TryParse(Peices.ToString(),out check)))
+                        validationMessage = "Please enter valid Peices";
+                    break;
+            }
+            return validationMessage;
+        }
     }
 }
