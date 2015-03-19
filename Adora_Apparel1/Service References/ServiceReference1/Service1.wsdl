@@ -56,6 +56,30 @@
   <wsdl:message name="IService1_getshippmentTitle_OutputMessage">
     <wsdl:part name="parameters" element="tns:getshippmentTitleResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_addFOBPurchasing_InputMessage">
+    <wsdl:part name="parameters" element="tns:addFOBPurchasing" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addFOBPurchasing_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addFOBPurchasingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateFOBPurchasing_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateFOBPurchasing" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateFOBPurchasing_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateFOBPurchasingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteFOBPurchase_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteFOBPurchase" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteFOBPurchase_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteFOBPurchaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getfabricFOBPurchasing_InputMessage">
+    <wsdl:part name="parameters" element="tns:getfabricFOBPurchasing" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getfabricFOBPurchasing_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getfabricFOBPurchasingResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="getstockPurchasing">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getstockPurchasing" message="tns:IService1_getstockPurchasing_InputMessage" />
@@ -88,6 +112,22 @@
     <wsdl:operation name="getshippmentTitle">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getshippmentTitle" message="tns:IService1_getshippmentTitle_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getshippmentTitleResponse" message="tns:IService1_getshippmentTitle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addFOBPurchasing">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/addFOBPurchasing" message="tns:IService1_addFOBPurchasing_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/addFOBPurchasingResponse" message="tns:IService1_addFOBPurchasing_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateFOBPurchasing">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/updateFOBPurchasing" message="tns:IService1_updateFOBPurchasing_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/updateFOBPurchasingResponse" message="tns:IService1_updateFOBPurchasing_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteFOBPurchase">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/deleteFOBPurchase" message="tns:IService1_deleteFOBPurchase_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/deleteFOBPurchaseResponse" message="tns:IService1_deleteFOBPurchase_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getfabricFOBPurchasing">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getfabricFOBPurchasing" message="tns:IService1_getfabricFOBPurchasing_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getfabricFOBPurchasingResponse" message="tns:IService1_getfabricFOBPurchasing_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -157,6 +197,42 @@
     </wsdl:operation>
     <wsdl:operation name="getshippmentTitle">
       <soap:operation soapAction="http://tempuri.org/IService1/getshippmentTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addFOBPurchasing">
+      <soap:operation soapAction="http://tempuri.org/IService1/addFOBPurchasing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateFOBPurchasing">
+      <soap:operation soapAction="http://tempuri.org/IService1/updateFOBPurchasing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteFOBPurchase">
+      <soap:operation soapAction="http://tempuri.org/IService1/deleteFOBPurchase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getfabricFOBPurchasing">
+      <soap:operation soapAction="http://tempuri.org/IService1/getfabricFOBPurchasing" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

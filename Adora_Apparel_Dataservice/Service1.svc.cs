@@ -35,6 +35,7 @@ namespace Adora_Apparel_Dataservice
            // context.SaveChanges();
             return data.ToList();
         }
+
         public bool addStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision, Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost,int status ,Nullable<System.DateTime> shipped)
         {
             bool newStockAdded=false;
@@ -59,6 +60,7 @@ namespace Adora_Apparel_Dataservice
                 return newStockAdded;
             //throw new NotImplementedException();
         }
+
 
         public bool addUser(string username, string firstname, string lastname, string password, string security, string answer)
         {
@@ -147,5 +149,108 @@ namespace Adora_Apparel_Dataservice
             }
             return status;
         }
+
+        //----------------------------------------------------------FOB PURCHASING------------------------------------------//
+
+
+        public bool addFOBPurchasing(Nullable<System.DateTime> Purchased_Date, Nullable<double> Price_per_yard, Nullable<double> Yardage, Nullable<double> Transport_cost,string Shipment_Code)
+        {
+            bool newFOBPurchaseAdd = false;
+            try
+            {
+                adoraDB context = new adoraDB();
+
+                fob_purchasing fob = new fob_purchasing
+                {
+                    Date = Purchased_Date,
+                    price_per_yard = Price_per_yard,
+                    yardage = Yardage,
+                    transport_cost = Transport_cost,
+                    cost = (Price_per_yard * Yardage) + Transport_cost,
+                    cost_per_yard = ((Price_per_yard * Yardage) + Transport_cost) / Yardage,
+                    Shipment_Code=Shipment_Code
+                };
+                context.fob_purchasing.Add(fob);
+                context.SaveChanges();
+                newFOBPurchaseAdd = true;
+            }
+            catch (Exception d)
+            {
+                Exception ff= d.InnerException;
+            }
+           
+
+            return newFOBPurchaseAdd;
+            
+        }
+
+
+        public bool updateFOBPurchasing(Nullable<System.DateTime> Purchased_Date, Nullable<double> Price_per_yard, Nullable<double> Yardage, Nullable<double> Transport_cost, string Shipment_Code)
+        {
+            bool newFOBPurchaseAdd = false;
+            try
+            {
+                adoraDB context = new adoraDB();
+
+                fob_purchasing fob = context.fob_purchasing.First(f=>f.Shipment_Code==Shipment_Code);
+                
+                fob.Date = Purchased_Date;
+                fob.price_per_yard = Price_per_yard;
+                fob.yardage = Yardage;
+                fob.transport_cost = Transport_cost;
+                fob.cost = (Price_per_yard * Yardage) + Transport_cost;
+                fob.cost_per_yard = ((Price_per_yard * Yardage) + Transport_cost) / Yardage;
+
+                context.SaveChanges();
+                newFOBPurchaseAdd = true;
+            }
+            catch (Exception d)
+            {
+                Exception ff = d.InnerException;
+            }
+
+
+            return newFOBPurchaseAdd;
+
+        }
+
+
+
+
+
+        public bool deleteFOBPurchase(string shipment_Code)
+        {
+            bool status = false;
+            try
+            {
+                adoraDB context = new adoraDB();
+
+                fob_purchasing fob = context.fob_purchasing.First(a => a.Shipment_Code == shipment_Code);
+                context.fob_purchasing.Remove(fob);
+                context.SaveChanges();
+                status = true;
+            }
+            catch (Exception d)
+            {
+
+            }
+            return status;
+        }
+
+
+
+        public List<DataModel.fob_purchasing> getfabricFOBPurchasing()
+        {
+
+            adoraDB context = new adoraDB();
+            context.Configuration.ProxyCreationEnabled = false;
+            var load = from g in context.fob_purchasing select g;
+            //context.SaveChanges();
+
+            return load.ToList();
+        }
+
+        //---------------------------------------------------------------------------------------------------------------------
+
     }
 }

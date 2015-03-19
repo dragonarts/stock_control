@@ -12,6 +12,21 @@
     <AssemblyName>Adora_Apparel1</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,6 +89,15 @@
     <Compile Include="Pages\AddNewShippment.Designer.cs">
       <DependentUpon>AddNewShippment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FOB_PURCHASING\Fabric.xaml.cs">
+      <DependentUpon>Fabric.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FOB_PURCHASING\FOBItemPurchasing.xaml.cs">
+      <DependentUpon>FOBItemPurchasing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FOB_PURCHASING\SelectType.xaml.cs">
+      <DependentUpon>SelectType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\stocks.xaml.cs">
       <DependentUpon>stocks.xaml</DependentUpon>
     </Compile>
@@ -83,6 +107,8 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddShippmentTitle.cs" />
+    <Compile Include="ViewModel\FabricModal.cs" />
+    <Compile Include="ViewModel\ItemAddModel.cs" />
     <Compile Include="ViewModel\StockPurchaseViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +118,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\FOB_PURCHASING\Fabric.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FOB_PURCHASING\FOBItemPurchasing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FOB_PURCHASING\SelectType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\StocklotsPurchasing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +175,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Service References\ServiceReference1\Adora_Apparel1.ServiceReference1.fob_purchasing.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference1\Adora_Apparel1.ServiceReference1.stock_purchasing.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -199,7 +240,6 @@
     </None>
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
-    <None Include="Service References\ServiceReference1\Service1.disco" />
     <Resource Include="Pages\Images\Applications\Calculator.png" />
     <Content Include="Pages\Images\Applications\Calendar.png" />
     <Content Include="Pages\Images\Applications\Camstudio.png" />
@@ -2336,12 +2376,29 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Pages\AddNewShippment.resx">
       <DependentUpon>AddNewShippment.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

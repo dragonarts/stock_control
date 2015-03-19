@@ -21,7 +21,7 @@
         </WrapPanel>
         <WrapPanel HorizontalAlignment="Left" Height="140" Margin="409,69,0,0" VerticalAlignment="Top" Width="159" Background="#FF1D7144">
             <TextBlock TextWrapping="Wrap" Text="FOB Purchasing" Height="62" Width="153" Foreground="White" FontSize="20"/>
-            <Image Height="87" Width="155" Source="Images/Office Apps/Excel 2013.png"/>
+            <Image Height="87" Width="155" Source="Images/Office Apps/Excel 2013.png" PreviewMouseDown="FOBPurchasing_PreviewMouseDown"/>
         </WrapPanel>
         <WrapPanel HorizontalAlignment="Left" Height="153" Margin="74,352,0,0" VerticalAlignment="Top" Width="159" Background="#FF7F1A76">
             <TextBlock TextWrapping="Wrap" Text="FOB Sales" Height="62" Width="153" Foreground="White" FontSize="20"/>
