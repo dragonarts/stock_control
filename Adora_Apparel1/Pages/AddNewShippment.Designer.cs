@@ -111,6 +111,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddNewShippment";
             this.Text = "AddNewShippment";
+            this.Load += new System.EventHandler(this.AddNewShippment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

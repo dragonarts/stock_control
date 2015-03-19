@@ -10,11 +10,13 @@
         <mui:ModernTab Layout="List" SelectedSource="/Pages/StocklotsPurchasing.xaml">
             <mui:ModernTab.Links>
                 <mui:Link DisplayName="Stock Purchasing" Source="/Pages/StocklotsPurchasing.xaml" />
+                <mui:Link DisplayName="FOB Stock In Hand" Source="/Pages/fobStockInhand.xaml" />
                 <mui:Link DisplayName="Stock Sales" Source="" />
                 <mui:Link DisplayName="Monthly Sales Summary" Source="" />
                 <mui:Link DisplayName="Purchasing Summary" Source="" />
                 <mui:Link DisplayName="Sales Comparison" Source="" />
                 <mui:Link DisplayName="Purchasing Comparison" Source="" />
+                <mui:Link DisplayName="Fixed OverHead" Source="/Pages/fixOverHead.xaml" />
                 
             </mui:ModernTab.Links>
         </mui:ModernTab>

@@ -21,7 +21,7 @@ namespace Adora_Apparel_Dataservice
 
             adoraDB context = new adoraDB();
             context.Configuration.ProxyCreationEnabled = false;
-            var load = from g in context.stock_purchasing select g;
+            var load = from g in context.stock_purchasing where(g.status==1) select g;
             //context.SaveChanges();
 
             return load.ToList();
@@ -35,8 +35,7 @@ namespace Adora_Apparel_Dataservice
            // context.SaveChanges();
             return data.ToList();
         }
-
-        public bool addStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision, Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost,int status ,Nullable<System.DateTime> shipped)
+        public bool addStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision, Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost,int status ,Nullable<System.DateTime> shipped,string sub_cat)
         {
             bool newStockAdded=false;
             adoraDB context = new adoraDB();
@@ -51,7 +50,8 @@ namespace Adora_Apparel_Dataservice
                     Total_Shippment_cost = total_ship_cost,
                     ActualCostPerPiece = actual_cost,
                     status=status,
-                    shipped_date=shipped
+                    shipped_date=shipped,
+                    sub_cat_name=sub_cat
                 };
                 context.stock_purchasing.Add(stock);
                 context.SaveChanges();
@@ -60,7 +60,6 @@ namespace Adora_Apparel_Dataservice
                 return newStockAdded;
             //throw new NotImplementedException();
         }
-
 
         public bool addUser(string username, string firstname, string lastname, string password, string security, string answer)
         {
@@ -114,7 +113,7 @@ namespace Adora_Apparel_Dataservice
             return false;
         }
 
-        public bool updateStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision, Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost, int shipID, Nullable<System.DateTime> shipped)
+        public bool updateStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision, Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost, int shipID, Nullable<System.DateTime> shipped,string sub_cat)
         {
             adoraDB context = new adoraDB();
             bool status=false;
@@ -132,6 +131,7 @@ namespace Adora_Apparel_Dataservice
                 stock.shipped_date = shipped;
                 context.SaveChanges();
                 status = true;
+                stock.sub_cat_name = sub_cat;
             };
             return status;
         }
@@ -150,107 +150,100 @@ namespace Adora_Apparel_Dataservice
             return status;
         }
 
-        //----------------------------------------------------------FOB PURCHASING------------------------------------------//
+        //------------------------ Stock In Hand ----------starts----------------------
 
-
-        public bool addFOBPurchasing(Nullable<System.DateTime> Purchased_Date, Nullable<double> Price_per_yard, Nullable<double> Yardage, Nullable<double> Transport_cost,string Shipment_Code)
+        public bool addStockOrders(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code)
         {
-            bool newFOBPurchaseAdd = false;
-            try
-            {
-                adoraDB context = new adoraDB();
+            bool newStockAdded = false;
+            adoraDB context = new adoraDB();
 
-                fob_purchasing fob = new fob_purchasing
-                {
-                    Date = Purchased_Date,
-                    price_per_yard = Price_per_yard,
-                    yardage = Yardage,
-                    transport_cost = Transport_cost,
-                    cost = (Price_per_yard * Yardage) + Transport_cost,
-                    cost_per_yard = ((Price_per_yard * Yardage) + Transport_cost) / Yardage,
-                    Shipment_Code=Shipment_Code
-                };
-                context.fob_purchasing.Add(fob);
-                context.SaveChanges();
-                newFOBPurchaseAdd = true;
-            }
-            catch (Exception d)
+            fob_stock_orders stock = new fob_stock_orders
             {
-                Exception ff= d.InnerException;
-            }
-           
+                Factory_Name = Factoy_Name,
+                Description = Description,
+                Date = Date,
+                Item = Item,
+                NoOfPeices = NoOfPeices,
+                CostPerPeice = CostPerPeice,
+                Image=Image,
+                user_username = "asantha",
+                materialAmount = materialAmount,
+                Shippment_code = Shipment_code,
 
-            return newFOBPurchaseAdd;
-            
+
+            };
+
+            context.fob_stock_orders.Add(stock);
+            context.SaveChanges();
+            newStockAdded = true;
+            return newStockAdded;
+            throw new NotImplementedException();
         }
 
-
-        public bool updateFOBPurchasing(Nullable<System.DateTime> Purchased_Date, Nullable<double> Price_per_yard, Nullable<double> Yardage, Nullable<double> Transport_cost, string Shipment_Code)
+      /*  public bool deleteStockOrders(string Shipment_code)
         {
-            bool newFOBPurchaseAdd = false;
-            try
-            {
-                adoraDB context = new adoraDB();
-
-                fob_purchasing fob = context.fob_purchasing.First(f=>f.Shipment_Code==Shipment_Code);
-                
-                fob.Date = Purchased_Date;
-                fob.price_per_yard = Price_per_yard;
-                fob.yardage = Yardage;
-                fob.transport_cost = Transport_cost;
-                fob.cost = (Price_per_yard * Yardage) + Transport_cost;
-                fob.cost_per_yard = ((Price_per_yard * Yardage) + Transport_cost) / Yardage;
-
-                context.SaveChanges();
-                newFOBPurchaseAdd = true;
-            }
-            catch (Exception d)
-            {
-                Exception ff = d.InnerException;
-            }
-
-
-            return newFOBPurchaseAdd;
-
-        }
-
-
-
-
-
-        public bool deleteFOBPurchase(string shipment_Code)
-        {
+            adoraDB context = new adoraDB();
             bool status = false;
-            try
-            {
-                adoraDB context = new adoraDB();
 
-                fob_purchasing fob = context.fob_purchasing.First(a => a.Shipment_Code == shipment_Code);
-                context.fob_purchasing.Remove(fob);
+            fob_stock_orders stock = context.fob_stock_orders.First(i => idFOB_Stock = Shipment_code);
+            {
+
+                stock.status = 0;
                 context.SaveChanges();
                 status = true;
             }
-            catch (Exception d)
-            {
+            return status;
+        
+        }*/
 
+       /* public bool UpdateStockOrder(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code)
+        {
+            adoraDB context = new adoraDB();
+            bool status = false;
+
+            fob_stock_orders stock = context.fob_stock_orders.First(i => i.idFOB_Stock == Shipment_code);
+            {
+                stock.Factory_Name = Factoy_Name;
+                stock.Description = Description;
+                stock.Date = Date;
+                stock.Item = Item;
+                stock.NoOfPeices = NoOfPeices;
+                stock.CostPerPeice = CostPerPeice;
+                stock.Image = Image;
+                stock.materialAmount = materialAmount;
+                stock.Shippment_code = Shipment_code;
+            
+            
             }
             return status;
-        }
 
+        }*/
+        //------------------------ Stock In Hand ----------ends----------------------
 
+        //------------------------ fixoverHead-----------starts---------------------
 
-        public List<DataModel.fob_purchasing> getfabricFOBPurchasing()
+        public bool addFixOverHead(Nullable<System.DateTime> Date_From, Nullable<System.DateTime> Date_To, string Type_Of_Cost, Nullable<double> amount)
         {
-
             adoraDB context = new adoraDB();
-            context.Configuration.ProxyCreationEnabled = false;
-            var load = from g in context.fob_purchasing select g;
-            //context.SaveChanges();
-
-            return load.ToList();
+            bool newDataAdded = false;
+            fixed_over_heads data= new fixed_over_heads
+            {
+                Date_From=Date_From,
+                Date_To=Date_To,
+                Type_Of_Cost=Type_Of_Cost,
+                amount=amount,
+                enteredBy="asantha"
+                
+            
+            };
+            context.SaveChanges();
+            newDataAdded = true;
+            return newDataAdded;
+        
         }
 
-        //---------------------------------------------------------------------------------------------------------------------
+        //------------------------ fixoverHead-----------ends-----------------------
+
 
     }
 }

@@ -174,7 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReference1\Adora_Apparel1.ServiceReference1.fob_purchasing.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

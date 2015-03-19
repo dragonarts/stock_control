@@ -21,6 +21,7 @@ namespace DataModel
         public string Item { get; set; }
         public Nullable<double> NoOfPeices { get; set; }
         public Nullable<double> CostPerPeice { get; set; }
+        public string Image { get; set; }
         public string user_username { get; set; }
         public Nullable<double> materialAmount { get; set; }
         public string Shippment_code { get; set; }

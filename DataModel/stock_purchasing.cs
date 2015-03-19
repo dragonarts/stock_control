@@ -25,6 +25,7 @@ namespace DataModel
         public Nullable<double> ActualCostPerPiece { get; set; }
         public Nullable<int> status { get; set; }
         public Nullable<System.DateTime> shipped_date { get; set; }
+        public string sub_cat_name { get; set; }
     
         public virtual shippment_title shippment_title { get; set; }
     }

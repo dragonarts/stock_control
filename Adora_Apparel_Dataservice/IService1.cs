@@ -18,7 +18,7 @@ namespace Adora_Apparel_Dataservice
         List<stock_purchasing> getstockPurchasing();
 
         [OperationContract]
-        bool addStockPurchase(string ship_code,Nullable<int> peices,Nullable<double> peice_price,Nullable<double> transport_cost,Nullable<double> supplier_commision,Nullable<double> miscellenaouse,Nullable<double> total_ship_cost,Nullable<double> actual_cost,int status,Nullable<System.DateTime> shipped);
+        bool addStockPurchase(string ship_code,Nullable<int> peices,Nullable<double> peice_price,Nullable<double> transport_cost,Nullable<double> supplier_commision,Nullable<double> miscellenaouse,Nullable<double> total_ship_cost,Nullable<double> actual_cost,int status,Nullable<System.DateTime> shipped,string sub_cat);
 
         [OperationContract]
         bool addUser(string username,string firstname,string lastname,string password,string security,string answer);
@@ -27,7 +27,7 @@ namespace Adora_Apparel_Dataservice
         bool login(string username,string password);
 
         [OperationContract]
-        bool updateStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision,Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost, int shipID, Nullable<System.DateTime> shipped);
+        bool updateStockPurchase(string ship_code, Nullable<int> peices, Nullable<double> peice_price, Nullable<double> transport_cost, Nullable<double> supplier_commision,Nullable<double> miscellenaouse, Nullable<double> total_ship_cost, Nullable<double> actual_cost, int shipID, Nullable<System.DateTime> shipped,string sub_cat);
 
         [OperationContract]
         bool deleteStockPurchase(int ship_code);
@@ -39,26 +39,14 @@ namespace Adora_Apparel_Dataservice
         IEnumerable<string> getshippmentTitle();
         // TODO: Add your service operations here
 
-        //-------------------------------------Methods for FOB Purchasing-------------------------------//
 
+        //--------------------------fob stock in hand strats----------------------------------
         [OperationContract]
-        bool addFOBPurchasing(Nullable<System.DateTime> Purchased_Date, Nullable<double> Price_per_yard, Nullable<double> Yardage, Nullable<double> Transport_cost, string Shipment_Code);
+        bool addStockOrders(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code);
 
-
-        [OperationContract]
-        bool updateFOBPurchasing(Nullable<System.DateTime> Purchased_Date, Nullable<double> Price_per_yard, Nullable<double> Yardage, Nullable<double> Transport_cost, string Shipment_Code);
-
-        [OperationContract]
-
-        bool deleteFOBPurchase(string Shipment_Code);
-
-        [OperationContract]
-
-        List<fob_purchasing> getfabricFOBPurchasing();
-
-        //---------------------------------------------------------------------------------------------//
-
-      
+       // [OperationContract]
+        //bool deleteStockOrders(string Shipment_code);
+        //--------------------------fob stock In hand ends------------------------------------
     }
 
 
