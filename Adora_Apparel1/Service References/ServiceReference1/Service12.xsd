@@ -160,6 +160,28 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateStockOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Factoy_Name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Item" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NoOfPeices" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="CostPerPeice" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="materialAmount" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="Shipment_code" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateStockOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateStockOrderResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="addFixOverHead">
     <xs:complexType>
       <xs:sequence>
@@ -174,6 +196,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="addFixOverHeadResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteStockOrders">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="shipment_Code" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteStockOrdersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="deleteStockOrdersResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

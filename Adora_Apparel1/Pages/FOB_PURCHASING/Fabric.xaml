@@ -17,11 +17,11 @@
         <Label Content="Date Purchased" HorizontalAlignment="Left" Margin="21,103,0,0" VerticalAlignment="Top" Width="86"/>
         <DatePicker HorizontalAlignment="Left" SelectedDate="{Binding Path= Purchase_date}" Margin="220,97,0,0" VerticalAlignment="Top" Width="170"/>
         <Label Content="Price Per Yard" HorizontalAlignment="Left" Margin="516,108,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txt2" HorizontalAlignment="Left" Text="{Binding Path=Set_price_per_yard}" Height="23" Margin="168,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Grid.Column="1"/>
+        <TextBox x:Name="txt2" HorizontalAlignment="Left" Text="{Binding Path=Set_price_per_yard,Mode=TwoWay,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,NotifyOnValidationError=True}" Height="23" Margin="168,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Grid.Column="1"/>
         <Label Content="Yardage" HorizontalAlignment="Left" Margin="21,142,0,0" VerticalAlignment="Top" Width="86"/>
-        <TextBox x:Name="txt1" HorizontalAlignment="Left" Text="{Binding Path=Set_Yardage}" Height="23" Margin="220,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBox x:Name="txt1" HorizontalAlignment="Left" Text="{Binding Path=Set_Yardage,Mode=TwoWay,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,NotifyOnValidationError=True}" Height="23" Margin="220,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
         <Label Content="Courier/Transport Cost" HorizontalAlignment="Left" Margin="516,151,0,0" VerticalAlignment="Top" Width="139" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txt3" Text="{Binding Path=Set_t_cost}" HorizontalAlignment="Left" Height="23" Margin="168,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Grid.Column="1"/>
+        <TextBox x:Name="txt3" Text="{Binding Path=Set_t_cost,Mode=TwoWay,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,NotifyOnValidationError=True}" HorizontalAlignment="Left" Height="23" Margin="168,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Grid.Column="1"/>
         <Button Command="{Binding Command}" Content="Insert" HorizontalAlignment="Left" Margin="394,257,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
         <Button Content="Delete" Command="{Binding CommandDelete}" HorizontalAlignment="Left" Margin="196,257,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="Update" Command="{Binding CommandUpdate}" HorizontalAlignment="Left" Margin="296,257,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>

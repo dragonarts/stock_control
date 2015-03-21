@@ -187,41 +187,44 @@ namespace Adora_Apparel_Dataservice
             throw new NotImplementedException();
         }
 
-      /*  public bool deleteStockOrders(string Shipment_code)
+        public bool deleteStockOrders(string shipment_Code)
         {
-            adoraDB context = new adoraDB();
             bool status = false;
-
-            fob_stock_orders stock = context.fob_stock_orders.First(i => idFOB_Stock = Shipment_code);
+            try
             {
+                adoraDB context = new adoraDB();
 
-                stock.status = 0;
+                fob_stock_orders fob = context.fob_stock_orders.First(a => a.Shippment_code == shipment_Code);
+                context.fob_stock_orders.Remove(fob);
                 context.SaveChanges();
                 status = true;
             }
-            return status;
-        
-        }*/
+            catch (Exception d)
+            {
 
-        public bool UpdateStockOrder(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code,int shipID)
+            }
+            return status;
+        }
+
+        public bool UpdateStockOrder(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code)
         {
+            
             adoraDB context = new adoraDB();
             bool status = false;
 
-            fob_stock_orders stock = context.fob_stock_orders.First(i => i.idFOB_Stock == shipID);
-            {
-                stock.Factory_Name = Factoy_Name;
-                stock.Description = Description;
-                stock.Date = Date;
-                stock.Item = Item;
-                stock.NoOfPeices = NoOfPeices;
-                stock.CostPerPeice = CostPerPeice;
-                stock.Image = Image;
-                stock.materialAmount = materialAmount;
-                stock.Shippment_code = Shipment_code;
-            
-            
-            }
+            fob_stock_orders stock = context.fob_stock_orders.First(i => i.Shippment_code==Shipment_code);
+            stock.Factory_Name = Factoy_Name;
+            stock.Description = Description;
+            stock.Date = Date;
+            stock.Item = Item;
+            stock.NoOfPeices = NoOfPeices;
+            stock.CostPerPeice = CostPerPeice;
+            stock.Image = Image;
+            stock.materialAmount = materialAmount;
+            stock.Shippment_code = Shipment_code;
+
+            context.SaveChanges();
+            status = true;
             return status;
 
         }
@@ -257,7 +260,6 @@ namespace Adora_Apparel_Dataservice
             try
             {
                 adoraDB context = new adoraDB();
-
                 fob_purchasing fob = new fob_purchasing
                 {
                     Date = Purchased_Date,

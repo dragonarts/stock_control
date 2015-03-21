@@ -27,11 +27,11 @@
             <TextBlock TextWrapping="Wrap" Text="FOB Sales" Height="62" Width="153" Foreground="White" FontSize="20"/>
             <Image Height="88" Width="157" Source="Images/Office Apps/OneNote 2013.png"/>
         </WrapPanel>
-        <WrapPanel HorizontalAlignment="Left" Height="152" Margin="241,353,0,0" VerticalAlignment="Top" Width="159" Background="#FF009600">
+        <WrapPanel HorizontalAlignment="Left" Height="152" Margin="241,353,0,0" VerticalAlignment="Top" Width="159" Background="#FF009600" PreviewMouseDown="FOBStockInHand_PreviewMouseDown">
             <TextBlock TextWrapping="Wrap" Text="FOB Stock In Hand" Height="62" Width="153" Foreground="White" FontSize="20"/>
             <Image Height="87" Width="155" Source="Images/Applications/Windows 8 Store.png"/>
         </WrapPanel>
-        <WrapPanel HorizontalAlignment="Left" Height="149" Margin="410,355,0,0" VerticalAlignment="Top" Width="159" Background="#FF2A5796">
+        <WrapPanel HorizontalAlignment="Left" Height="149" Margin="410,355,0,0" VerticalAlignment="Top" Width="159" Background="#FF2A5796" PreviewMouseDown="FOBOverhead_PreviewMouseDown">
             <TextBlock TextWrapping="Wrap" Text="Fixed Overheads" Height="62" Width="153" Foreground="White" FontSize="20"/>
             <Image Height="87" Width="157" Source="Images/Office Apps/Word 2013.png"/>
         </WrapPanel>

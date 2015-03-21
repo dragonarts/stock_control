@@ -62,11 +62,23 @@
   <wsdl:message name="IService1_addStockOrders_OutputMessage">
     <wsdl:part name="parameters" element="tns:addStockOrdersResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_UpdateStockOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStockOrder" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateStockOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStockOrderResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_addFixOverHead_InputMessage">
     <wsdl:part name="parameters" element="tns:addFixOverHead" />
   </wsdl:message>
   <wsdl:message name="IService1_addFixOverHead_OutputMessage">
     <wsdl:part name="parameters" element="tns:addFixOverHeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteStockOrders_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteStockOrders" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteStockOrders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteStockOrdersResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_getStockOrders_InputMessage">
     <wsdl:part name="parameters" element="tns:getStockOrders" />
@@ -135,9 +147,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/addStockOrders" message="tns:IService1_addStockOrders_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/addStockOrdersResponse" message="tns:IService1_addStockOrders_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateStockOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateStockOrder" message="tns:IService1_UpdateStockOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateStockOrderResponse" message="tns:IService1_UpdateStockOrder_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="addFixOverHead">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/addFixOverHead" message="tns:IService1_addFixOverHead_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/addFixOverHeadResponse" message="tns:IService1_addFixOverHead_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteStockOrders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/deleteStockOrders" message="tns:IService1_deleteStockOrders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/deleteStockOrdersResponse" message="tns:IService1_deleteStockOrders_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getStockOrders">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getStockOrders" message="tns:IService1_getStockOrders_InputMessage" />
@@ -243,8 +263,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateStockOrder">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateStockOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="addFixOverHead">
       <soap:operation soapAction="http://tempuri.org/IService1/addFixOverHead" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteStockOrders">
+      <soap:operation soapAction="http://tempuri.org/IService1/deleteStockOrders" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

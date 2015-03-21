@@ -12,11 +12,11 @@
         <Label Content="Date Purchased" HorizontalAlignment="Left" Margin="21,126,0,0" VerticalAlignment="Top" Width="98"/>
         <DatePicker  SelectedDate="{Binding Path= Purchase_date}" HorizontalAlignment="Left" Margin="220,121,0,0" VerticalAlignment="Top" Width="170"/>
         <Label Content="Price Per Unit" HorizontalAlignment="Left" Margin="588,126,0,0" VerticalAlignment="Top" Width="81"/>
-        <TextBox HorizontalAlignment="Left" Text="{Binding Path=PPU}" Height="23" Margin="745,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Path=PPU,Mode=TwoWay,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,NotifyOnValidationError=True}" Height="23" Margin="745,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
         <Label Content="No of Units" HorizontalAlignment="Left" Margin="21,177,0,0" VerticalAlignment="Top" Width="98"/>
-        <TextBox  HorizontalAlignment="Left"  Text="{Binding Path=Units}" Height="23" Margin="220,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBox  HorizontalAlignment="Left"  Text="{Binding Path=Units,Mode=TwoWay,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,NotifyOnValidationError=True}" Height="23" Margin="220,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
         <Label Content="Courier/Transport Cost" HorizontalAlignment="Left" Margin="588,177,0,0" VerticalAlignment="Top" Width="134"/>
-        <TextBox HorizontalAlignment="Left" Text="{Binding Path=TCost}" Height="23" Margin="745,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Path=TCost,Mode=TwoWay,ValidatesOnDataErrors=True,ValidatesOnExceptions=True,NotifyOnValidationError=True}" Height="23" Margin="745,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
         <Button Content="Insert" Command="{Binding Add}" HorizontalAlignment="Left" Margin="32,221,0,0" VerticalAlignment="Top" Width="98"/>
         <Button Content="Delete" Command="{Binding Delete}" HorizontalAlignment="Left" Margin="544,221,0,0" VerticalAlignment="Top" Width="97"/>
         <Button Content="Update" Command="{Binding Update}"  HorizontalAlignment="Left" Margin="299,221,0,0" VerticalAlignment="Top" Width="91"/>

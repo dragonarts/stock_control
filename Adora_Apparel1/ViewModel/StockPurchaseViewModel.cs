@@ -22,13 +22,26 @@ namespace Adora_Apparel1.ViewModel
         private stock_purchasing purchase;
         private stock_purchasing selectedRow;
 
+        private ICommand refresh;
+
+        public ICommand Refresh
+        {
+            get { return refresh; }
+            set { refresh = value; }
+        }
         public stock_purchasing SelectedRow
         {
             get { return selectedRow; }
             set { selectedRow = value; RaisePropertyChanged("SelectedRow"); }
         }
         private ICommand command;
+        private ICommand addShipment;
 
+        public ICommand AddShipment
+        {
+            get { return addShipment; }
+            set { addShipment = value; }
+        }
         
         private Service1Client dataClient = new Service1Client();
         public ICommand Command
@@ -121,6 +134,7 @@ namespace Adora_Apparel1.ViewModel
             set
             {
                 price_per_peice = value;
+               // price_per_peice = Math.Round(value.Value, 2, MidpointRounding.AwayFromZero);
                 RaisePropertyChanged("Price_per_peice");
             }
         }
@@ -136,6 +150,7 @@ namespace Adora_Apparel1.ViewModel
             set
             {
                 transport_cost = value;
+               // transport_cost = Math.Round(value.Value, 2,MidpointRounding.AwayFromZero);
                 RaisePropertyChanged("Transport_cost");
             }
         }
@@ -151,6 +166,7 @@ namespace Adora_Apparel1.ViewModel
             set
             {
                 supplier_comission = value;
+               // supplier_comission = Math.Round(value.Value, 2, MidpointRounding.AwayFromZero);
                 RaisePropertyChanged("Supplier_comission");
             }
         
@@ -169,6 +185,7 @@ namespace Adora_Apparel1.ViewModel
             set
             {
                 miscellenouse = value;
+                //miscellenouse = Math.Round(value.Value, 2, MidpointRounding.AwayFromZero);
                 RaisePropertyChanged("Miscellenouse");
             }
         }
@@ -201,6 +218,21 @@ namespace Adora_Apparel1.ViewModel
 
            // RefreshEvents();
             command = new RelayCommand(addStock);
+            addShipment = new RelayCommand(addShip);
+            refresh = new RelayCommand(refreshShipTitle);
+        }
+
+        private void refreshShipTitle(object obj)
+        {
+            var cc = dataClient.getshippmentTitle().ToArray();
+            ship_code_list.Clear();
+            Array.ForEach(cc, ship_code_list.Add);
+        }
+
+        private void addShip(object obj)
+        {
+            AddNewShippment form = new AddNewShippment();
+            form.Show();
         }
 
         private string sub_cat_name;
@@ -215,6 +247,8 @@ namespace Adora_Apparel1.ViewModel
             //selectedRow = new stock_purchasing();
             Nullable<double> total_shippment_cost = (peices * price_per_peice) + transport_cost +supplier_comission + miscellenouse;
             Nullable<double> actual_cost = total_shippment_cost / peices;
+            total_shippment_cost = Math.Round(total_shippment_cost.Value, 2,MidpointRounding.AwayFromZero);
+            actual_cost = Math.Round(Math.Round(actual_cost.Value, 2,MidpointRounding.AwayFromZero));
             var success = await dataClient.addStockPurchaseAsync(ship_code,peices,price_per_peice,transport_cost,supplier_comission,miscellenouse,total_shippment_cost,actual_cost,1,shipped_date,sub_cat_name);
            // var success = await dataClient.addStockPurchaseAsync(SelectedRow.Shippment_code,SelectedRow.NoOfPeices,SelectedRow.PricePerPiece,SelectedRow.Transport_Cost,SelectedRow.Supplier_Commision,SelectedRow.Miscellanouse, total_shippment_cost, actual_cost, 1,SelectedRow.shipped_date);
             if (success)
@@ -272,10 +306,25 @@ namespace Adora_Apparel1.ViewModel
                     break;
                 case "Price_per_peice":
                     if(Price_per_peice<=0)
-                        validationMessage = "Please enter valid Peices";
+                        validationMessage = "Please enter valid Price";
                     break;
+                case "Supplier_comission":
+                    if (Supplier_comission <= 0)
+                        validationMessage = "Please enter valid Comission";
+                    break;
+                case "Miscellenouse":
+                    if (Supplier_comission <= 0)
+                        validationMessage = "Please enter valid Miscellenouse";
+                    break;
+                case "Transport_cost":
+                    if (Transport_cost <=0)
+                        validationMessage = "Please enter valid cost";
+                    break;
+
             }
             return validationMessage;
         }
+
+        
     }
 }

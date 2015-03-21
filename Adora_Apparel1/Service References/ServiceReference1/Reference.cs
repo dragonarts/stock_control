@@ -1990,11 +1990,23 @@ namespace Adora_Apparel1.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addStockOrders", ReplyAction="http://tempuri.org/IService1/addStockOrdersResponse")]
         System.Threading.Tasks.Task<bool> addStockOrdersAsync(string Factoy_Name, string Description, System.Nullable<System.DateTime> Date, string Item, System.Nullable<double> NoOfPeices, System.Nullable<double> CostPerPeice, string Image, System.Nullable<double> materialAmount, string Shipment_code);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateStockOrder", ReplyAction="http://tempuri.org/IService1/UpdateStockOrderResponse")]
+        bool UpdateStockOrder(string Factoy_Name, string Description, System.Nullable<System.DateTime> Date, string Item, System.Nullable<double> NoOfPeices, System.Nullable<double> CostPerPeice, string Image, System.Nullable<double> materialAmount, string Shipment_code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateStockOrder", ReplyAction="http://tempuri.org/IService1/UpdateStockOrderResponse")]
+        System.Threading.Tasks.Task<bool> UpdateStockOrderAsync(string Factoy_Name, string Description, System.Nullable<System.DateTime> Date, string Item, System.Nullable<double> NoOfPeices, System.Nullable<double> CostPerPeice, string Image, System.Nullable<double> materialAmount, string Shipment_code);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addFixOverHead", ReplyAction="http://tempuri.org/IService1/addFixOverHeadResponse")]
         bool addFixOverHead(System.Nullable<System.DateTime> Date_From, System.Nullable<System.DateTime> Date_To, string Type_Of_Cost, System.Nullable<double> amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addFixOverHead", ReplyAction="http://tempuri.org/IService1/addFixOverHeadResponse")]
         System.Threading.Tasks.Task<bool> addFixOverHeadAsync(System.Nullable<System.DateTime> Date_From, System.Nullable<System.DateTime> Date_To, string Type_Of_Cost, System.Nullable<double> amount);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteStockOrders", ReplyAction="http://tempuri.org/IService1/deleteStockOrdersResponse")]
+        bool deleteStockOrders(string shipment_Code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteStockOrders", ReplyAction="http://tempuri.org/IService1/deleteStockOrdersResponse")]
+        System.Threading.Tasks.Task<bool> deleteStockOrdersAsync(string shipment_Code);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getStockOrders", ReplyAction="http://tempuri.org/IService1/getStockOrdersResponse")]
         Adora_Apparel1.ServiceReference1.fob_stock_orders[] getStockOrders();
@@ -2126,12 +2138,28 @@ namespace Adora_Apparel1.ServiceReference1 {
             return base.Channel.addStockOrdersAsync(Factoy_Name, Description, Date, Item, NoOfPeices, CostPerPeice, Image, materialAmount, Shipment_code);
         }
         
+        public bool UpdateStockOrder(string Factoy_Name, string Description, System.Nullable<System.DateTime> Date, string Item, System.Nullable<double> NoOfPeices, System.Nullable<double> CostPerPeice, string Image, System.Nullable<double> materialAmount, string Shipment_code) {
+            return base.Channel.UpdateStockOrder(Factoy_Name, Description, Date, Item, NoOfPeices, CostPerPeice, Image, materialAmount, Shipment_code);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateStockOrderAsync(string Factoy_Name, string Description, System.Nullable<System.DateTime> Date, string Item, System.Nullable<double> NoOfPeices, System.Nullable<double> CostPerPeice, string Image, System.Nullable<double> materialAmount, string Shipment_code) {
+            return base.Channel.UpdateStockOrderAsync(Factoy_Name, Description, Date, Item, NoOfPeices, CostPerPeice, Image, materialAmount, Shipment_code);
+        }
+        
         public bool addFixOverHead(System.Nullable<System.DateTime> Date_From, System.Nullable<System.DateTime> Date_To, string Type_Of_Cost, System.Nullable<double> amount) {
             return base.Channel.addFixOverHead(Date_From, Date_To, Type_Of_Cost, amount);
         }
         
         public System.Threading.Tasks.Task<bool> addFixOverHeadAsync(System.Nullable<System.DateTime> Date_From, System.Nullable<System.DateTime> Date_To, string Type_Of_Cost, System.Nullable<double> amount) {
             return base.Channel.addFixOverHeadAsync(Date_From, Date_To, Type_Of_Cost, amount);
+        }
+        
+        public bool deleteStockOrders(string shipment_Code) {
+            return base.Channel.deleteStockOrders(shipment_Code);
+        }
+        
+        public System.Threading.Tasks.Task<bool> deleteStockOrdersAsync(string shipment_Code) {
+            return base.Channel.deleteStockOrdersAsync(shipment_Code);
         }
         
         public Adora_Apparel1.ServiceReference1.fob_stock_orders[] getStockOrders() {

@@ -47,7 +47,11 @@ namespace Adora_Apparel_Dataservice
         //bool addStockOrders(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code);
 
         [OperationContract]
+        bool UpdateStockOrder(string Factoy_Name, string Description, Nullable<System.DateTime> Date, string Item, Nullable<double> NoOfPeices, Nullable<double> CostPerPeice, string Image, Nullable<double> materialAmount, string Shipment_code);
+        [OperationContract]
         bool addFixOverHead(Nullable<System.DateTime> Date_From, Nullable<System.DateTime> Date_To, string Type_Of_Cost, Nullable<double> amount);
+        [OperationContract]
+        bool deleteStockOrders(string shipment_Code);
        // [OperationContract]
         //bool deleteStockOrders(string Shipment_code);
         //--------------------------fob stock In hand ends------------------------------------

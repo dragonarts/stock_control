@@ -12,7 +12,7 @@ using FirstFloor.ModernUI.Presentation;
 
 namespace Adora_Apparel1.ViewModel
 {
-    public class ItemAddModel : INotifyPropertyChanged
+    public class ItemAddModel : INotifyPropertyChanged,IDataErrorInfo
     {
         private string ship_code;
         private string itype;
@@ -277,6 +277,38 @@ namespace Adora_Apparel1.ViewModel
 
                 handler(this, new PropertyChangedEventArgs(a));
             }
+        }
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get { return Validate(columnName); }
+        }
+        private string Validate(string columnName)
+        {
+            string validationMessage = string.Empty;
+            switch (columnName)
+            {
+
+                case "Units":
+                    if (Units <= 0)
+                        validationMessage = "Please enter valid Units";
+                    break;
+                case "PPU":
+                    if (PPU <= 0)
+                        validationMessage = "Please enter valid  Price";
+                    break;
+                case "TCost":
+                    if (TCost <= 0)
+                        validationMessage = "Please enter valid Cost";
+                    break;
+
+            }
+            return validationMessage;
         }
     }
 }

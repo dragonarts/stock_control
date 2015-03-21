@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace Adora_Apparel1.ViewModel
 {
-    class FOBstockViewModel : INotifyPropertyChanged
+    class FOBstockViewModel : INotifyPropertyChanged,IDataErrorInfo
     {
         private fob_stock_orders orders;
         private ICommand command;
@@ -24,11 +24,36 @@ namespace Adora_Apparel1.ViewModel
             {
                 Refresh = new RelayCommand(refresh_shipcode);
                 command = new RelayCommand(AddFobStock);
-               // Update = new RelayCommand(UpdateFobStock);
+                Update = new RelayCommand(UpdateFobStock);
+                Delete = new RelayCommand(DeleteFobStock);
 
             }
 
             catch (Exception s) { }
+        }
+
+        private async void DeleteFobStock(object obj)
+        {
+            var success = await dataClient.deleteStockOrdersAsync(Ship_code);
+            if (success)
+            {
+                MessageBox.Show("Stock Deleted Successfully");
+                var content = dataClient.getStockOrders().ToArray();
+                stock_orders.Clear();
+                Array.ForEach(content, stock_orders.Add);
+            }
+        }
+
+        private async void UpdateFobStock(object obj)
+        {
+            var success =await dataClient.UpdateStockOrderAsync(Factory_Name,Description,Date,Items,NoOfPeices,CostPerPeice,Image,materialAmount,Ship_code);
+            if (success)
+            {
+                MessageBox.Show("Stock Updated Successfully");
+                var content = dataClient.getStockOrders().ToArray();
+                stock_orders.Clear();
+                Array.ForEach(content, stock_orders.Add);
+            }
         }
 
         private ICommand Refresh;
@@ -118,12 +143,12 @@ namespace Adora_Apparel1.ViewModel
             set { Date = value; RaisePropertyChanged("Date"); }
         }
 
-        private string Item;
+        private string Items;
 
         public string Item1
         {
-            get { return Item; }
-            set { Item = value; RaisePropertyChanged("Item"); }
+            get { return Items; }
+            set { Items = value; RaisePropertyChanged("Item"); }
         }
 
         private Nullable<double> NoOfPeices;
@@ -143,7 +168,7 @@ namespace Adora_Apparel1.ViewModel
         }
 
 
-        private string Image;
+        private string Image="asasas";
 
         public string Image1
         {
@@ -204,7 +229,7 @@ namespace Adora_Apparel1.ViewModel
             {
                 //dataClient = new Service1Client();
 
-                var success = dataClient.addStockOrders(Factory_Name, Description, Date, Item, NoOfPeices, CostPerPeice, Image, MaterialAmount, Ship_code);
+                var success = dataClient.addStockOrders(Factory_Name, Description, Date, Items, NoOfPeices, CostPerPeice, Image, MaterialAmount, Ship_code);
                 if (success)
                 {
                     MessageBox.Show("Stock in Hand Adding ok", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -231,13 +256,36 @@ namespace Adora_Apparel1.ViewModel
 
         }
 
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
 
-       
+        public string this[string columnName]
+        {
+            get { return Validate(columnName); }
+        }
+        private string Validate(string columnName)
+        {
+            string validationMessage = string.Empty;
+            switch (columnName)
+            {
 
+                case "NoOfPeices1":
+                    if (NoOfPeices1 <= 0)
+                        validationMessage = "Please enter valid Peices";
+                    break;
+                case "CostPerPeice1":
+                    if (CostPerPeice1 <= 0)
+                        validationMessage = "Please enter valid  Price";
+                    break;
+                case "MaterialAmount":
+                    if (MaterialAmount <= 0)
+                        validationMessage = "Please enter valid Amount";
+                    break;
 
-
-
-
-
+            }
+            return validationMessage;
+        }
     }
 }

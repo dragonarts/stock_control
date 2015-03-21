@@ -16,7 +16,7 @@
         <Button Content="Save" Command="{Binding Path=command}" HorizontalAlignment="Left" Margin="80,157,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button Content="Update" HorizontalAlignment="Left" Margin="409,157,0,0" VerticalAlignment="Top" Width="90"/>
         <Button Content="Delete" HorizontalAlignment="Left" Margin="748,157,0,0" VerticalAlignment="Top" Width="75"/>
-        <Separator HorizontalAlignment="Left" Height="100" Margin="39,167,0,0" VerticalAlignment="Top" Width="795"/>
+        <Separator HorizontalAlignment="Left" Height="100" Margin="45,170,0,0" VerticalAlignment="Top" Width="795"/>
         <DataGrid HorizontalAlignment="Left" Margin="207,223,0,0" VerticalAlignment="Top" Height="235" Width="460">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date From" />

@@ -14,7 +14,7 @@ using System.Xml;
 
 namespace Adora_Apparel1.ViewModel
 {
-   public class FabricModal : INotifyPropertyChanged
+   public class FabricModal : INotifyPropertyChanged,IDataErrorInfo
     {
 
 
@@ -85,7 +85,6 @@ namespace Adora_Apparel1.ViewModel
             try
             {
                 dataClient = new Service1Client();
-
                 var success =  dataClient.addFOBPurchasing(purchase_date, price_per_yard, yardage, transportCost, ship_code);
                 if (success)
                 {
@@ -266,6 +265,38 @@ namespace Adora_Apparel1.ViewModel
         }
 
 
-   
+
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get { return Validate(columnName); }
+        }
+        private string Validate(string columnName)
+        {
+            string validationMessage = string.Empty;
+            switch (columnName)
+            {
+
+                case "Set_Yardage":
+                    if (Set_Yardage <= 0)
+                        validationMessage = "Please enter valid Yardage";
+                    break;
+                case "Set_price_per_yard":
+                    if (Set_price_per_yard <= 0)
+                        validationMessage = "Please enter valid  Price";
+                    break;
+                case "Set_t_cost":
+                    if (Set_t_cost <= 0)
+                        validationMessage = "Please enter valid Cost";
+                    break;
+
+            }
+            return validationMessage;
+        }
     }
 }

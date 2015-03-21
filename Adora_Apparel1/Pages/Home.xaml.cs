@@ -159,6 +159,38 @@ namespace Adora_Apparel1.Pages
 
         }
 
+        private void FOBStockInHand_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+            try
+            {
+
+                // NavigationCommands.GoToPage.Execute("/Pages/stocks.xaml", this);
+                NavigationCommands.GoToPage.Execute("/Pages/fobStockInhand.xaml", this);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private void FOBOverhead_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+
+                // NavigationCommands.GoToPage.Execute("/Pages/stocks.xaml", this);
+                NavigationCommands.GoToPage.Execute("/Pages/fixOverHead.xaml", this);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
 
         //link fob purchase to home-------------
 
