@@ -15,6 +15,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
 using Adora_Apparel1.ViewModel;
+using System.Threading;
+using System.Globalization;
+using System.Windows.Markup;
 
 namespace Adora_Apparel1.Pages
 {

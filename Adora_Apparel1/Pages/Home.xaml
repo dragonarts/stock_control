@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Height="812.611" Width="1052.836">
+             mc:Ignorable="d" Height="661.611" Width="1052.836">
     <Grid Style="{StaticResource ContentRoot}">
         <!--<StackPanel HorizontalAlignment="Left" Height="633" Margin="35,37,0,0" VerticalAlignment="Top" Width="961">
             <StackPanel.Background>
@@ -39,13 +39,22 @@
             <TextBlock TextWrapping="Wrap" Text="Analytics" Height="62" Width="153" Foreground="White" FontSize="20"/>
             <Image Height="88" Width="154" Source="Images/Office Apps/reflective/InfoPath_mirror.png"/>
         </WrapPanel>
-        <WrapPanel HorizontalAlignment="Left" Height="240" Margin="707,71,0,0" VerticalAlignment="Top" Width="253" Background="#FFF30505">
+        <WrapPanel HorizontalAlignment="Left" Height="213" Margin="707,71,0,0" VerticalAlignment="Top" Width="253" Background="#FFF30505">
             <Label x:Name="Day" Content="" Height="50" Width="254" Foreground="#FFFEFEFE" FontSize="36"/>
             <Label x:Name="date" Content="" Height="82" Width="254" Foreground="#FFFEFEFE" FontSize="36"/>
             <Label x:Name="year_month" Content="" Height="47" Width="254" Foreground="#FFFEFEFE" FontSize="22"/>
-            <Label x:Name="time" Content="" Height="53" Width="254" Foreground="#FFFEFEFE" FontSize="22"/>
+            <Label x:Name="time" Content="" Height="33" Width="254" Foreground="#FFFEFEFE" FontSize="22"/>
         </WrapPanel>
-        <WrapPanel HorizontalAlignment="Left" Height="221" Margin="707,322,0,0" VerticalAlignment="Top" Width="253" Background="#FFF30505"/>
+        <WrapPanel HorizontalAlignment="Left" Height="181" Margin="707,322,0,0" VerticalAlignment="Top" Width="253" Background="#FFF30505"/>
 
+        <StatusBar Name="SBar" Grid.Column="0" Grid.Row="5" VerticalAlignment="Bottom" Background="Aqua"  >
+            <StatusBarItem>
+                <TextBlock>Status:</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem>
+                <ProgressBar Height="12" Width="400" Margin="20,0,5,1" Name="pBar1" Visibility="Hidden" VerticalAlignment="Bottom" />
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
+   
 </UserControl>

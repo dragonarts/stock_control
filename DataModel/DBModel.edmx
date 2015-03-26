@@ -132,8 +132,6 @@
           <Property Name="Shippment_code" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="NoOfPeices" Type="int" />
           <Property Name="PricePerPeice" Type="double" />
-          <Property Name="Total_peices_sold" Type="int" />
-          <Property Name="Total_Remaining" Type="int" />
           <Property Name="Cost" Type="double" />
           <Property Name="Sub_Cat_Name" Type="varchar" MaxLength="100" />
         </EntityType>
@@ -486,8 +484,6 @@
           <Property Name="Shippment_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NoOfPeices" Type="Int32" />
           <Property Name="PricePerPeice" Type="Double" />
-          <Property Name="Total_peices_sold" Type="Int32" />
-          <Property Name="Total_Remaining" Type="Int32" />
           <NavigationProperty Name="shippment_title" Relationship="Self.fk_Stock_Sales_Shippment_title1" FromRole="stock_sales" ToRole="shippment_title" />
           <Property Name="Cost" Type="Double" />
           <Property Name="Sub_Cat_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -828,9 +824,7 @@
                 <ScalarProperty Name="Shippment_code" ColumnName="Shippment_code" />
                 <ScalarProperty Name="NoOfPeices" ColumnName="NoOfPeices" />
                 <ScalarProperty Name="PricePerPeice" ColumnName="PricePerPeice" />
-                <ScalarProperty Name="Total_peices_sold" ColumnName="Total_peices_sold" />
-                <ScalarProperty Name="Total_Remaining" ColumnName="Total_Remaining" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="users">

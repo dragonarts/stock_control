@@ -1361,12 +1361,6 @@ namespace Adora_Apparel1.ServiceReference1 {
         private string Sub_Cat_NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Total_RemainingField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Total_peices_soldField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idStock_SalesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1443,32 +1437,6 @@ namespace Adora_Apparel1.ServiceReference1 {
                 if ((object.ReferenceEquals(this.Sub_Cat_NameField, value) != true)) {
                     this.Sub_Cat_NameField = value;
                     this.RaisePropertyChanged("Sub_Cat_Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Total_Remaining {
-            get {
-                return this.Total_RemainingField;
-            }
-            set {
-                if ((this.Total_RemainingField.Equals(value) != true)) {
-                    this.Total_RemainingField = value;
-                    this.RaisePropertyChanged("Total_Remaining");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Total_peices_sold {
-            get {
-                return this.Total_peices_soldField;
-            }
-            set {
-                if ((this.Total_peices_soldField.Equals(value) != true)) {
-                    this.Total_peices_soldField = value;
-                    this.RaisePropertyChanged("Total_peices_sold");
                 }
             }
         }

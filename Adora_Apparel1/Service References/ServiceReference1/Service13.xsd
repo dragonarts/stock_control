@@ -186,8 +186,6 @@
       <xs:element minOccurs="0" name="PricePerPeice" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="Shippment_code" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Sub_Cat_Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Total_Remaining" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Total_peices_sold" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="idStock_Sales" type="xs:int" />
       <xs:element minOccurs="0" name="shippment_title" nillable="true" type="tns:shippment_title" />
     </xs:sequence>
