@@ -39,11 +39,9 @@
           <Property Name="idFOB_Sales" Type="int" Nullable="false" />
           <Property Name="NoOfPeices" Type="double" />
           <Property Name="PricePerPeice" Type="double" />
-          <Property Name="SellingFrequency" Type="int" />
-          <Property Name="TotalPeicesSold" Type="double" />
-          <Property Name="TotalRemaining" Type="double" />
-          <Property Name="TotalTurnOvers" Type="double" />
           <Property Name="Shippment_code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="cost" Type="double" />
+          <Property Name="item" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="fob_stock_in_hand">
           <Key>
@@ -375,12 +373,10 @@
           <Property Name="idFOB_Sales" Type="Int32" Nullable="false" />
           <Property Name="NoOfPeices" Type="Double" />
           <Property Name="PricePerPeice" Type="Double" />
-          <Property Name="SellingFrequency" Type="Int32" />
-          <Property Name="TotalPeicesSold" Type="Double" />
-          <Property Name="TotalRemaining" Type="Double" />
-          <Property Name="TotalTurnOvers" Type="Double" />
           <Property Name="Shippment_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="shippment_title" Relationship="Self.fk_FOB_Sales_Shippment_title1" FromRole="fob_sales" ToRole="shippment_title" />
+          <Property Name="cost" Type="Double" />
+          <Property Name="item" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="fob_stock_in_hand">
           <Key>
@@ -726,13 +722,11 @@
           <EntitySetMapping Name="fob_sales">
             <EntityTypeMapping TypeName="mydbModel.fob_sales">
               <MappingFragment StoreEntitySet="fob_sales">
+                <ScalarProperty Name="item" ColumnName="item" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
                 <ScalarProperty Name="idFOB_Sales" ColumnName="idFOB_Sales" />
                 <ScalarProperty Name="NoOfPeices" ColumnName="NoOfPeices" />
                 <ScalarProperty Name="PricePerPeice" ColumnName="PricePerPeice" />
-                <ScalarProperty Name="SellingFrequency" ColumnName="SellingFrequency" />
-                <ScalarProperty Name="TotalPeicesSold" ColumnName="TotalPeicesSold" />
-                <ScalarProperty Name="TotalRemaining" ColumnName="TotalRemaining" />
-                <ScalarProperty Name="TotalTurnOvers" ColumnName="TotalTurnOvers" />
                 <ScalarProperty Name="Shippment_code" ColumnName="Shippment_code" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -17,11 +17,9 @@ namespace DataModel
         public int idFOB_Sales { get; set; }
         public Nullable<double> NoOfPeices { get; set; }
         public Nullable<double> PricePerPeice { get; set; }
-        public Nullable<int> SellingFrequency { get; set; }
-        public Nullable<double> TotalPeicesSold { get; set; }
-        public Nullable<double> TotalRemaining { get; set; }
-        public Nullable<double> TotalTurnOvers { get; set; }
         public string Shippment_code { get; set; }
+        public Nullable<double> cost { get; set; }
+        public string item { get; set; }
     
         public virtual shippment_title shippment_title { get; set; }
     }

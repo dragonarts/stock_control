@@ -12,11 +12,11 @@ using System.Windows.Input;
 
 namespace Adora_Apparel1.ViewModel
 {
-    class UpdateStockPurchaseViewModel : INotifyPropertyChanged
+    class UpdateStockPurchaseViewModel : INotifyPropertyChanged,IDataErrorInfo
     {
         private stock_purchasing purchase;
         private stock_purchasing selectedRow;
-
+        private bool status = true;
         public stock_purchasing SelectedRow
         {
             get { return selectedRow; }
@@ -118,23 +118,31 @@ namespace Adora_Apparel1.ViewModel
         private async void updateStock(object obj) {
 
             //selectedRow = new stock_purchasing();
-            Nullable<double> total_shippment_cost = (SelectedRow.NoOfPeices * SelectedRow.PricePerPiece) + SelectedRow.Transport_Cost +SelectedRow.Supplier_Commision + SelectedRow.Miscellanouse;
-            Nullable<double> actual_cost = total_shippment_cost / SelectedRow.NoOfPeices;
-            //var success = await dataClient.addStockPurchaseAsync(ship_code,peices,price_per_peice,transport_cost,supplier_comission,miscellenouse,total_shippment_cost,actual_cost,1,shipped_date);
-            var success = await dataClient.updateStockPurchaseAsync(SelectedRow.Shippment_code, SelectedRow.NoOfPeices, SelectedRow.PricePerPiece, SelectedRow.Transport_Cost, SelectedRow.Supplier_Commision, SelectedRow.Miscellanouse, total_shippment_cost, actual_cost,SelectedRow.idStock_purchasing, SelectedRow.shipped_date,SelectedRow.sub_cat_name);
-            if (success)
+            if (status)
             {
+                Nullable<double> total_shippment_cost = (SelectedRow.NoOfPeices * SelectedRow.PricePerPiece) + SelectedRow.Transport_Cost + SelectedRow.Supplier_Commision + SelectedRow.Miscellanouse;
+                Nullable<double> actual_cost = total_shippment_cost / SelectedRow.NoOfPeices;
+                //var success = await dataClient.addStockPurchaseAsync(ship_code,peices,price_per_peice,transport_cost,supplier_comission,miscellenouse,total_shippment_cost,actual_cost,1,shipped_date);
+                var success = await dataClient.updateStockPurchaseAsync(SelectedRow.Shippment_code, SelectedRow.NoOfPeices, SelectedRow.PricePerPiece, SelectedRow.Transport_Cost, SelectedRow.Supplier_Commision, SelectedRow.Miscellanouse, total_shippment_cost, actual_cost, SelectedRow.idStock_purchasing, SelectedRow.shipped_date, SelectedRow.sub_cat_name);
+                if (success)
+                {
 
-                MessageBox.Show("Stock Updated Successfully!");
-                var content = dataClient.getstockPurchasing().ToArray();
-                stock_purchase.Clear();
-                Array.ForEach(content,stock_purchase.Add);
-                //dataClient.Close();
-               
+                    MessageBox.Show("Stock Updated Successfully!");
+                    var content = dataClient.getstockPurchasing().ToArray();
+                    stock_purchase.Clear();
+                    Array.ForEach(content, stock_purchase.Add);
+                    //dataClient.Close();
+
+                }
+                else
+                {
+
+                    MessageBox.Show("Unable to Enter Data");
+                }
             }
             else {
 
-                MessageBox.Show("Unable to Enter Data");
+                MessageBox.Show("Please Correct the errors before update");
             }
 
         }
@@ -146,7 +154,63 @@ namespace Adora_Apparel1.ViewModel
                 
         }
 
-       
+
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get { return Validate(columnName); }
+        }
+
+        private string Validate(string columnName)
+        {
+            string validationMessage = string.Empty;
+            switch (columnName)
+            {
+
+                case "Peices":
+                    if (SelectedRow.NoOfPeices <= 0)
+                    {
+                        validationMessage = "Please enter valid Peices";
+                        status = false;
+                    }
+                    break;
+                case "Price_per_peice":
+                    if (SelectedRow.PricePerPiece <= 0)
+                    {
+                        validationMessage = "Please enter valid Price";
+                        status = false;
+                    }
+                    break;
+                case "Supplier_comission":
+                    if (SelectedRow.Supplier_Commision <= 0)
+                    {
+                        validationMessage = "Please enter valid Comission";
+                        status = false;
+                    }
+                    break;
+                case "Miscellenouse":
+                    if (SelectedRow.Miscellanouse <= 0)
+                    {
+                        validationMessage = "Please enter valid Miscellenouse";
+                        status = false;
+                    }
+                    break;
+                case "Transport_cost":
+                    if (SelectedRow.Transport_Cost <= 0)
+                    {
+                        validationMessage = "Please enter valid cost";
+                        status = false;
+                    }
+                    break;
+
+            }
+            return validationMessage;
+        }
     }
     
 }

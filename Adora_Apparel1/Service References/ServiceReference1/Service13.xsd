@@ -70,12 +70,10 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="NoOfPeices" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="PricePerPeice" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="SellingFrequency" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Shippment_code" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="TotalPeicesSold" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="TotalRemaining" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="TotalTurnOvers" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="cost" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="idFOB_Sales" type="xs:int" />
+      <xs:element minOccurs="0" name="item" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="shippment_title" nillable="true" type="tns:shippment_title" />
     </xs:sequence>
   </xs:complexType>

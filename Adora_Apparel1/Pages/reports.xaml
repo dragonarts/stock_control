@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Adora_Apparel1.stocks"
+﻿<UserControl x:Class="Adora_Apparel1.Pages.reports"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,17 +7,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
-        <mui:ModernTab Layout="List" SelectedSource="/Pages/StocklotsPurchasing.xaml">
+        <mui:ModernTab Layout="List" SelectedSource="/Pages/StockPurchaseReport.xaml">
             <mui:ModernTab.Links>
-                <mui:Link DisplayName="Stock Purchasing" Source="/Pages/StocklotsPurchasing.xaml" />
-                <mui:Link DisplayName="FOB Stock In Hand" Source="/Pages/fobStockInhand.xaml" />
+                <mui:Link DisplayName="Stock Purchasing Report" Source="/Pages/StockPurchaseReport.xaml" />
+                <mui:Link DisplayName="Stock Purchase Chart" Source="/Pages/StockPurchaseChart.xaml" />
                 <mui:Link DisplayName="Stock Sales" Source="" />
                 <mui:Link DisplayName="Monthly Sales Summary" Source="" />
                 <mui:Link DisplayName="Purchasing Summary" Source="Report1.rdlc" />
                 <mui:Link DisplayName="Sales Comparison" Source="" />
                 <mui:Link DisplayName="Purchasing Comparison" Source="" />
                 <mui:Link DisplayName="Fixed OverHead" Source="/Pages/fixOverHead.xaml" />
-                
+
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

@@ -350,6 +350,32 @@ namespace Adora_Apparel_Dataservice
             return load.ToList();
         }
 
-       
+
+
+
+        public List<stock_purchasing> getStockPurchase(DateTime? fromDate, DateTime? to)
+        {
+            adoraDB context = new adoraDB();
+            context.Configuration.ProxyCreationEnabled = false;
+            var load = from g in context.stock_purchasing where g.shipped_date >= fromDate && g.shipped_date <= to select g;
+            return load.ToList();
+        }
+
+
+        public bool getUser(string username, string password)
+        {
+            adoraDB context = new adoraDB();
+            context.Configuration.ProxyCreationEnabled = false;
+            var load=from g in context.users where g.username==username && g.password==password select g;
+            if (load.ToList().Count == 0)
+            {
+
+                return false;
+            }
+            else {
+
+                return true;
+            }
+        }
     }
 }

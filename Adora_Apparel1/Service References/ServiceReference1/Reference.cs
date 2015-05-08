@@ -644,22 +644,16 @@ namespace Adora_Apparel1.ServiceReference1 {
         private System.Nullable<double> PricePerPeiceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> SellingFrequencyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Shippment_codeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> TotalPeicesSoldField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> TotalRemainingField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> TotalTurnOversField;
+        private System.Nullable<double> costField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idFOB_SalesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string itemField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Adora_Apparel1.ServiceReference1.shippment_title shippment_titleField;
@@ -701,19 +695,6 @@ namespace Adora_Apparel1.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> SellingFrequency {
-            get {
-                return this.SellingFrequencyField;
-            }
-            set {
-                if ((this.SellingFrequencyField.Equals(value) != true)) {
-                    this.SellingFrequencyField = value;
-                    this.RaisePropertyChanged("SellingFrequency");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Shippment_code {
             get {
                 return this.Shippment_codeField;
@@ -727,40 +708,14 @@ namespace Adora_Apparel1.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> TotalPeicesSold {
+        public System.Nullable<double> cost {
             get {
-                return this.TotalPeicesSoldField;
+                return this.costField;
             }
             set {
-                if ((this.TotalPeicesSoldField.Equals(value) != true)) {
-                    this.TotalPeicesSoldField = value;
-                    this.RaisePropertyChanged("TotalPeicesSold");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> TotalRemaining {
-            get {
-                return this.TotalRemainingField;
-            }
-            set {
-                if ((this.TotalRemainingField.Equals(value) != true)) {
-                    this.TotalRemainingField = value;
-                    this.RaisePropertyChanged("TotalRemaining");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> TotalTurnOvers {
-            get {
-                return this.TotalTurnOversField;
-            }
-            set {
-                if ((this.TotalTurnOversField.Equals(value) != true)) {
-                    this.TotalTurnOversField = value;
-                    this.RaisePropertyChanged("TotalTurnOvers");
+                if ((this.costField.Equals(value) != true)) {
+                    this.costField = value;
+                    this.RaisePropertyChanged("cost");
                 }
             }
         }
@@ -774,6 +729,19 @@ namespace Adora_Apparel1.ServiceReference1 {
                 if ((this.idFOB_SalesField.Equals(value) != true)) {
                     this.idFOB_SalesField = value;
                     this.RaisePropertyChanged("idFOB_Sales");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string item {
+            get {
+                return this.itemField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.itemField, value) != true)) {
+                    this.itemField = value;
+                    this.RaisePropertyChanged("item");
                 }
             }
         }
@@ -2005,6 +1973,18 @@ namespace Adora_Apparel1.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getfabricFOBPurchasing", ReplyAction="http://tempuri.org/IService1/getfabricFOBPurchasingResponse")]
         System.Threading.Tasks.Task<Adora_Apparel1.ServiceReference1.fob_purchasing[]> getfabricFOBPurchasingAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getStockPurchase", ReplyAction="http://tempuri.org/IService1/getStockPurchaseResponse")]
+        Adora_Apparel1.ServiceReference1.stock_purchasing[] getStockPurchase(System.Nullable<System.DateTime> from, System.Nullable<System.DateTime> to);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getStockPurchase", ReplyAction="http://tempuri.org/IService1/getStockPurchaseResponse")]
+        System.Threading.Tasks.Task<Adora_Apparel1.ServiceReference1.stock_purchasing[]> getStockPurchaseAsync(System.Nullable<System.DateTime> from, System.Nullable<System.DateTime> to);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getUser", ReplyAction="http://tempuri.org/IService1/getUserResponse")]
+        bool getUser(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getUser", ReplyAction="http://tempuri.org/IService1/getUserResponse")]
+        System.Threading.Tasks.Task<bool> getUserAsync(string username, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2168,6 +2148,22 @@ namespace Adora_Apparel1.ServiceReference1 {
         
         public System.Threading.Tasks.Task<Adora_Apparel1.ServiceReference1.fob_purchasing[]> getfabricFOBPurchasingAsync() {
             return base.Channel.getfabricFOBPurchasingAsync();
+        }
+        
+        public Adora_Apparel1.ServiceReference1.stock_purchasing[] getStockPurchase(System.Nullable<System.DateTime> from, System.Nullable<System.DateTime> to) {
+            return base.Channel.getStockPurchase(from, to);
+        }
+        
+        public System.Threading.Tasks.Task<Adora_Apparel1.ServiceReference1.stock_purchasing[]> getStockPurchaseAsync(System.Nullable<System.DateTime> from, System.Nullable<System.DateTime> to) {
+            return base.Channel.getStockPurchaseAsync(from, to);
+        }
+        
+        public bool getUser(string username, string password) {
+            return base.Channel.getUser(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> getUserAsync(string username, string password) {
+            return base.Channel.getUserAsync(username, password);
         }
     }
 }

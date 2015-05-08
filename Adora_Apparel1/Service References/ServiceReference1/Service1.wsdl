@@ -110,6 +110,18 @@
   <wsdl:message name="IService1_getfabricFOBPurchasing_OutputMessage">
     <wsdl:part name="parameters" element="tns:getfabricFOBPurchasingResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getStockPurchase_InputMessage">
+    <wsdl:part name="parameters" element="tns:getStockPurchase" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getStockPurchase_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getStockPurchaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="getstockPurchasing">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getstockPurchasing" message="tns:IService1_getstockPurchasing_InputMessage" />
@@ -178,6 +190,14 @@
     <wsdl:operation name="getfabricFOBPurchasing">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getfabricFOBPurchasing" message="tns:IService1_getfabricFOBPurchasing_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getfabricFOBPurchasingResponse" message="tns:IService1_getfabricFOBPurchasing_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getStockPurchase">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getStockPurchase" message="tns:IService1_getStockPurchase_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getStockPurchaseResponse" message="tns:IService1_getStockPurchase_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUser" message="tns:IService1_getUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getUserResponse" message="tns:IService1_getUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -328,6 +348,24 @@
     </wsdl:operation>
     <wsdl:operation name="getfabricFOBPurchasing">
       <soap:operation soapAction="http://tempuri.org/IService1/getfabricFOBPurchasing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStockPurchase">
+      <soap:operation soapAction="http://tempuri.org/IService1/getStockPurchase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/getUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

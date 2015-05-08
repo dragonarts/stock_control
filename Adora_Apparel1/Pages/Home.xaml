@@ -35,7 +35,7 @@
             <TextBlock TextWrapping="Wrap" Text="Fixed Overheads" Height="62" Width="153" Foreground="White" FontSize="20"/>
             <Image Height="87" Width="157" Source="Images/Office Apps/Word 2013.png"/>
         </WrapPanel>
-        <WrapPanel HorizontalAlignment="Left" Height="122" Margin="75,218,0,0" VerticalAlignment="Top" Width="492" Background="#FF7013A6">
+        <WrapPanel HorizontalAlignment="Left" Height="122" Margin="75,218,0,0" VerticalAlignment="Top" Width="492" Background="#FF7013A6" PreviewMouseDown="LoadSalesChart">
             <TextBlock TextWrapping="Wrap" Text="Analytics" Height="62" Width="153" Foreground="White" FontSize="20"/>
             <Image Height="88" Width="154" Source="Images/Office Apps/reflective/InfoPath_mirror.png"/>
         </WrapPanel>

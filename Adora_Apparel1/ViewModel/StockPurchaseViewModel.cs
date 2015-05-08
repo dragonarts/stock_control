@@ -21,7 +21,16 @@ namespace Adora_Apparel1.ViewModel
         
         private stock_purchasing purchase;
         private stock_purchasing selectedRow;
+        private bool status=true;
 
+        public bool Status
+        {
+            get { return status; }
+            set { 
+                status = value;
+                RaisePropertyChanged("Status");
+            }
+        }
         private ICommand refresh;
 
         public ICommand Refresh
@@ -245,31 +254,39 @@ namespace Adora_Apparel1.ViewModel
         private async void addStock(object obj) {
 
             //selectedRow = new stock_purchasing();
-            Nullable<double> total_shippment_cost = (peices * price_per_peice) + transport_cost +supplier_comission + miscellenouse;
-            Nullable<double> actual_cost = total_shippment_cost / peices;
-            total_shippment_cost = Math.Round(total_shippment_cost.Value, 2,MidpointRounding.AwayFromZero);
-            actual_cost = Math.Round(Math.Round(actual_cost.Value, 2,MidpointRounding.AwayFromZero));
-            var success = await dataClient.addStockPurchaseAsync(ship_code,peices,price_per_peice,transport_cost,supplier_comission,miscellenouse,total_shippment_cost,actual_cost,1,shipped_date,sub_cat_name);
-           // var success = await dataClient.addStockPurchaseAsync(SelectedRow.Shippment_code,SelectedRow.NoOfPeices,SelectedRow.PricePerPiece,SelectedRow.Transport_Cost,SelectedRow.Supplier_Commision,SelectedRow.Miscellanouse, total_shippment_cost, actual_cost, 1,SelectedRow.shipped_date);
-            if (success)
+            if (status)
             {
+                Nullable<double> total_shippment_cost = (peices * price_per_peice) + transport_cost + supplier_comission + miscellenouse;
+                Nullable<double> actual_cost = total_shippment_cost / peices;
+                total_shippment_cost = Math.Round(total_shippment_cost.Value, 2, MidpointRounding.AwayFromZero);
+                actual_cost = Math.Round(Math.Round(actual_cost.Value, 2, MidpointRounding.AwayFromZero));
+                var success = await dataClient.addStockPurchaseAsync(ship_code, peices, price_per_peice, transport_cost, supplier_comission, miscellenouse, total_shippment_cost, actual_cost, 1, shipped_date, sub_cat_name);
+                // var success = await dataClient.addStockPurchaseAsync(SelectedRow.Shippment_code,SelectedRow.NoOfPeices,SelectedRow.PricePerPiece,SelectedRow.Transport_Cost,SelectedRow.Supplier_Commision,SelectedRow.Miscellanouse, total_shippment_cost, actual_cost, 1,SelectedRow.shipped_date);
+                if (success)
+                {
 
-                MessageBox.Show("Data Inserted Successfully!");
-                var content = dataClient.getstockPurchasing().ToArray();
-                stock_purchase.Clear();
-                Array.ForEach(content,stock_purchase.Add);
-                //dataClient.Close();
-                Ship_code = "";
-                Peices = null;
-                Price_per_peice = null;
-                Transport_cost = null;
-                Supplier_comission = null;
-                Miscellenouse = null;
-                Shipped_date = null;
+                    MessageBox.Show("Data Inserted Successfully!");
+                    var content = dataClient.getstockPurchasing().ToArray();
+                    stock_purchase.Clear();
+                    Array.ForEach(content, stock_purchase.Add);
+                    //dataClient.Close();
+                    Ship_code = "";
+                    Peices = null;
+                    Price_per_peice = null;
+                    Transport_cost = null;
+                    Supplier_comission = null;
+                    Miscellenouse = null;
+                    Shipped_date = null;
+                }
+                else
+                {
+
+                    MessageBox.Show("Unable to Enter Data");
+                }
             }
             else {
 
-                MessageBox.Show("Unable to Enter Data");
+                MessageBox.Show("Please Correct errors before add");
             }
 
         }
@@ -285,7 +302,11 @@ namespace Adora_Apparel1.ViewModel
 
         public string Error
         {
-            get { throw new NotImplementedException(); }
+            get { 
+                throw new NotImplementedException();
+                Status = false;
+            }
+            
         }
 
         public string this[string columnName]
@@ -297,28 +318,64 @@ namespace Adora_Apparel1.ViewModel
         private string Validate(string columnName)
         {
             string validationMessage = string.Empty;
+            double res;
+            int result;
             switch (columnName)
             { 
-                
                 case "Peices":
-                    if(Peices<=0)
+                    if (Peices <= 0 || !int.TryParse(Peices.ToString(),out result))
+                    {
                         validationMessage = "Please enter valid Peices";
+                        Status = false;
+                    }
+                    else {
+
+                        Status = true;
+                    }
                     break;
                 case "Price_per_peice":
-                    if(Price_per_peice<=0)
+                    if (Price_per_peice <= 0 || !Double.TryParse(Price_per_peice.ToString(),out res))
+                    {
                         validationMessage = "Please enter valid Price";
+                        Status = false;
+                    }
+                    else {
+
+                        Status = true;
+                    }
                     break;
                 case "Supplier_comission":
-                    if (Supplier_comission <= 0)
+                    if (Supplier_comission <= 0 || !Double.TryParse(Supplier_comission.ToString(),out res))
+                    {
                         validationMessage = "Please enter valid Comission";
+                        Status = false;
+                    }
+                    else {
+
+                        Status = true;
+                    }
                     break;
                 case "Miscellenouse":
-                    if (Supplier_comission <= 0)
+                    if (Miscellenouse <= 0 || !Double.TryParse(Miscellenouse.ToString(),out res))
+                    {
                         validationMessage = "Please enter valid Miscellenouse";
+                        Status = false;
+                    }
+                    else {
+
+                        Status = true;
+                    }
                     break;
                 case "Transport_cost":
-                    if (Transport_cost <=0)
+                    if (Transport_cost <= 0 || !Double.TryParse(Transport_cost.ToString(),out res))
+                    {
                         validationMessage = "Please enter valid cost";
+                        Status=false;
+                    }
+                    else
+                    {
+                        Status = true;
+                    }
                     break;
 
             }

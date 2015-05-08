@@ -192,9 +192,22 @@ namespace Adora_Apparel1.Pages
 
         }
 
+        
         //link fob purchase to home-------------
 
-     
+        private void LoadSalesChart(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+
+                NavigationCommands.GoToPage.Execute("/Pages/reports.xaml", this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        
+        }
         
 
         //--------end link------------------------

@@ -72,6 +72,12 @@ namespace Adora_Apparel_Dataservice
 
         List<fob_purchasing> getfabricFOBPurchasing();
 
+        [OperationContract]
+        List<stock_purchasing> getStockPurchase(Nullable<System.DateTime> from, Nullable<System.DateTime> to);
+
+        [OperationContract]
+        bool getUser(string username,string password);
+
        
     }
 
